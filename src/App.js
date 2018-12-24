@@ -7,29 +7,55 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import PokemonList from './PokemonList';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
-});
+const POKEMON_LIST = [
+  { name: 'TURQUOISE', code: '#1abc9c' },
+  { name: 'EMERALD', code: '#2ecc71' },
+  { name: 'PETER RIVER', code: '#3498db' },
+  { name: 'AMETHYST', code: '#9b59b6' },
+  { name: 'WET ASPHALT', code: '#34495e' },
+  { name: 'GREEN SEA', code: '#16a085' },
+  { name: 'NEPHRITIS', code: '#27ae60' },
+  { name: 'BELIZE HOLE', code: '#2980b9' },
+  { name: 'WISTERIA', code: '#8e44ad' },
+  { name: 'MIDNIGHT BLUE', code: '#2c3e50' },
+  { name: 'SUN FLOWER', code: '#f1c40f' },
+  { name: 'CARROT', code: '#e67e22' },
+  { name: 'ALIZARIN', code: '#e74c3c' },
+  { name: 'CLOUDS', code: '#ecf0f1' },
+  { name: 'CONCRETE', code: '#95a5a6' },
+  { name: 'ORANGE', code: '#f39c12' },
+  { name: 'PUMPKIN', code: '#d35400' },
+  { name: 'POMEGRANATE', code: '#c0392b' },
+  { name: 'SILVER', code: '#bdc3c7' },
+  { name: 'ASBESTOS', code: '#7f8c8d' },
+];
 
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    pokemonList: POKEMON_LIST,
+  };
+
   render() {
+    const { pokemonList } = this.state;
     return (
       <View style={styles.container}>
         <SearchBar
           containerStyle={{
             width: '100%',
-            height: 46,
             backgroundColor: 'white',
             borderTopWidth: 0,
           }}
           lightTheme
           noIcon
-          placeholder='Pokedex' />
+          onChangeText={this.handleSearchBar}
+          placeholder="Pokedex"
+        />
+        <PokemonList pokemons={pokemonList} />
       </View>
     );
   }
@@ -38,18 +64,9 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
