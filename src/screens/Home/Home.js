@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { getAllPokemons } from './services';
-import PokemonList from './PokemonList';
 
-type Props = {};
-export default class App extends Component<Props> {
+import { getAllPokemons } from '../../services';
+import PokemonList from '../PokemonList';
+
+export default class App extends Component {
   state = {
     pokemonList: [],
   };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text } from 'react-native';
+import { arrayOf, number, shape, string } from 'prop-types';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import GridView from 'react-native-super-grid';
 
 const styles = StyleSheet.create({
@@ -38,5 +39,15 @@ const PokemonList = ({ pokemons }) => (
     )}
   />
 );
+
+PokemonList.propTypes = {
+  pokemons: arrayOf(
+    shape({
+      id: number,
+      name: string,
+      sprite: string,
+    })
+  ),
+};
 
 export default PokemonList;
