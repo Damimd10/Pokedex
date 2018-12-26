@@ -1,6 +1,6 @@
 import React from 'react';
 import { arrayOf, number, shape, string } from 'prop-types';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GridView from 'react-native-super-grid';
 
 const styles = StyleSheet.create({
@@ -26,16 +26,22 @@ const styles = StyleSheet.create({
   },
 });
 
+const onPokemonTouch = pokemonId => {
+  console.log('HERE', pokemonId);
+};
+
 const PokemonList = ({ pokemons }) => (
   <GridView
     itemDimension={110}
     items={pokemons}
     style={styles.gridView}
     renderItem={pokemon => (
-      <View style={[styles.itemContainer]}>
-        <Text style={styles.pokemonName}>{pokemon.name}</Text>
-        <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
-      </View>
+      <TouchableOpacity onPress={() => onPokemonTouch(pokemon.id)}>
+        <View style={[styles.itemContainer]}>
+          <Text style={styles.pokemonName}>{pokemon.name}</Text>
+          <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
+        </View>
+      </TouchableOpacity>
     )}
   />
 );
