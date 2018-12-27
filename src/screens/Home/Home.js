@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 import { getAllPokemons } from '../../services';
-import PokemonList from '../PokemonList';
+import PokemonList from './components/PokemonList';
 
 export default class App extends Component {
   state = {
@@ -14,6 +14,9 @@ export default class App extends Component {
     const pokemons = await getAllPokemons();
     this.setState({ pokemonList: pokemons });
   }
+
+  onPokemonSelect = (id, name) =>
+    this.props.navigation.navigate('Pokemon', { pokemonId: id, pokemonName: name });
 
   render() {
     const { pokemonList } = this.state;
@@ -30,7 +33,7 @@ export default class App extends Component {
           onChangeText={this.handleSearchBar}
           placeholder="Pokedex"
         />
-        <PokemonList pokemons={pokemonList} />
+        <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemonList} />
       </View>
     );
   }
@@ -39,7 +42,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',

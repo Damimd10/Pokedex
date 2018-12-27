@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrayOf, number, shape, string } from 'prop-types';
+import { arrayOf, func, number, shape, string } from 'prop-types';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GridView from 'react-native-super-grid';
 
@@ -26,17 +26,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const onPokemonTouch = pokemonId => {
-  console.log('HERE', pokemonId);
-};
-
-const PokemonList = ({ pokemons }) => (
+const PokemonList = ({ onPokemonSelect, pokemons }) => (
   <GridView
     itemDimension={110}
     items={pokemons}
     style={styles.gridView}
     renderItem={pokemon => (
-      <TouchableOpacity onPress={() => onPokemonTouch(pokemon.id)}>
+      <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id, pokemon.name)}>
         <View style={[styles.itemContainer]}>
           <Text style={styles.pokemonName}>{pokemon.name}</Text>
           <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
@@ -47,13 +43,14 @@ const PokemonList = ({ pokemons }) => (
 );
 
 PokemonList.propTypes = {
+  onPokemonSelect: func.isRequired,
   pokemons: arrayOf(
     shape({
       id: number,
       name: string,
       sprite: string,
     })
-  ),
+  ).isRequired,
 };
 
 export default PokemonList;
