@@ -41,12 +41,11 @@ class Pokemon extends Component {
         <PokemonType backgroundColor={color.primary} types={types} />
         <View style={styles.statsContainer}>
           {stats.map((stat, index) => (
-            <View style={styles.stats}>
+            <View key={index} style={styles.stats}>
               <Text style={[styles.statName, { color: color.primary }]}>{stat.name}</Text>
-              <Text>{stat.baseStat}</Text>
               <Progress.Bar
                 key={index}
-                progress={0.4}
+                progress={stat.averageStat}
                 borderColor="transparent"
                 color={stat.colorStat}
                 height={20}

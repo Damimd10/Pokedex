@@ -1,6 +1,15 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 const BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
+const MAX_STATS = {
+  hp: 255,
+  attack: 190,
+  defense: 230,
+  'special-attack': 194,
+  'special-defense': 230,
+  speed: 180,
+};
+
 const PALETTE_COLOR = {
   blue: {
     dark: '#1976D2',
@@ -51,8 +60,6 @@ const STATS_COLOR = {
   'special-attack': '#3699DC',
   'special-defense': '#2ECB70',
   speed: '#F39C11',
-  accuracy: '#8258FA',
-  evasion: '#D8F781',
 };
 
-export { BASE_SPRITE_URL, BASE_URL, PALETTE_COLOR, STATS_COLOR };
+export { BASE_SPRITE_URL, BASE_URL, MAX_STATS, PALETTE_COLOR, STATS_COLOR };

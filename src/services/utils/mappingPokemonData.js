@@ -1,4 +1,4 @@
-import { BASE_SPRITE_URL, PALETTE_COLOR, STATS_COLOR } from '../constants';
+import { BASE_SPRITE_URL, PALETTE_COLOR, MAX_STATS, STATS_COLOR } from '../constants';
 
 const getColor = species => PALETTE_COLOR[species.color.name];
 
@@ -7,6 +7,7 @@ const getSprite = id => `${BASE_SPRITE_URL}${id}.png`;
 const mappingStats = stats =>
   stats.reduce((acc, { base_stat, stat }) => {
     acc.push({
+      averageStat: Number((base_stat / MAX_STATS[stat.name]).toFixed(1)),
       baseStat: base_stat,
       colorStat: STATS_COLOR[stat.name],
       name: stat.name,
