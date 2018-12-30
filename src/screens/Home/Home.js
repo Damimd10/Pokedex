@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
-import { getAllPokemons } from '../../services';
+import { getAllPokemons, getPokemon } from '../../services';
 import PokemonList from './components/PokemonList';
 
 export default class App extends Component {
@@ -15,8 +15,10 @@ export default class App extends Component {
     this.setState({ pokemonList: pokemons });
   }
 
-  onPokemonSelect = (id, name) =>
-    this.props.navigation.navigate('Pokemon', { pokemonId: id, pokemonName: name });
+  onPokemonSelect = async (id, name) => {
+    const pokemon = await getPokemon(id);
+    this.props.navigation.navigate('Pokemon', { pokemon });
+  };
 
   render() {
     const { pokemonList } = this.state;

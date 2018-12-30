@@ -18,9 +18,9 @@ const PALETTE_COLOR = {
     primary: '#9E9E9E',
   },
   green: {
-    dark: '#388E3C',
-    light: '#C8E6C9',
-    primary: '#4CAF50',
+    dark: '#00796B',
+    light: '#B2DFDB',
+    primary: '#009688',
   },
   pink: {
     dark: '#C2185B',

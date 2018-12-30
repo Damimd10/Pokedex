@@ -1,6 +1,6 @@
-import { BASE_SPRITE_URL } from '../constants';
+import { BASE_SPRITE_URL, PALETTE_COLOR } from '../constants';
 
-const getColor = species => species.color.name;
+const getColor = species => PALETTE_COLOR[species.color.name];
 
 const getSprite = id => `${BASE_SPRITE_URL}${id}.png`;
 
@@ -18,6 +18,7 @@ const mappingTypes = types => types.map(({ type }) => type.name.toUpperCase()).j
 
 const mappingPokemonData = data => ({
   color: getColor(data.species),
+  name: data.name,
   sprite: getSprite(data.id),
   stats: mappingStats(data.stats),
   types: mappingTypes(data.types),

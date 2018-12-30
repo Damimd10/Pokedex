@@ -5,8 +5,6 @@ import { getPokemon } from '../../services';
 
 const styles = StyleSheet.create({
   itemContainer: {
-    borderWidth: 1,
-    borderColor: 'blue',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -22,41 +20,35 @@ const styles = StyleSheet.create({
   pokemonImage: {
     height: 150,
     width: 150,
-    borderColor: 'red',
-    borderWidth: 1,
   },
   pokemonType: {
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    borderColor: 'green',
-    borderWidth: 1,
+    padding: 10,
+  },
+  pokemonTypeTitle: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
 class Pokemon extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam('pokemonName', 'Finding Pokemon...'),
+    headerStyle: { backgroundColor: navigation.getParam('pokemon').color.primary },
+    headerTitleStyle: { color: 'white', textTransform: 'uppercase' },
+    title: navigation.getParam('pokemon').name,
   });
 
-  state = { pokemon: {} };
-
-  async componentDidMount() {
-    const pokemon = this.props.navigation.getParam('pokemonId');
-    const currentPokemon = await getPokemon(pokemon);
-    this.setState({ pokemon: currentPokemon });
-  }
-
   render() {
-    const { color, sprite, types } = this.state.pokemon;
-    console.log('HERE', this.state.pokemon);
+    const { color, sprite, types } = this.props.navigation.getParam('pokemon');
     return (
       <View style={styles.itemContainer}>
-        <View style={styles.pokemonSprite}>
+        <View style={[styles.pokemonSprite, { backgroundColor: color.light }]}>
           <Image style={styles.pokemonImage} source={{ uri: sprite }} />
         </View>
-        <View style={[styles.pokemonType, { backgroundColor: color }]}>
-          <Text>{types}</Text>
+        <View style={[styles.pokemonType, { backgroundColor: color.primary }]}>
+          <Text style={styles.pokemonTypeTitle}>{types}</Text>
         </View>
       </View>
     );
