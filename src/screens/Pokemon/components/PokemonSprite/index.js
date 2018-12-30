@@ -1,3 +1,3 @@
-import PokemonSprite from './PokemonSpirte';
+import PokemonSprite from './PokemonSprite';
 
-export default PokemonSprite;˝
+export default PokemonSprite;

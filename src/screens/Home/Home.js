@@ -15,7 +15,7 @@ export default class App extends Component {
     this.setState({ pokemonList: pokemons });
   }
 
-  onPokemonSelect = async (id, name) => {
+  onPokemonSelect = async id => {
     const pokemon = await getPokemon(id);
     this.props.navigation.navigate('Pokemon', { pokemon });
   };

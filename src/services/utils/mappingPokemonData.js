@@ -1,4 +1,4 @@
-import { BASE_SPRITE_URL, PALETTE_COLOR } from '../constants';
+import { BASE_SPRITE_URL, PALETTE_COLOR, STATS_COLOR } from '../constants';
 
 const getColor = species => PALETTE_COLOR[species.color.name];
 
@@ -8,6 +8,7 @@ const mappingStats = stats =>
   stats.reduce((acc, { base_stat, stat }) => {
     acc.push({
       baseStat: base_stat,
+      colorStat: STATS_COLOR[stat.name],
       name: stat.name,
     });
 

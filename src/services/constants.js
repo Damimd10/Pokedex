@@ -44,4 +44,15 @@ const PALETTE_COLOR = {
   },
 };
 
-export { BASE_SPRITE_URL, BASE_URL, PALETTE_COLOR };
+const STATS_COLOR = {
+  hp: '#E64D3D',
+  attack: '#E67F20',
+  defense: '#F1C40F',
+  'special-attack': '#3699DC',
+  'special-defense': '#2ECB70',
+  speed: '#F39C11',
+  accuracy: '#8258FA',
+  evasion: '#D8F781',
+};
+
+export { BASE_SPRITE_URL, BASE_URL, PALETTE_COLOR, STATS_COLOR };

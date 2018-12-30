@@ -32,7 +32,7 @@ const PokemonList = ({ onPokemonSelect, pokemons }) => (
     items={pokemons}
     style={styles.gridView}
     renderItem={pokemon => (
-      <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id, pokemon.name)}>
+      <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id)}>
         <View style={[styles.itemContainer]}>
           <Text style={styles.pokemonName}>{pokemon.name}</Text>
           <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
