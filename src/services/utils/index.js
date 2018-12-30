@@ -1,3 +1,4 @@
+import mappingPokemonData from './mappingPokemonData';
 import mappingPokemons from './mappingPokemons';
 
-export { mappingPokemons };
+export { mappingPokemonData, mappingPokemons };
