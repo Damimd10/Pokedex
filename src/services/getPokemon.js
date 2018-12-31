@@ -4,13 +4,10 @@ import { BASE_URL } from './constants';
 import { mappingPokemonData } from './utils';
 import getSpecies from './getSpecies';
 
-const fetchSpecies = async data => {
-  const pokemonWithSpecies = {
-    ...data,
-    species: await getSpecies(data.species.url),
-  };
-  return pokemonWithSpecies;
-};
+const fetchSpecies = async data => ({
+  ...data,
+  species: await getSpecies(data.species.url),
+});
 
 const getPokemon = id =>
   axios
