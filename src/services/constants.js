@@ -47,9 +47,9 @@ const PALETTE_COLOR = {
     primary: '#F44336',
   },
   yellow: {
-    dark: '#FBC02D',
-    light: '#FFF9C4',
-    primary: '#FFEB3B',
+    dark: '#FFA000',
+    light: '#FFECB3',
+    primary: '#FFC107',
   },
 };
 

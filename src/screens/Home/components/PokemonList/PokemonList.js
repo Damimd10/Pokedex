@@ -5,11 +5,11 @@ import GridView from 'react-native-super-grid';
 
 const styles = StyleSheet.create({
   gridView: {
-    paddingTop: 10,
     flex: 1,
+    paddingTop: 10,
   },
   itemContainer: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     borderRadius: 5,
     padding: 10,
     height: 120,
@@ -32,12 +32,12 @@ const PokemonList = ({ onPokemonSelect, pokemons }) => (
     items={pokemons}
     style={styles.gridView}
     renderItem={pokemon => (
-      <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id)}>
-        <View style={[styles.itemContainer]}>
+      <View style={styles.itemContainer}>
+        <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id)}>
           <Text style={styles.pokemonName}>{pokemon.name}</Text>
           <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     )}
   />
 );

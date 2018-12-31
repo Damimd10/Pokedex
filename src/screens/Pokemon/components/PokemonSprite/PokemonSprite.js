@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
   pokemonSprite: {
     display: 'flex',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'yellow',
     width: '100%',
   },
   pokemonImage: {

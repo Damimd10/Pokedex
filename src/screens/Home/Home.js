@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 import { getAllPokemons, getPokemon } from '../../services';
 import PokemonList from './components/PokemonList';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+});
+
 export default class App extends Component {
+  static navigationOptions = () => ({
+    headerStyle: { backgroundColor: '#C1392B' },
+    headerTitleStyle: { color: 'white', textTransform: 'uppercase' },
+    title: 'Pokedex',
+  });
+
   state = {
+    fetching: false,
+    filteredPokemons: [],
     pokemonList: [],
   };
 
@@ -15,13 +33,32 @@ export default class App extends Component {
     this.setState({ pokemonList: pokemons });
   }
 
+  handleSearchBar = currentPokemon => {
+    const filteredPokemons = this.state.pokemonList.filter(pokemon =>
+      pokemon.name.includes(currentPokemon.toUpperCase())
+    );
+
+    this.setState({ filteredPokemons });
+  };
+
   onPokemonSelect = async id => {
+    this.setState({ loading: true });
     const pokemon = await getPokemon(id);
+    this.setState({ loading: false });
     this.props.navigation.navigate('Pokemon', { pokemon });
   };
 
   render() {
-    const { pokemonList } = this.state;
+    const { filteredPokemons, loading, pokemonList } = this.state;
+    const pokemons = filteredPokemons.length ? filteredPokemons : pokemonList;
+
+    if (loading)
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+
     return (
       <View style={styles.container}>
         <SearchBar
@@ -35,17 +72,8 @@ export default class App extends Component {
           onChangeText={this.handleSearchBar}
           placeholder="Pokedex"
         />
-        <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemonList} />
+        <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemons} />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});

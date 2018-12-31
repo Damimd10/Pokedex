@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 
 import PokemonSprite from './components/PokemonSprite';
 import PokemonStats from './components/PokemonStats';
 import PokemonType from './components/PokemonType';
+import PokemonEvolution from './components/PokemonEvolution';
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -28,6 +29,7 @@ class Pokemon extends Component {
         <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
         <PokemonType backgroundColor={color.primary} types={types} />
         <PokemonStats color={color} stats={stats} />
+        <PokemonEvolution backgroundColor={color.primary} />
       </View>
     );
   }

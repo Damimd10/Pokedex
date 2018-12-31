@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
 
 const PokemonStats = ({ color, stats }) => (
   <View style={styles.statsContainer}>
-    {stats.map((stat, index) => (
-      <View key={index} style={styles.stats}>
-        <Text style={[styles.statName, { color: color.primary }]}>{stat.name}</Text>
+    {stats.map(({ averageStat, colorStat, name }) => (
+      <View key={name} style={styles.stats}>
+        <Text style={[styles.statName, { color: color.primary }]}>{name}</Text>
         <Progress.Bar
-          progress={stat.averageStat}
+          progress={averageStat}
           borderColor="transparent"
-          color={stat.colorStat}
+          color={colorStat}
           height={20}
           width={200}
         />
