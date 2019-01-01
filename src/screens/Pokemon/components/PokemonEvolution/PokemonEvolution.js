@@ -1,6 +1,8 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { arrayOf, shape, string } from 'prop-types';
+
+import Evolution from './components/Evolution';
 
 const styles = StyleSheet.create({
   evolutionSprite: {
@@ -31,16 +33,7 @@ const PokemonEvolution = ({ color, evolutions }) => (
     </View>
     <View style={styles.pokemonEvolutionGrid}>
       {evolutions.map(evolution => (
-        <View
-          key={evolution.name}
-          style={{
-            backgroundColor: color.light,
-            flex: 1,
-          }}
-        >
-          <Text style={{ alignSelf: 'center' }}>{evolution.name.toUpperCase()}</Text>
-          <Image style={{ alignSelf: 'center', height: 110, width: 110 }} source={{ uri: evolution.sprite }} />
-        </View>
+        <Evolution key={evolution.name} {...color} {...evolution} />
       ))}
     </View>
   </React.Fragment>
