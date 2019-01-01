@@ -1,8 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { string } from 'prop-types';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { arrayOf, shape, string } from 'prop-types';
 
 const styles = StyleSheet.create({
+  evolutionSprite: {
+    width: '100%',
+    height: '100%',
+  },
   pokemonEvolution: {
     display: 'flex',
     alignItems: 'center',
@@ -20,21 +24,40 @@ const styles = StyleSheet.create({
   },
 });
 
-const PokemonEvolution = ({ backgroundColor }) => (
+const PokemonEvolution = ({ color, evolutions }) => (
   <React.Fragment>
-    <View style={[styles.pokemonEvolution, { backgroundColor }]}>
+    <View style={[styles.pokemonEvolution, { backgroundColor: color.primary }]}>
       <Text style={styles.pokemonEvolutionTitle}>Evolutions</Text>
     </View>
     <View style={styles.pokemonEvolutionGrid}>
-      <Text style={{ backgroundColor: 'red', flex: 1 }}>First</Text>
-      <Text style={{ backgroundColor: 'yellow', flex: 1 }}>Second</Text>
-      <Text style={{ backgroundColor: 'blue', flex: 1 }}>Third</Text>
+      {evolutions.map(evolution => (
+        <View
+          key={evolution.name}
+          style={{
+            backgroundColor: color.light,
+            flex: 1,
+          }}
+        >
+          <Text style={{ alignSelf: 'center' }}>{evolution.name.toUpperCase()}</Text>
+          <Image style={{ alignSelf: 'center', height: 110, width: 110 }} source={{ uri: evolution.sprite }} />
+        </View>
+      ))}
     </View>
   </React.Fragment>
 );
 
 PokemonEvolution.propTypes = {
-  backgroundColor: string.isRequired,
+  color: shape({
+    dark: string,
+    light: string,
+    primary: string,
+  }).isRequired,
+  evolutions: arrayOf(
+    shape({
+      name: string,
+      sprite: string,
+    })
+  ).isRequired,
 };
 
 export default PokemonEvolution;

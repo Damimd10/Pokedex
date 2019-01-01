@@ -23,13 +23,16 @@ class Pokemon extends Component {
   });
 
   render() {
-    const { color, sprite, stats, types } = this.props.navigation.getParam('pokemon');
+    const { color, evolutionChain, sprite, stats, types } = this.props.navigation.getParam(
+      'pokemon'
+    );
+    console.log('HERE', this.props.navigation.getParam('pokemon'));
     return (
       <View style={styles.itemContainer}>
         <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
         <PokemonType backgroundColor={color.primary} types={types} />
         <PokemonStats color={color} stats={stats} />
-        <PokemonEvolution backgroundColor={color.primary} />
+        <PokemonEvolution color={color} evolutions={evolutionChain} />
       </View>
     );
   }
