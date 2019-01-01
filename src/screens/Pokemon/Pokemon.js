@@ -32,7 +32,7 @@ class Pokemon extends Component {
     const { color, evolutionChain, sprite, stats, types } = this.props.navigation.getParam(
       'pokemon'
     );
-    console.log('HERE', this.props.navigation.getParam('pokemon'));
+
     return (
       <Container styles={styles.container}>
         <Content>
