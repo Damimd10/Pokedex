@@ -11,6 +11,11 @@ const MAX_STATS = {
 };
 
 const PALETTE_COLOR = {
+  black: {
+    dark: '',
+    light: '#F1F0DC',
+    primary: '#B1CFCD',
+  },
   blue: {
     dark: '#1976D2',
     light: '#BBDEFB',
@@ -18,17 +23,17 @@ const PALETTE_COLOR = {
   },
   brown: {
     dark: '#5D4037',
-    light: '#D7CCC8',
-    primary: '#795548',
+    light: '#F4E7D6',
+    primary: '#B9926B',
   },
   gray: {
     dark: '#616161',
-    light: '#F5F5F5',
-    primary: '#9E9E9E',
+    light: '#CED6E3',
+    primary: '#748CA6',
   },
   green: {
-    dark: '#00796B',
-    light: '#B2DFDB',
+    dark: '#55A5A2',
+    light: '#A2CECD',
     primary: '#009688',
   },
   pink: {
@@ -38,13 +43,18 @@ const PALETTE_COLOR = {
   },
   purple: {
     dark: '#7B1FA2',
-    light: '#E1BEE7',
-    primary: '#9C27B0',
+    light: '#D3D1E7',
+    primary: '#7C7FAC',
   },
   red: {
     dark: '#D32F2F',
     light: '#FFCDD2',
     primary: '#F44336',
+  },
+  white: {
+    dark: '',
+    light: '#F1F0DC',
+    primary: '#B1CFCD',
   },
   yellow: {
     dark: '#FFA000',

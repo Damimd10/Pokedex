@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
 
 import PokemonSprite from './components/PokemonSprite';

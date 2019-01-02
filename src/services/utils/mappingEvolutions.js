@@ -1,15 +1,16 @@
 import { BASE_SPRITE_URL } from '../constants';
 
-const getEvolve = async (chain, evolve) => {
-  if (!evolve) return chain;
-  const pokemonId = evolve.species.url
+const extractIdFromUrl = url =>
+  url
     .substr(42)
     .match(/\d/g)
-    .join();
+    .join('');
 
+const getEvolve = async (chain, evolve) => {
+  if (!evolve) return chain;
+
+  const pokemonId = extractIdFromUrl(evolve.species.url);
   const sprite = `${BASE_SPRITE_URL}${pokemonId}.png`;
-
-  console.log('HERE', pokemonId, evolve.species.url);
 
   chain.push({ name: evolve.species.name, sprite });
 
