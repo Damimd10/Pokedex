@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
 
+import { getPokemon } from '../../services';
+
 import PokemonSprite from './components/PokemonSprite';
 import PokemonStats from './components/PokemonStats';
 import PokemonType from './components/PokemonType';
@@ -28,10 +30,17 @@ class Pokemon extends Component {
     title: navigation.getParam('pokemon').name,
   });
 
+  state = {
+    pokemon: this.props.navigation.getParam('pokemon'),
+  };
+
+  onPokemonEvolutionPress = async id => {
+    const pokemon = await getPokemon(id);
+    this.setState({ pokemon });
+  };
+
   render() {
-    const { color, evolutionChain, sprite, stats, types } = this.props.navigation.getParam(
-      'pokemon'
-    );
+    const { color, evolutionChain, sprite, stats, types } = this.state.pokemon;
 
     return (
       <Container styles={styles.container}>
@@ -39,7 +48,11 @@ class Pokemon extends Component {
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
           <PokemonType backgroundColor={color.primary} types={types} />
           <PokemonStats color={color} stats={stats} />
-          <PokemonEvolution color={color} evolutions={evolutionChain} />
+          <PokemonEvolution
+            color={color}
+            evolutions={evolutionChain}
+            onPokemonEvolutionPress={this.onPokemonEvolutionPress}
+          />
         </Content>
         <Footer>
           <FooterTab style={{ backgroundColor: color.primary }}>

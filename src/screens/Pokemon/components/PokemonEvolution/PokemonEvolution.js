@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { arrayOf, shape, string } from 'prop-types';
+import { arrayOf, func, shape, string } from 'prop-types';
 
 import Evolution from './components/Evolution';
 
@@ -26,14 +26,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const PokemonEvolution = ({ color, evolutions }) => (
+const PokemonEvolution = ({ color, evolutions, onPokemonEvolutionPress }) => (
   <React.Fragment>
     <View style={[styles.pokemonEvolution, { backgroundColor: color.primary }]}>
       <Text style={styles.pokemonEvolutionTitle}>Evolutions</Text>
     </View>
     <View style={styles.pokemonEvolutionGrid}>
       {evolutions.map(evolution => (
-        <Evolution key={evolution.name} {...color} {...evolution} />
+        <Evolution
+          key={evolution.name}
+          onPokemonEvolutionPress={onPokemonEvolutionPress}
+          {...color}
+          {...evolution}
+        />
       ))}
     </View>
   </React.Fragment>
@@ -51,6 +56,7 @@ PokemonEvolution.propTypes = {
       sprite: string,
     })
   ).isRequired,
+  onPokemonEvolutionPress: func.isRequired,
 };
 
 export default PokemonEvolution;

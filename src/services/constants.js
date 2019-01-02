@@ -13,8 +13,8 @@ const MAX_STATS = {
 const PALETTE_COLOR = {
   black: {
     dark: '',
-    light: '#F1F0DC',
-    primary: '#B1CFCD',
+    light: '#6d6d6d',
+    primary: '#424242',
   },
   blue: {
     dark: '#1976D2',
