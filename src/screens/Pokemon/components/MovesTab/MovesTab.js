@@ -3,8 +3,6 @@ import { arrayOf, number, shape, string } from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col } from 'react-native-table-component';
 
-import PokemonMove from './components/PokemonMove';
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,10 +22,10 @@ const styles = StyleSheet.create({
 const MovesTab = ({ moves }) => {
   const tableHead = ['', 'ACC', 'PWR', 'PP'];
   const tableTitle = moves.map(x => x.name);
-  const tableData = moves.reduce((acc, el) => {
-    acc.push([el.accuracy, el.power, el.pp]);
-    return acc;
-  }, []);
+  const tableData = moves.reduce(
+    (acc, { accuracy, power, pp }) => [...acc, [accuracy, power, pp]],
+    []
+  );
 
   return (
     <View style={styles.container}>

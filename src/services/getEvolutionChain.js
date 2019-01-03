@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-import { mappingEvolutions } from './utils';
+import { normalizeEvolutions } from './normalize';
 
 const getEvolutionChain = url =>
   axios
     .get(url)
     .then(response => response.data)
-    .then(mappingEvolutions);
+    .then(normalizeEvolutions);
 
 export default getEvolutionChain;

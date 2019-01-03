@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 import { BASE_URL } from './constants';
-import { mappingPokemons } from './utils';
+import { normalizePokemons } from './normalize';
 
 const getAllPokemons = () =>
   axios
     .get(BASE_URL)
     .then(response => response.data.results)
-    .then(mappingPokemons);
+    .then(normalizePokemons);
 
 export default getAllPokemons;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { BASE_URL } from './constants';
-import { mappingPokemonData } from './utils';
+import { normalizePokemon } from './normalize';
 import getSpecies from './getSpecies';
 import getMove from './getMove';
 
@@ -26,6 +26,6 @@ const getPokemon = id =>
     .then(response => response.data)
     .then(fetchSpecies)
     .then(fetchMoves)
-    .then(mappingPokemonData);
+    .then(normalizePokemon);
 
 export default getPokemon;

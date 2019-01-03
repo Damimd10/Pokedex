@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
 });
 
 const Evolution = ({ light, name, onPokemonEvolutionPress, primary, sprite }) => (
-  <TouchableOpacity style={styles.evolutionContainer} onPress={() => onPokemonEvolutionPress(name)}>
-    <View style={{ backgroundColor: light }}>
+  <View style={[styles.evolutionContainer, { backgroundColor: light }]}>
+    <TouchableOpacity onPress={() => onPokemonEvolutionPress(name)}>
       <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
-      <Text style={[styles.evolutionName, { backgroundColor: primary }]}>{name}</Text>
-    </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
+    <Text style={[styles.evolutionName, { backgroundColor: primary }]}>{name}</Text>
+  </View>
 );
 
 Evolution.propTypes = {
