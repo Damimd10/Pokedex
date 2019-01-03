@@ -5,9 +5,9 @@ import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base
 import { getPokemon } from '../../services';
 
 import PokemonSprite from './components/PokemonSprite';
-import PokemonStats from './components/PokemonStats';
 import PokemonType from './components/PokemonType';
-import PokemonEvolution from './components/PokemonEvolution';
+import MovesTab from './components/MovesTab';
+import StatsTab from './components/StatsTab';
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -31,8 +31,30 @@ class Pokemon extends Component {
   });
 
   state = {
+    activeTab: 'stats',
     pokemon: this.props.navigation.getParam('pokemon'),
   };
+
+  isActive = value => value === this.state.activeTab;
+
+  getTabContent = () => {
+    const { color, evolutionChain, stats } = this.state.pokemon;
+
+    if (this.state.activeTab === 'stats') {
+      return (
+        <StatsTab
+          color={color}
+          stats={stats}
+          evolutionChain={evolutionChain}
+          onPokemonEvolutionPress={this.onPokemonEvolutionPress}
+        />
+      );
+    }
+
+    return <MovesTab />;
+  };
+
+  onTabPress = tab => this.setState({ activeTab: tab });
 
   onPokemonEvolutionPress = async id => {
     const pokemon = await getPokemon(id);
@@ -40,29 +62,24 @@ class Pokemon extends Component {
   };
 
   render() {
-    const { color, evolutionChain, sprite, stats, types } = this.state.pokemon;
+    const { color, sprite, types } = this.state.pokemon;
 
     return (
       <Container styles={styles.container}>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
           <PokemonType backgroundColor={color.primary} types={types} />
-          <PokemonStats color={color} stats={stats} />
-          <PokemonEvolution
-            color={color}
-            evolutions={evolutionChain}
-            onPokemonEvolutionPress={this.onPokemonEvolutionPress}
-          />
+          {this.getTabContent()}
         </Content>
         <Footer>
           <FooterTab style={{ backgroundColor: color.primary }}>
-            <Button>
+            <Button active={this.isActive('stats')} onPress={() => this.onTabPress('stats')}>
               <Text style={styles.footerTabTitle}>Stats</Text>
             </Button>
-            <Button>
+            <Button active={this.isActive('moves')} onPress={() => this.onTabPress('moves')}>
               <Text style={styles.footerTabTitle}>Moves</Text>
             </Button>
-            <Button active>
+            <Button active={this.isActive('location')} onPress={() => this.onTabPress('location')}>
               <Text style={styles.footerTabTitle}>Location</Text>
             </Button>
           </FooterTab>

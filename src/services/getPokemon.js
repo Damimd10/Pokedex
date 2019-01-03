@@ -3,6 +3,17 @@ import axios from 'axios';
 import { BASE_URL } from './constants';
 import { mappingPokemonData } from './utils';
 import getSpecies from './getSpecies';
+import getMove from './getMove';
+
+const fetchMoves = async data => {
+  const currentMoves = data.moves.slice(0, 5);
+  const promises = currentMoves.map(pokemon => getMove(pokemon.move.url));
+
+  return Promise.all(promises).then(moves => ({
+    ...data,
+    moves,
+  }));
+};
 
 const fetchSpecies = async data => ({
   ...data,
@@ -14,6 +25,7 @@ const getPokemon = id =>
     .get(`${BASE_URL}/${id}`)
     .then(response => response.data)
     .then(fetchSpecies)
+    .then(fetchMoves)
     .then(mappingPokemonData);
 
 export default getPokemon;

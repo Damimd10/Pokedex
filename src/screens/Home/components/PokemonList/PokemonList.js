@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   itemContainer: {
+    flex: 1,
     justifyContent: 'flex-end',
     borderRadius: 5,
     padding: 10,
