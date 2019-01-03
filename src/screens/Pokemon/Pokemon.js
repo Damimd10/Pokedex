@@ -38,7 +38,9 @@ class Pokemon extends Component {
   isActive = value => value === this.state.activeTab;
 
   getTabContent = () => {
-    const { color, evolutionChain, stats } = this.state.pokemon;
+    const { color, evolutionChain, moves, stats } = this.state.pokemon;
+
+    console.log('HERE', this.state.pokemon);
 
     if (this.state.activeTab === 'stats') {
       return (
@@ -51,7 +53,7 @@ class Pokemon extends Component {
       );
     }
 
-    return <MovesTab />;
+    return <MovesTab moves={moves} />;
   };
 
   onTabPress = tab => this.setState({ activeTab: tab });

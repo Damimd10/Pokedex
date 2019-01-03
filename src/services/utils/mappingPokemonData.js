@@ -23,6 +23,7 @@ const mappingTypes = types => types.map(({ type }) => type.name.toUpperCase()).j
 const mappingPokemonData = data => ({
   color: getColor(data.species),
   evolutionChain: getEvolutionChain(data.species),
+  moves: data.moves,
   name: data.name,
   sprite: getSprite(data.id),
   stats: mappingStats(data.stats),
