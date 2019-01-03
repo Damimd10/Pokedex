@@ -5,8 +5,8 @@ import * as Progress from 'react-native-progress';
 
 const styles = StyleSheet.create({
   statsContainer: {
-    margin: 20,
     height: 150,
+    margin: 20,
   },
   stats: {
     height: 50,

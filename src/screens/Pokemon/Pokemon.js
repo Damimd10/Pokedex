@@ -40,8 +40,6 @@ class Pokemon extends Component {
   getTabContent = () => {
     const { color, evolutionChain, moves, stats } = this.state.pokemon;
 
-    console.log('HERE', this.state.pokemon);
-
     if (this.state.activeTab === 'stats') {
       return (
         <StatsTab
