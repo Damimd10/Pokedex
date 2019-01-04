@@ -1,46 +1,47 @@
 import React from 'react';
 import { arrayOf, func, number, shape, string } from 'prop-types';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import GridView from 'react-native-super-grid';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
-  gridView: {
-    flex: 1,
-    paddingTop: 10,
-  },
-  itemContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    borderRadius: 5,
+  container: {
     padding: 10,
-    height: 120,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   pokemonName: {
-    textAlign: 'center',
-    fontSize: 12,
-    color: 'black',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   pokemonSprite: {
-    width: '100%',
-    height: '100%',
+    height: 110,
+    width: 110,
+  },
+  pokemonGrid: {
+    marginVertical: 3,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 const PokemonList = ({ onPokemonSelect, pokemons }) => (
-  <GridView
-    itemDimension={110}
-    items={pokemons}
-    style={styles.gridView}
-    renderItem={pokemon => (
-      <View style={styles.itemContainer}>
-        <TouchableOpacity onPress={() => onPokemonSelect(pokemon.id)}>
-          <Text style={styles.pokemonName}>{pokemon.name}</Text>
-          <Image style={styles.pokemonSprite} source={{ uri: pokemon.sprite }} />
-        </TouchableOpacity>
-      </View>
-    )}
-  />
+  <View style={styles.container}>
+    <FlatList
+      data={pokemons}
+      keyExtractor={item => item.name}
+      numColumns={3}
+      columnWrapperStyle={{ flex: 1, justifyContent: 'space-between' }}
+      renderItem={({ item }) => (
+        <View>
+          <TouchableOpacity style={styles.pokemonGrid} onPress={() => onPokemonSelect(item.id)}>
+            <Text style={styles.pokemonName}>{item.name}</Text>
+            <Image style={styles.pokemonSprite} source={{ uri: item.sprite }} />
+          </TouchableOpacity>
+        </View>
+      )}
+    />
+  </View>
 );
 
 PokemonList.propTypes = {
