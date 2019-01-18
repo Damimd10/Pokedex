@@ -72,4 +72,27 @@ const STATS_COLOR = {
   speed: '#F39C11',
 };
 
-export { BASE_SPRITE_URL, BASE_URL, MAX_STATS, PALETTE_COLOR, STATS_COLOR };
+const TYPES_COLOR = {
+  bug: '',
+  dark: '',
+  dragon: '',
+  electric: '',
+  fairy: '',
+  fighting: '',
+  fire: '',
+  flying: '',
+  ghost: '',
+  grass: '',
+  ground: '',
+  ice: '',
+  normal: '',
+  poison: '',
+  psychic: '',
+  rock: '',
+  shadow: '',
+  steel: '',
+  unknown: '',
+  water: '',
+};
+
+export { BASE_SPRITE_URL, BASE_URL, MAX_STATS, PALETTE_COLOR, STATS_COLOR, TYPES_COLOR };
