@@ -22,7 +22,7 @@ const fetchSpecies = async data => ({
 
 const getPokemon = id =>
   axios
-    .get(`${BASE_URL}/${id}`)
+    .get(`${BASE_URL}${id}`)
     .then(response => response.data)
     .then(fetchSpecies)
     .then(fetchMoves)

@@ -41,6 +41,7 @@ export default class App extends Component {
   };
 
   onPokemonSelect = async id => {
+    console.log('HERE', id);
     this.setState({ loading: true });
     const pokemon = await getPokemon(id);
     this.setState({ loading: false });
