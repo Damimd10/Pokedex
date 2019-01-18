@@ -28,6 +28,7 @@ const mappingPokemonData = data => ({
   sprite: getSprite(data.id),
   stats: mappingStats(data.stats),
   types: mappingTypes(data.types),
+  typesRelation: data.typesRelation,
 });
 
 export default mappingPokemonData;
