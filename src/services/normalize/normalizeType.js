@@ -1,6 +1,11 @@
+import { TYPES_COLOR } from '../constants';
+
+const addColor = damageArray =>
+  damageArray.map(data => ({ ...data, color: TYPES_COLOR[data.name] }));
+
 const normalizeType = ({ damage_relations: damageRelations }) => ({
-  damageTo: damageRelations.double_damage_to,
-  damgeFrom: damageRelations.double_damage_from,
+  damageTo: addColor(damageRelations.double_damage_to),
+  damgeFrom: addColor(damageRelations.double_damage_from),
 });
 
 export default normalizeType;

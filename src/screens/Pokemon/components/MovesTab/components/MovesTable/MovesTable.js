@@ -52,7 +52,7 @@ const MovesTable = ({ moves }) => {
   );
 };
 MovesTable.propTypes = {
-  moves: arrayOf(shape({ accuracy: number, name: string, power: string, pp: string })).isRequired,
+  moves: arrayOf(shape({ accuracy: number, name: string, power: number, pp: number })).isRequired,
 };
 
 export default MovesTable;
