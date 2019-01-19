@@ -5,9 +5,10 @@ import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base
 import { getPokemon } from '../../services';
 
 import PokemonSprite from './components/PokemonSprite';
-import PokemonType from './components/PokemonType';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
+
+import Separator from '../../shared/components/Separator';
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -38,7 +39,7 @@ class Pokemon extends Component {
   isActive = value => value === this.state.activeTab;
 
   getTabContent = () => {
-    const { color, evolutionChain, moves, stats } = this.state.pokemon;
+    const { color, evolutionChain, moves, stats, typesRelation } = this.state.pokemon;
 
     if (this.state.activeTab === 'stats') {
       return (
@@ -51,7 +52,7 @@ class Pokemon extends Component {
       );
     }
 
-    return <MovesTab moves={moves} />;
+    return <MovesTab color={color} moves={moves} typesRelation={typesRelation} />;
   };
 
   onTabPress = tab => this.setState({ activeTab: tab });
@@ -68,7 +69,7 @@ class Pokemon extends Component {
       <Container styles={styles.container}>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
-          <PokemonType backgroundColor={color.primary} types={types} />
+          <Separator backgroundColor={color.primary} title={types} />
           {this.getTabContent()}
         </Content>
         <Footer>
