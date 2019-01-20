@@ -62,6 +62,7 @@ class Pokemon extends Component {
 
   onPokemonEvolutionPress = async id => {
     const pokemon = await getPokemon(id);
+    this.props.navigation.setParams({ pokemon });
     this.setState({ pokemon });
   };
 
