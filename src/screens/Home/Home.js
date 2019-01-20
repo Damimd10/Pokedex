@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 import { getAllPokemons, getPokemon } from '../../services';
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexWrap: 'wrap',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
@@ -22,14 +23,17 @@ export default class App extends Component {
   });
 
   state = {
-    fetching: false,
+    loading: true,
     filteredPokemons: [],
     pokemonList: [],
   };
 
   async componentDidMount() {
     const pokemons = await getAllPokemons();
-    this.setState({ pokemonList: pokemons });
+    this.setState({
+      ...(pokemons.errorMessage ? { error: pokemons.errorMessage } : { pokemonList: pokemons }),
+      loading: false,
+    });
   }
 
   handleSearchBar = currentPokemon => {
@@ -48,13 +52,20 @@ export default class App extends Component {
   };
 
   render() {
-    const { filteredPokemons, loading, pokemonList } = this.state;
+    const { error, filteredPokemons, loading, pokemonList } = this.state;
     const pokemons = filteredPokemons.length ? filteredPokemons : pokemonList;
 
     if (loading)
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" />
+        </View>
+      );
+
+    if (error)
+      return (
+        <View style={styles.container}>
+          <Text>{error}</Text>
         </View>
       );
 

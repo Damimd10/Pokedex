@@ -5,6 +5,7 @@ import { normalizePokemon } from './normalize';
 import getSpecies from './getSpecies';
 import getMove from './getMove';
 import getType from './getType';
+import { handleErrorsResponse } from './utils';
 
 const fetchMoves = async data => {
   const currentMoves = data.moves.slice(0, 5);
@@ -37,6 +38,7 @@ const getPokemon = id =>
     .then(fetchSpecies)
     .then(fetchMoves)
     .then(fetchTypes)
-    .then(normalizePokemon);
+    .then(normalizePokemon)
+    .catch(handleErrorsResponse);
 
 export default getPokemon;
