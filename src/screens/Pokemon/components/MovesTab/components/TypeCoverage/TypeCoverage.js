@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
 const TypeCoverage = ({ types }) => (
   <FlatList
     data={types.damageTo}
+    keyExtractor={item => item.name}
     numColumns={3}
     columnWrapperStyle={{ flex: 1 }}
     style={styles.container}

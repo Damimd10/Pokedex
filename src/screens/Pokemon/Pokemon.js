@@ -11,6 +11,9 @@ import StatsTab from './components/StatsTab';
 import Separator from '../../shared/components/Separator';
 
 const styles = StyleSheet.create({
+  buttonTab: {
+    borderRadius: 0,
+  },
   itemContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -64,6 +67,8 @@ class Pokemon extends Component {
 
   render() {
     const { color, sprite, types } = this.state.pokemon;
+    const isActiveMoves = this.isActive('moves');
+    const isActiveStats = this.isActive('stats');
 
     return (
       <Container styles={styles.container}>
@@ -73,15 +78,26 @@ class Pokemon extends Component {
           {this.getTabContent()}
         </Content>
         <Footer>
-          <FooterTab style={{ backgroundColor: color.primary }}>
-            <Button active={this.isActive('stats')} onPress={() => this.onTabPress('stats')}>
+          <FooterTab>
+            <Button
+              active={isActiveStats}
+              onPress={() => this.onTabPress('stats')}
+              style={[
+                styles.buttonTab,
+                { backgroundColor: isActiveStats ? color.light : color.primary },
+              ]}
+            >
               <Text style={styles.footerTabTitle}>Stats</Text>
             </Button>
-            <Button active={this.isActive('moves')} onPress={() => this.onTabPress('moves')}>
+            <Button
+              active={isActiveMoves}
+              onPress={() => this.onTabPress('moves')}
+              style={[
+                styles.buttonTab,
+                { backgroundColor: isActiveMoves ? color.light : color.primary },
+              ]}
+            >
               <Text style={styles.footerTabTitle}>Moves</Text>
-            </Button>
-            <Button active={this.isActive('location')} onPress={() => this.onTabPress('location')}>
-              <Text style={styles.footerTabTitle}>Location</Text>
             </Button>
           </FooterTab>
         </Footer>
