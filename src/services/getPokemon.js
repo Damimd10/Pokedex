@@ -16,17 +16,19 @@ const fetchMoves = async data => {
   }));
 };
 
-const getFirstType = types => types.filter(type => type.slot === 1)[0].type.url;
-
 const fetchSpecies = async data => ({
   ...data,
   species: await getSpecies(data.species.url),
 });
 
-const fetchTypes = async data => ({
-  ...data,
-  typesRelation: await getType(getFirstType(data.types)),
-});
+const fetchTypes = async data => {
+  const promises = data.types.map(x => getType(x.type.url));
+
+  return Promise.all(promises).then(types => ({
+    ...data,
+    typesRelation: types,
+  }));
+};
 
 const getPokemon = id =>
   axios

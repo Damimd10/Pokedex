@@ -20,6 +20,15 @@ const mappingStats = stats =>
 
 const mappingTypes = types => types.map(({ type }) => type.name.toUpperCase()).join(' / ');
 
+const mappingTypeRelations = types =>
+  types.reduce(
+    (acc, { damageFrom, damageTo }) => ({
+      damageTo: [...acc.damageTo, ...(damageTo ? [...damageTo] : [])],
+      damageFrom: [...acc.damageFrom, ...(damageFrom ? [...damageFrom] : [])],
+    }),
+    { damageTo: [], damageFrom: [] }
+  );
+
 const mappingPokemonData = data => ({
   color: getColor(data.species),
   evolutionChain: getEvolutionChain(data.species),
@@ -28,7 +37,7 @@ const mappingPokemonData = data => ({
   sprite: getSprite(data.id),
   stats: mappingStats(data.stats),
   types: mappingTypes(data.types),
-  typesRelation: data.typesRelation,
+  typesRelation: mappingTypeRelations(data.typesRelation),
 });
 
 export default mappingPokemonData;

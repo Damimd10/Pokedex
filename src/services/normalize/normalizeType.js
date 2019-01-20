@@ -5,7 +5,7 @@ const addColor = damageArray =>
 
 const normalizeType = ({ damage_relations: damageRelations }) => ({
   damageTo: addColor(damageRelations.double_damage_to),
-  damgeFrom: addColor(damageRelations.double_damage_from),
+  damageFrom: addColor(damageRelations.double_damage_from),
 });
 
 export default normalizeType;
