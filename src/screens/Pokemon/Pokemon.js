@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
 
 import { getPokemon } from '../../services';
@@ -13,6 +13,11 @@ import Separator from '../../shared/components/Separator';
 const styles = StyleSheet.create({
   buttonTab: {
     borderRadius: 0,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   itemContainer: {
     display: 'flex',
@@ -36,6 +41,8 @@ class Pokemon extends Component {
 
   state = {
     activeTab: 'stats',
+    error: null,
+    loading: false,
     pokemon: this.props.navigation.getParam('pokemon'),
   };
 
@@ -62,18 +69,38 @@ class Pokemon extends Component {
   onTabPress = tab => this.setState({ activeTab: tab });
 
   onPokemonEvolutionPress = async id => {
+    this.setState({ loading: true });
     const pokemon = await getPokemon(id);
-    this.props.navigation.setParams({ pokemon });
-    this.setState({ pokemon });
+    this.setState({
+      ...(pokemon.errorMessage ? { error: pokemon.errorMessage } : { pokemon }),
+      loading: false,
+    });
+
+    if (pokemon) this.props.navigation.setParams({ pokemon });
   };
 
   render() {
+    const { error, loading } = this.state;
     const { color, sprite, types } = this.state.pokemon;
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
 
+    if (loading)
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+
+    if (error)
+      return (
+        <View style={styles.container}>
+          <Text>{error}</Text>
+        </View>
+      );
+
     return (
-      <Container styles={styles.container}>
+      <Container>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
           <Separator backgroundColor={color.primary} title={types} />
