@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { arrayOf, func, number, shape, string } from 'prop-types';
 
-import PokemonStats from '../PokemonStats';
-import PokemonEvolution from '../PokemonEvolution';
+import PokemonStats from './components/PokemonStats';
+import PokemonEvolution from './components/PokemonEvolution';
 
 const StatsTab = ({ color, currentPokemon, stats, evolutionChain, onPokemonEvolutionPress }) => (
   <Fragment>
