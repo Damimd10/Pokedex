@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, string } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -15,16 +15,20 @@ const styles = StyleSheet.create({
   evolutionSprite: { alignSelf: 'center', height: 110, width: 110 },
 });
 
-const Evolution = ({ light, name, onPokemonEvolutionPress, primary, sprite }) => (
+const Evolution = ({ isCurrent, light, name, onPokemonEvolutionPress, primary, sprite }) => (
   <View style={[styles.evolutionContainer, { backgroundColor: light }]}>
     <TouchableOpacity onPress={() => onPokemonEvolutionPress(name)}>
-      <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
+      <Image
+        style={[styles.evolutionSprite, { opacity: isCurrent ? 1 : 0.5 }]}
+        source={{ uri: sprite }}
+      />
     </TouchableOpacity>
     <Text style={[styles.evolutionName, { backgroundColor: primary }]}>{name}</Text>
   </View>
 );
 
 Evolution.propTypes = {
+  isCurrent: bool.isRequired,
   light: string.isRequired,
   name: string.isRequired,
   onPokemonEvolutionPress: func.isRequired,

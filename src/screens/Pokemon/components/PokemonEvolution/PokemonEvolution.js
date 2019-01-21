@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const PokemonEvolution = ({ color, evolutions, onPokemonEvolutionPress }) => (
+const PokemonEvolution = ({ color, currentPokemon, evolutions, onPokemonEvolutionPress }) => (
   <React.Fragment>
     <View style={[styles.pokemonEvolution, { backgroundColor: color.primary }]}>
       <Text style={styles.pokemonEvolutionTitle}>Evolutions</Text>
@@ -34,6 +34,7 @@ const PokemonEvolution = ({ color, evolutions, onPokemonEvolutionPress }) => (
     <View style={styles.pokemonEvolutionGrid}>
       {evolutions.map(evolution => (
         <Evolution
+          isCurrent={currentPokemon === evolution.name}
           key={evolution.name}
           onPokemonEvolutionPress={onPokemonEvolutionPress}
           {...color}
@@ -50,6 +51,7 @@ PokemonEvolution.propTypes = {
     light: string,
     primary: string,
   }).isRequired,
+  currentPokemon: string.isRequired,
   evolutions: arrayOf(
     shape({
       name: string,

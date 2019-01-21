@@ -4,10 +4,11 @@ import { arrayOf, func, number, shape, string } from 'prop-types';
 import PokemonStats from '../PokemonStats';
 import PokemonEvolution from '../PokemonEvolution';
 
-const StatsTab = ({ color, stats, evolutionChain, onPokemonEvolutionPress }) => (
+const StatsTab = ({ color, currentPokemon, stats, evolutionChain, onPokemonEvolutionPress }) => (
   <Fragment>
     <PokemonStats color={color} stats={stats} />
     <PokemonEvolution
+      currentPokemon={currentPokemon}
       color={color}
       evolutions={evolutionChain}
       onPokemonEvolutionPress={onPokemonEvolutionPress}
@@ -17,6 +18,7 @@ const StatsTab = ({ color, stats, evolutionChain, onPokemonEvolutionPress }) => 
 
 StatsTab.propTypes = {
   color: shape({}).isRequired,
+  currentPokemon: string.isRequired,
   stats: arrayOf(
     shape({
       averageStat: number,
