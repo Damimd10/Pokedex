@@ -1,16 +1,9 @@
-import { BASE_SPRITE_URL } from '../constants';
-
-const extractIdFromUrl = url =>
-  url
-    .substr(42)
-    .match(/\d/g)
-    .join('');
+import { BASE_SPRITE_URL_V2 } from '../constants';
 
 const getEvolve = async (chain, evolve) => {
   if (!evolve) return chain;
 
-  const pokemonId = extractIdFromUrl(evolve.species.url);
-  const sprite = `${BASE_SPRITE_URL}${pokemonId}.png`;
+  const sprite = `${BASE_SPRITE_URL_V2}/${evolve.species.name}.png`;
 
   chain.push({ name: evolve.species.name, sprite });
 

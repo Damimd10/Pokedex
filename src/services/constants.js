@@ -1,5 +1,6 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 const BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const BASE_SPRITE_URL_V2 = 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal';
 
 const MAX_STATS = {
   hp: 255,
@@ -95,4 +96,12 @@ const TYPES_COLOR = {
   water: '#add8e6',
 };
 
-export { BASE_SPRITE_URL, BASE_URL, MAX_STATS, PALETTE_COLOR, STATS_COLOR, TYPES_COLOR };
+export {
+  BASE_SPRITE_URL,
+  BASE_URL,
+  BASE_SPRITE_URL_V2,
+  MAX_STATS,
+  PALETTE_COLOR,
+  STATS_COLOR,
+  TYPES_COLOR,
+};

@@ -1,10 +1,10 @@
-import { BASE_SPRITE_URL, PALETTE_COLOR, MAX_STATS, STATS_COLOR } from '../constants';
+import { BASE_SPRITE_URL_V2, PALETTE_COLOR, MAX_STATS, STATS_COLOR } from '../constants';
 
 const getColor = species => PALETTE_COLOR[species.color.name];
 
 const getEvolutionChain = species => species.evolutions;
 
-const getSprite = id => `${BASE_SPRITE_URL}${id}.png`;
+const getSprite = name => `${BASE_SPRITE_URL_V2}/${name}.png`;
 
 const mappingStats = stats =>
   stats.reduce((acc, { base_stat, stat }) => {
@@ -34,7 +34,7 @@ const mappingPokemonData = data => ({
   evolutionChain: getEvolutionChain(data.species),
   moves: data.moves,
   name: data.name,
-  sprite: getSprite(data.id),
+  sprite: getSprite(data.name),
   stats: mappingStats(data.stats),
   types: mappingTypes(data.types),
   typesRelation: mappingTypeRelations(data.typesRelation),
