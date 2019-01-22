@@ -1,4 +1,10 @@
-import { BASE_SPRITE_URL_V2, PALETTE_COLOR, MAX_STATS, STATS_COLOR } from '../constants';
+import {
+  BASE_SPRITE_URL_V2,
+  PALETTE_COLOR,
+  MAX_STATS,
+  STATS_COLOR,
+  TYPES_COLOR,
+} from '../constants';
 
 const getColor = species => PALETTE_COLOR[species.color.name];
 
@@ -18,7 +24,8 @@ const mappingStats = stats =>
     return acc;
   }, []);
 
-const mappingTypes = types => types.map(({ type }) => type.name.toUpperCase()).join(' / ');
+const mappingTypes = types =>
+  types.map(({ type }) => ({ name: type.name.toUpperCase(), color: TYPES_COLOR[type.name] }));
 
 const mappingTypeRelations = types =>
   types.reduce(

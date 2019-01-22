@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     padding: 10,
@@ -16,15 +18,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const Separator = ({ backgroundColor, title }) => (
+const Separator = ({ backgroundColor, children, title }) => (
   <View style={[styles.container, { backgroundColor }]}>
-    <Text style={styles.title}>{title}</Text>
+    {children || <Text style={styles.title}>{title}</Text>}
   </View>
 );
 
 Separator.propTypes = {
   backgroundColor: string.isRequired,
-  title: string.isRequired,
+  title: string,
 };
 
 export default Separator;

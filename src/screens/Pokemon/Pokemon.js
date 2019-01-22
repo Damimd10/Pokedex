@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
+import { Badge, Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
 
 import { getPokemon } from '../../services';
 
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
+  },
+  typeText: {
+    fontSize: 12,
+    fontWeight: 'bold',
   },
 });
 
@@ -103,7 +107,15 @@ class Pokemon extends Component {
       <Container>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
-          <Separator backgroundColor={color.primary} title={types} />
+          <Separator backgroundColor={color.primary}>
+            <Fragment>
+              {types.map(type => (
+                <Badge key={type.name} style={{ backgroundColor: type.color }}>
+                  <Text style={styles.typeText}>{type.name}</Text>
+                </Badge>
+              ))}
+            </Fragment>
+          </Separator>
           {this.getTabContent()}
         </Content>
         <Footer>
