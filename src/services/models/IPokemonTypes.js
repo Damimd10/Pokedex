@@ -27,3 +27,8 @@ export interface PokemonTypes {
   pokemon: Pokemon[];
   moves: Details[];
 }
+
+export interface PokemonTypesNormalized {
+  damageTo: Details[];
+  damageFrom: Details[];
+}

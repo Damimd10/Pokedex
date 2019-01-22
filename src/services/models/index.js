@@ -1,3 +1,3 @@
-import { PokemonTypes } from './IPokemonTypes';
+import { PokemonTypes, PokemonTypesNormalized } from './IPokemonTypes';
 
-export { PokemonTypes };
+export { PokemonTypes, PokemonTypesNormalized };
