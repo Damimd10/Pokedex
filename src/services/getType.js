@@ -1,16 +1,16 @@
 // @flow
 
 import axios from 'axios';
-import type { AxiosPromise } from 'axios';
+import type { AxiosPromise, AxiosResponse } from 'axios';
 
-import { ITypes } from './models';
+import { Types } from './models';
 import { normalizeType } from './normalize';
 import { handleErrorsResponse } from './utils';
 
-const getType = (url: string): AxiosPromise<ITypes> =>
+const getType = (url: string): AxiosPromise<Types> =>
   axios
     .get(url)
-    .then((response: object) => response.data)
+    .then((response: AxiosResponse) => response.data)
     .then(normalizeType)
     .catch(handleErrorsResponse);
 

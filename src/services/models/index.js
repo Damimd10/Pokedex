@@ -1,3 +1,3 @@
-import ITypes from './ITypes';
+import { Types } from './ITypes';
 
-export { ITypes };
+export { Types };

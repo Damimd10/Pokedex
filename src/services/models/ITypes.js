@@ -28,7 +28,7 @@ interface Pokemon {
   pokemon: Details;
 }
 
-interface Types {
+export interface Types {
   id: number;
   name: string;
   damage_relations: DamageRelations;
@@ -39,5 +39,3 @@ interface Types {
   pokemon: Pokemon[];
   moves: Details[];
 }
-
-export default Types;
