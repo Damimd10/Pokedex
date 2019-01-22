@@ -1,3 +1,3 @@
-import { Types } from './ITypes';
+import { PokemonTypes } from './IPokemonTypes';
 
-export { Types };
+export { PokemonTypes };

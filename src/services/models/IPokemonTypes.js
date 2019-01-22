@@ -1,17 +1,5 @@
 // @flow
-
-interface Details {
-  name: string;
-  url: string;
-}
-interface DamageRelations {
-  no_damage_to: Details[];
-  half_damage_to: Details[];
-  double_damage_to: Details[];
-  no_damage_from: Details[];
-  half_damage_from: Details[];
-  double_damage_from: Details[];
-}
+import type { DamageRelations, Details } from './shared';
 
 interface GameIndices {
   game_index: number;
@@ -28,7 +16,7 @@ interface Pokemon {
   pokemon: Details;
 }
 
-export interface Types {
+export interface PokemonTypes {
   id: number;
   name: string;
   damage_relations: DamageRelations;
