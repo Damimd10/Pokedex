@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 const MovesTab = ({ moves }) =>
   moves.map(({ level, name, type }) => (
-    <ListItem icon key={move.name} style={{ margin: 5 }}>
+    <ListItem icon key={name} style={{ margin: 5 }}>
       <Body>
         <Text style={styles.moveName}>{name}</Text>
         <Text style={styles.levelText}>{`Level ${level}`}</Text>
