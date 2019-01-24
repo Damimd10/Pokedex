@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import PokemonEvolution from './components/PokemonEvolution';
 
@@ -24,8 +24,7 @@ const EvolutionTab = ({ evolutionChain }) => (
       return (
         <View style={styles.evolutionContainer}>
           <PokemonEvolution {...evolution} />
-          <Icon name="arrowright" />
-          <Text>{evolutionChain[index + 1].level}</Text>
+          <Text>{`Level ${evolutionChain[index + 1].level}`}</Text>
           <PokemonEvolution {...evolutionChain[index + 1]} />
         </View>
       );
