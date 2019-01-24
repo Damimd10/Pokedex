@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { Badge, Container, Content, Footer, FooterTab, Button, Text } from 'native-base';
+import { Badge, Button, Segment, Container, Content, Footer, FooterTab, Text } from 'native-base';
 
 import { getPokemon } from '../../services';
 
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   containerTest: {
     borderWidth: 1,
     borderColor: 'black',
+    backgroundColor: 'white',
     borderTopStartRadius: 50,
     borderTopEndRadius: 50,
     height: '100%',
@@ -46,6 +47,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
+  },
+  tab: {
+    borderRadius: 20,
+    backgroundColor: 'red',
   },
   typeText: {
     fontSize: 14,
@@ -127,7 +132,7 @@ class Pokemon extends Component {
 
     return (
       <Container>
-        <Content>
+        <Content style={{ backgroundColor: color.primary }}>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
           <View style={styles.containerTest}>
             <Text style={styles.pokemonName}>{name}</Text>
@@ -138,6 +143,17 @@ class Pokemon extends Component {
                 </Badge>
               ))}
             </View>
+            <Segment>
+              <Button first>
+                <Text>Stats</Text>
+              </Button>
+              <Button>
+                <Text>Evolutions</Text>
+              </Button>
+              <Button last active>
+                <Text>Moves</Text>
+              </Button>
+            </Segment>
             {this.getTabContent()}
           </View>
         </Content>

@@ -22,7 +22,7 @@ const EvolutionTab = ({ evolutionChain }) => (
       if (index + 1 >= evolutionChain.length) return;
 
       return (
-        <View style={styles.evolutionContainer}>
+        <View key={`${evolution.name}-${index}`} style={styles.evolutionContainer}>
           <PokemonEvolution {...evolution} />
           <Text>{`Level ${evolutionChain[index + 1].level}`}</Text>
           <PokemonEvolution {...evolutionChain[index + 1]} />
