@@ -5,6 +5,8 @@ import * as Progress from 'react-native-progress';
 
 const styles = StyleSheet.create({
   statsContainer: {
+    borderWidth: 1,
+    borderColor: 'red',
     height: 150,
     margin: 20,
   },
@@ -15,7 +17,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  statName: { fontSize: 12, padding: 5, textTransform: 'uppercase', fontWeight: 'bold' },
+  statName: {
+    fontSize: 12,
+    padding: 5,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+  },
 });
 
 const PokemonStats = ({ color, stats }) => (
@@ -26,9 +33,11 @@ const PokemonStats = ({ color, stats }) => (
         <Progress.Bar
           progress={averageStat}
           borderColor="transparent"
+          borderRadius={50}
           color={colorStat}
-          height={20}
-          width={200}
+          height={10}
+          width={250}
+          unfilledColor="#F1F1F1"
         />
       </View>
     ))}

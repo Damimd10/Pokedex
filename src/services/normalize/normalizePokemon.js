@@ -2,6 +2,7 @@ import {
   BASE_SPRITE_URL_V2,
   PALETTE_COLOR,
   MAX_STATS,
+  NAME_STATS,
   STATS_COLOR,
   TYPES_COLOR,
 } from '../constants';
@@ -18,7 +19,7 @@ const mappingStats = stats =>
       averageStat: Number((base_stat / MAX_STATS[stat.name]).toFixed(1)),
       baseStat: base_stat,
       colorStat: STATS_COLOR[stat.name],
-      name: stat.name,
+      name: NAME_STATS[stat.name],
     });
 
     return acc;
