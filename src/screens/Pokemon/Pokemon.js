@@ -43,7 +43,7 @@ class Pokemon extends Component {
       return <EvolutionTab evolutionChain={evolutionChain} />;
     }
 
-    return <MovesTab color={color} moves={moves} typesRelation={typesRelation} />;
+    return <MovesTab moves={moves} />;
   };
 
   onTabPress = tab => this.setState({ activeTab: tab });
@@ -61,7 +61,7 @@ class Pokemon extends Component {
 
   render() {
     const { error, loading } = this.state;
-    const { color, name, sprite, types } = this.state.pokemon;
+    const { name, sprite, types } = this.state.pokemon;
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
     const isActiveEvolutions = this.isActive('evolutions');
@@ -87,16 +87,17 @@ class Pokemon extends Component {
             <PokemonSprite sprite={sprite} />
             <PokemonDetails name={name} types={types} />
           </View>
+          {this.getTabContent()}
         </Content>
         <Footer>
           <FooterTab>
-            <Button>
+            <Button active={isActiveStats} onPress={() => this.onTabPress('stats')}>
               <Text>Stats</Text>
             </Button>
-            <Button>
+            <Button active={isActiveEvolutions} onPress={() => this.onTabPress('evolutions')}>
               <Text>Evolutions</Text>
             </Button>
-            <Button active>
+            <Button active={isActiveMoves} onPress={() => this.onTabPress('moves')}>
               <Text>Moves</Text>
             </Button>
           </FooterTab>

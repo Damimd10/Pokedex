@@ -8,12 +8,13 @@ import getType from './getType';
 import { handleErrorsResponse } from './utils';
 
 const fetchMoves = async data => {
-  const currentMoves = data.moves.slice(0, 5);
-  const promises = currentMoves.map(pokemon => getMove(pokemon.move.url));
+  const promises = data.moves
+    .filter(move => move.version_group_details[0].level_learned_at > 0)
+    .map(move => getMove(move.move.url, move.version_group_details[0].level_learned_at));
 
   return Promise.all(promises).then(moves => ({
     ...data,
-    moves,
+    moves: moves.sort((a, b) => a.level - b.level),
   }));
 };
 
