@@ -3,9 +3,10 @@ import { BASE_SPRITE_URL_V2 } from '../constants';
 const getEvolve = async (chain, evolve) => {
   if (!evolve) return chain;
 
+  const level = evolve.evolution_details.length > 0 ? evolve.evolution_details[0].min_level : 0;
   const sprite = `${BASE_SPRITE_URL_V2}/${evolve.species.name}.png`;
 
-  chain.push({ name: evolve.species.name, sprite });
+  chain.push({ name: evolve.species.name, level, sprite });
 
   return getEvolve(chain, evolve.evolves_to[0]);
 };

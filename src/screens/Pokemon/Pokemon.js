@@ -5,6 +5,7 @@ import { Badge, Container, Content, Footer, FooterTab, Button, Text } from 'nati
 import { getPokemon } from '../../services';
 
 import PokemonSprite from './components/PokemonSprite';
+import EvolutionTab from './components/EvolutionTab';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
 
@@ -67,6 +68,10 @@ class Pokemon extends Component {
       );
     }
 
+    if (this.state.activeTab === 'evolutions') {
+      return <EvolutionTab evolutionChain={evolutionChain} />;
+    }
+
     return <MovesTab color={color} moves={moves} typesRelation={typesRelation} />;
   };
 
@@ -88,6 +93,7 @@ class Pokemon extends Component {
     const { color, sprite, types } = this.state.pokemon;
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
+    const isActiveEvolutions = this.isActive('evolutions');
 
     if (loading)
       return (
@@ -139,6 +145,16 @@ class Pokemon extends Component {
               ]}
             >
               <Text style={styles.footerTabTitle}>Moves</Text>
+            </Button>
+            <Button
+              active={isActiveMoves}
+              onPress={() => this.onTabPress('evolutions')}
+              style={[
+                styles.buttonTab,
+                { backgroundColor: isActiveEvolutions ? color.light : color.primary },
+              ]}
+            >
+              <Text style={styles.footerTabTitle}>Evolutions</Text>
             </Button>
           </FooterTab>
         </Footer>
