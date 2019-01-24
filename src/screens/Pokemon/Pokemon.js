@@ -9,8 +9,6 @@ import EvolutionTab from './components/EvolutionTab';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
 
-import Separator from '../../shared/components/Separator';
-
 const styles = StyleSheet.create({
   buttonTab: {
     borderRadius: 0,
@@ -19,6 +17,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerTest: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderTopStartRadius: 50,
+    borderTopEndRadius: 50,
+    height: '100%',
   },
   itemContainer: {
     display: 'flex',
@@ -30,6 +35,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
+  },
+  pokemonName: {
+    fontSize: 30,
+    textAlign: 'center',
+    textTransform: 'capitalize',
   },
   pokemonTypeContainer: {
     flexDirection: 'row',
@@ -96,7 +106,7 @@ class Pokemon extends Component {
 
   render() {
     const { error, loading } = this.state;
-    const { color, sprite, types } = this.state.pokemon;
+    const { color, name, sprite, types } = this.state.pokemon;
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
     const isActiveEvolutions = this.isActive('evolutions');
@@ -119,14 +129,17 @@ class Pokemon extends Component {
       <Container>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
-          <View style={styles.pokemonTypeContainer}>
-            {types.map(type => (
-              <Badge key={type.name} style={{ backgroundColor: type.color }}>
-                <Text style={styles.typeText}>{type.name}</Text>
-              </Badge>
-            ))}
+          <View style={styles.containerTest}>
+            <Text style={styles.pokemonName}>{name}</Text>
+            <View style={styles.pokemonTypeContainer}>
+              {types.map(type => (
+                <Badge key={type.name} style={{ backgroundColor: type.color }}>
+                  <Text style={styles.typeText}>{type.name}</Text>
+                </Badge>
+              ))}
+            </View>
+            {this.getTabContent()}
           </View>
-          {this.getTabContent()}
         </Content>
         <Footer>
           <FooterTab>
