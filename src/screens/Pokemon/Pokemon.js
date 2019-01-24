@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { Badge, Button, Segment, Container, Content, Footer, FooterTab, Text } from 'native-base';
+import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
+import { Button, Container, Content, Footer, FooterTab, Text } from 'native-base';
 
 import { getPokemon } from '../../services';
 
@@ -10,61 +10,19 @@ import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
 
 const styles = StyleSheet.create({
-  buttonTab: {
-    borderRadius: 0,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  container: { alignItems: 'center', backgroundColor: 'blue' },
+  pokemonDetails: {
     alignItems: 'center',
-  },
-  containerTest: {
-    borderWidth: 1,
-    borderColor: 'black',
     backgroundColor: 'white',
     borderTopStartRadius: 50,
     borderTopEndRadius: 50,
-    height: '100%',
-  },
-  itemContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  footerTabTitle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-  },
-  pokemonName: {
-    fontSize: 30,
-    textAlign: 'center',
-    textTransform: 'capitalize',
-  },
-  pokemonTypeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-  },
-  tab: {
-    borderRadius: 20,
-    backgroundColor: 'red',
-  },
-  typeText: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    flex: 1,
+    padding: 10,
+    width: '100%',
   },
 });
 
 class Pokemon extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerStyle: { backgroundColor: navigation.getParam('pokemon').color.primary },
-    headerTitleStyle: { color: 'white', textTransform: 'uppercase' },
-    title: navigation.getParam('pokemon').name,
-  });
-
   state = {
     activeTab: 'stats',
     error: null,
@@ -132,62 +90,28 @@ class Pokemon extends Component {
 
     return (
       <Container>
-        <Content style={{ backgroundColor: color.primary }}>
-          <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
-          <View style={styles.containerTest}>
-            <Text style={styles.pokemonName}>{name}</Text>
-            <View style={styles.pokemonTypeContainer}>
-              {types.map(type => (
-                <Badge key={type.name} style={{ backgroundColor: type.color }}>
-                  <Text style={styles.typeText}>{type.name}</Text>
-                </Badge>
-              ))}
+        <Content>
+          <View style={styles.container}>
+            <PokemonSprite sprite={sprite} />
+            <View style={styles.pokemonDetails}>
+              <Text>Squirtle</Text>
+              <View style={styles.pokemonTypes}>
+                <Text>Water</Text>
+              </View>
+              <Text>Pokemon Description</Text>
             </View>
-            <Segment>
-              <Button first>
-                <Text>Stats</Text>
-              </Button>
-              <Button>
-                <Text>Evolutions</Text>
-              </Button>
-              <Button last active>
-                <Text>Moves</Text>
-              </Button>
-            </Segment>
-            {this.getTabContent()}
           </View>
         </Content>
         <Footer>
           <FooterTab>
-            <Button
-              active={isActiveStats}
-              onPress={() => this.onTabPress('stats')}
-              style={[
-                styles.buttonTab,
-                { backgroundColor: isActiveStats ? color.light : color.primary },
-              ]}
-            >
-              <Text style={styles.footerTabTitle}>Stats</Text>
+            <Button>
+              <Text>Stats</Text>
             </Button>
-            <Button
-              active={isActiveMoves}
-              onPress={() => this.onTabPress('moves')}
-              style={[
-                styles.buttonTab,
-                { backgroundColor: isActiveMoves ? color.light : color.primary },
-              ]}
-            >
-              <Text style={styles.footerTabTitle}>Moves</Text>
+            <Button>
+              <Text>Evolutions</Text>
             </Button>
-            <Button
-              active={isActiveMoves}
-              onPress={() => this.onTabPress('evolutions')}
-              style={[
-                styles.buttonTab,
-                { backgroundColor: isActiveEvolutions ? color.light : color.primary },
-              ]}
-            >
-              <Text style={styles.footerTabTitle}>Evolutions</Text>
+            <Button active>
+              <Text>Moves</Text>
             </Button>
           </FooterTab>
         </Footer>

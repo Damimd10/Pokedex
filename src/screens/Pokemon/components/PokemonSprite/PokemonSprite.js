@@ -4,25 +4,25 @@ import { string } from 'prop-types';
 
 const styles = StyleSheet.create({
   pokemonSprite: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    padding: 10,
   },
-  pokemonImage: {
-    height: 150,
-    width: 150,
+  pokemonSpriteImage: {
+    height: 100,
+    width: 100,
   },
 });
 
-const PokemonSprite = ({ backgroundColor, spriteUrl }) => (
-  <View style={[styles.pokemonSprite, { backgroundColor }]}>
-    <Image style={styles.pokemonImage} source={{ uri: spriteUrl }} />
+const PokemonSprite = ({ sprite }) => (
+  <View style={styles.pokemonSprite}>
+    <Image style={styles.pokemonSpriteImage} source={{ uri: sprite }} />
   </View>
 );
 
 PokemonSprite.propTypes = {
-  backgroundColor: string.isRequired,
-  spriteUrl: string.isRequired,
+  sprite: string.isRequired,
 };
 
 export default PokemonSprite;
