@@ -8,18 +8,10 @@ import PokemonSprite from './components/PokemonSprite';
 import EvolutionTab from './components/EvolutionTab';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
+import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 
 const styles = StyleSheet.create({
   container: { alignItems: 'center', backgroundColor: 'blue' },
-  pokemonDetails: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderTopStartRadius: 50,
-    borderTopEndRadius: 50,
-    flex: 1,
-    padding: 10,
-    width: '100%',
-  },
 });
 
 class Pokemon extends Component {
@@ -93,13 +85,7 @@ class Pokemon extends Component {
         <Content>
           <View style={styles.container}>
             <PokemonSprite sprite={sprite} />
-            <View style={styles.pokemonDetails}>
-              <Text>Squirtle</Text>
-              <View style={styles.pokemonTypes}>
-                <Text>Water</Text>
-              </View>
-              <Text>Pokemon Description</Text>
-            </View>
+            <PokemonDetails name={name} types={types} />
           </View>
         </Content>
         <Footer>

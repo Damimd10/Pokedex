@@ -15,7 +15,6 @@
     "flowtype/no-types-missing-file-annotation": 2,
     "flowtype/no-weak-types": 2,
     "flowtype/require-parameter-type": 2,
-
     "flowtype/require-valid-file-annotation": 2,
     "flowtype/semi": [2, "always"],
     "flowtype/space-after-type-colon": [2, "always"],
