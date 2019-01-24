@@ -31,8 +31,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
+  pokemonTypeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+  },
   typeText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 'bold',
   },
 });
@@ -113,15 +119,13 @@ class Pokemon extends Component {
       <Container>
         <Content>
           <PokemonSprite backgroundColor={color.light} spriteUrl={sprite} />
-          <Separator backgroundColor={color.primary}>
-            <Fragment>
-              {types.map(type => (
-                <Badge key={type.name} style={{ backgroundColor: type.color }}>
-                  <Text style={styles.typeText}>{type.name}</Text>
-                </Badge>
-              ))}
-            </Fragment>
-          </Separator>
+          <View style={styles.pokemonTypeContainer}>
+            {types.map(type => (
+              <Badge key={type.name} style={{ backgroundColor: type.color }}>
+                <Text style={styles.typeText}>{type.name}</Text>
+              </Badge>
+            ))}
+          </View>
           {this.getTabContent()}
         </Content>
         <Footer>

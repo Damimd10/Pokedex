@@ -5,19 +5,20 @@ import * as Progress from 'react-native-progress';
 
 const styles = StyleSheet.create({
   statsContainer: {
-    borderWidth: 1,
-    borderColor: 'red',
+    justifyContent: 'center',
     height: 150,
     margin: 20,
+  },
+  statDetailsContainer: {
+    width: 40,
   },
   stats: {
     height: 50,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  statName: {
+  statInfo: {
     fontSize: 12,
     padding: 5,
     textTransform: 'uppercase',
@@ -29,7 +30,12 @@ const PokemonStats = ({ color, stats }) => (
   <View style={styles.statsContainer}>
     {stats.map(({ averageStat, colorStat, name }) => (
       <View key={name} style={styles.stats}>
-        <Text style={[styles.statName, { color: color.primary }]}>{name}</Text>
+        <View style={styles.statDetailsContainer}>
+          <Text style={[styles.statInfo, { color: color.primary }]}>{name}</Text>
+        </View>
+        <View style={styles.statDetailsContainer}>
+          <Text style={[styles.statInfo, { color: color.primary }]}>000</Text>
+        </View>
         <Progress.Bar
           progress={averageStat}
           borderColor="transparent"
