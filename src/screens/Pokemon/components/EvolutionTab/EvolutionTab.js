@@ -14,6 +14,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  segment: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  arrow: {
+    color: '#E0E0E0',
+    fontSize: 40,
+  },
 });
 
 const EvolutionTab = ({ evolutionChain }) => (
@@ -24,7 +32,10 @@ const EvolutionTab = ({ evolutionChain }) => (
       return (
         <View key={`${evolution.name}-${index}`} style={styles.evolutionContainer}>
           <PokemonEvolution {...evolution} />
-          <Text>{`Level ${evolutionChain[index + 1].level}`}</Text>
+          <View style={styles.segment}>
+            <Text style={styles.arrow}>→</Text>
+            <Text>{`Level ${evolutionChain[index + 1].level}`}</Text>
+          </View>
           <PokemonEvolution {...evolutionChain[index + 1]} />
         </View>
       );
