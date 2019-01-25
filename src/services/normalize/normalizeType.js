@@ -1,11 +1,11 @@
 // @flow
 
-import { TYPES_COLOR } from '../constants';
+import { POKEMON_TYPES } from '../constants';
 import type { PokemonTypes, PokemonTypesNormalized } from '../models';
 import type { DamageRelations } from '../models/shared';
 
 const addColor = (damageArray: DamageRelations[]): DamageRelations[] =>
-  damageArray.map((data: DamageRelations) => ({ ...data, color: TYPES_COLOR[data.name] }));
+  damageArray.map((data: DamageRelations) => ({ ...data, color: TYPES_COLOR[data.name].color }));
 
 const normalizeType = ({
   damage_relations: damageRelations,

@@ -4,7 +4,7 @@ import {
   MAX_STATS,
   NAME_STATS,
   STATS_COLOR,
-  TYPES_COLOR,
+  POKEMON_TYPES,
 } from '../constants';
 
 const getColor = species => PALETTE_COLOR[species.color.name];
@@ -26,7 +26,11 @@ const mappingStats = stats =>
   }, []);
 
 const mappingTypes = types =>
-  types.map(({ type }) => ({ name: type.name.toUpperCase(), color: TYPES_COLOR[type.name] }));
+  types.map(({ type }) => ({
+    name: type.name.toUpperCase(),
+    color: POKEMON_TYPES[type.name].color,
+    icon: POKEMON_TYPES[type.name],
+  }));
 
 const mappingTypeRelations = types =>
   types.reduce(
