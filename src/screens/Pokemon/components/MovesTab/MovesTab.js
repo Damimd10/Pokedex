@@ -1,7 +1,9 @@
 import React from 'react';
 import { arrayOf, number, shape, string } from 'prop-types';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Body, ListItem, Text, Right } from 'native-base';
+
+const image = require('../../../../assets/type-1.png');
 
 const styles = StyleSheet.create({
   levelText: {
@@ -23,7 +25,10 @@ const MovesTab = ({ moves }) =>
         <Text style={styles.levelText}>{`Level ${level}`}</Text>
       </Body>
       <Right>
-        <Text>{type}</Text>
+        <Image
+          source={require('../../../../assets/type-1.png')}
+          style={{ height: 40, width: 40, borderRadius: 20 }}
+        />
       </Right>
     </ListItem>
   ));
