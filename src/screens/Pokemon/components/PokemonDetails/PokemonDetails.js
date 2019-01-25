@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
   },
   pokemonTypes: {
+    flexDirection: 'row',
     margin: 10,
   },
 });
@@ -28,7 +29,9 @@ const PokemonDetails = ({ name, types }) => (
   <View style={styles.detailsContainer}>
     <Text style={styles.pokemonName}>{name}</Text>
     <View style={styles.pokemonTypes}>
-      {types.map(type => console.log('HERE', type) || <PokemonType key={type.name} {...type} />)}
+      {types.map(type => (
+        <PokemonType key={type.name} {...type} />
+      ))}
     </View>
     <Text>Pokemon Description</Text>
   </View>

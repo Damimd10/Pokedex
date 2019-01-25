@@ -29,7 +29,7 @@ const mappingTypes = types =>
   types.map(({ type }) => ({
     name: type.name.toUpperCase(),
     color: POKEMON_TYPES[type.name].color,
-    icon: POKEMON_TYPES[type.name],
+    icon: POKEMON_TYPES[type.name].icon,
   }));
 
 const mappingTypeRelations = types =>
