@@ -35,6 +35,7 @@ class Pokemon extends Component {
           stats={stats}
           evolutionChain={evolutionChain}
           onPokemonEvolutionPress={this.onPokemonEvolutionPress}
+          typesRelation={typesRelation}
         />
       );
     }

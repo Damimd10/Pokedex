@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
-import { arrayOf, func, number, shape, string } from 'prop-types';
+import { arrayOf, number, shape, string } from 'prop-types';
 
 import PokemonStats from './components/PokemonStats';
+import Weaknesses from './components/Weaknesses';
 
-const StatsTab = ({ color, currentPokemon, stats, evolutionChain, onPokemonEvolutionPress }) => (
+const StatsTab = ({ color, stats, typesRelation }) => (
   <Fragment>
     <PokemonStats color={color} stats={stats} />
+    <Weaknesses {...typesRelation} />
   </Fragment>
 );
 
 StatsTab.propTypes = {
   color: shape({}).isRequired,
-  currentPokemon: string.isRequired,
   stats: arrayOf(
     shape({
       averageStat: number,
@@ -20,13 +21,6 @@ StatsTab.propTypes = {
       name: string,
     })
   ).isRequired,
-  evolutionChain: arrayOf(
-    shape({
-      name: string,
-      sprite: string,
-    })
-  ).isRequired,
-  onPokemonEvolutionPress: func.isRequired,
 };
 
 export default StatsTab;
