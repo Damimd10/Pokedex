@@ -1,16 +1,13 @@
-import React, { Fragment } from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { arrayOf, shape, string } from 'prop-types';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
+import WeaknessesDamage from '../WeaknessesDamage';
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   title: { fontSize: 30 },
-  type: {
-    marginHorizontal: 10,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  column: { flex: 1, marginVertical: 10, justifyContent: 'center', alignItems: 'center' },
 });
 
 const Weaknesses = ({ damageFrom }) => (
@@ -20,31 +17,14 @@ const Weaknesses = ({ damageFrom }) => (
       data={damageFrom}
       keyExtractor={item => item.name}
       numColumns={3}
-      columnWrapperStyle={{
-        flex: 1,
-        marginVertical: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-      renderItem={({ item }) => (
-        <View>
-          <View style={styles.type}>
-            <Image source={item.icon} style={{ height: 44, width: 44, borderRadius: 22 }} />
-            <View
-              style={{
-                marginHorizontal: 12,
-                width: 30,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Text>{item.damage}</Text>
-            </View>
-          </View>
-        </View>
-      )}
+      columnWrapperStyle={styles.column}
+      renderItem={({ item }) => <WeaknessesDamage {...item} />}
     />
   </View>
 );
+
+Weaknesses.propTypes = {
+  damageFrom: arrayOf(shape({ damage: string, name: string })).isRequired,
+};
 
 export default Weaknesses;
