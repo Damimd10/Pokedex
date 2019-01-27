@@ -7,12 +7,11 @@ import Weaknesses from './components/Weaknesses';
 const StatsTab = ({ color, stats, typesRelation }) => (
   <Fragment>
     <PokemonStats color={color} stats={stats} />
-    <Weaknesses {...typesRelation} />
+    <Weaknesses color={color} {...typesRelation} />
   </Fragment>
 );
 
 StatsTab.propTypes = {
-  color: shape({}).isRequired,
   stats: arrayOf(
     shape({
       averageStat: number,
