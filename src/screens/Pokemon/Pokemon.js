@@ -12,7 +12,7 @@ import StatsTab from './components/StatsTab';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 
 const styles = StyleSheet.create({
-  container: { alignItems: 'center', backgroundColor: 'blue' },
+  container: { alignItems: 'center' },
 });
 
 class Pokemon extends Component {
@@ -91,7 +91,7 @@ class Pokemon extends Component {
             colors={[color.dark, color.light]}
             style={styles.container}
           >
-            <PokemonSprite color={color} sprite={sprite} />
+            <PokemonSprite name={name} sprite={sprite} />
             <PokemonDetails description={description} name={name} types={types} />
           </LinearGradient>
           {this.getTabContent()}

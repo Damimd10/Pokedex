@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 50,
     borderTopEndRadius: 50,
     flex: 1,
-    padding: 10,
+    paddingTop: 30,
     width: '100%',
   },
   pokemonName: {
