@@ -42,7 +42,7 @@ class Pokemon extends Component {
     }
 
     if (this.state.activeTab === 'evolutions') {
-      return <EvolutionTab evolutionChain={evolutionChain} />;
+      return <EvolutionTab color={color} evolutionChain={evolutionChain} />;
     }
 
     return <MovesTab moves={moves} />;
