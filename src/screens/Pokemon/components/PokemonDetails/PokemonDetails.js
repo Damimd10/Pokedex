@@ -23,9 +23,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 10,
   },
+  pokemonDescription: {
+    color: '#888888',
+    fontSize: 14,
+    fontWeight: 'bold',
+    padding: 5,
+    textAlign: 'center',
+  },
 });
 
-const PokemonDetails = ({ name, types }) => (
+const PokemonDetails = ({ description, name, types }) => (
   <View style={styles.detailsContainer}>
     <Text style={styles.pokemonName}>{name}</Text>
     <View style={styles.pokemonTypes}>
@@ -33,11 +40,12 @@ const PokemonDetails = ({ name, types }) => (
         <PokemonType key={type.name} {...type} />
       ))}
     </View>
-    <Text>Pokemon Description</Text>
+    <Text style={styles.pokemonDescription}>{description}</Text>
   </View>
 );
 
 PokemonDetails.propTypes = {
+  description: string.isRequired,
   name: string.isRequired,
   types: arrayOf(
     shape({

@@ -9,6 +9,9 @@ import {
 
 const getColor = species => PALETTE_COLOR[species.color.name];
 
+const getDescription = species =>
+  species.flavor_text_entries.filter(flavor => flavor.language.name === 'en')[0].flavor_text;
+
 const getEvolutionChain = species => species.evolutions;
 
 const getSprite = name => `${BASE_SPRITE_URL_V2}/${name}.png`;
@@ -36,6 +39,7 @@ const mappingTypesRelation = damage => ({ ...damage[0] });
 
 const mappingPokemonData = data => ({
   color: getColor(data.species),
+  description: getDescription(data.species),
   evolutionChain: getEvolutionChain(data.species),
   moves: data.moves,
   name: data.name,

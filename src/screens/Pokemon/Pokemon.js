@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Button, Container, Content, Footer, FooterTab, Text } from 'native-base';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { getPokemon } from '../../services';
 
@@ -62,7 +63,7 @@ class Pokemon extends Component {
 
   render() {
     const { error, loading } = this.state;
-    const { name, sprite, types } = this.state.pokemon;
+    const { color, description, name, sprite, types } = this.state.pokemon;
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
     const isActiveEvolutions = this.isActive('evolutions');
@@ -84,10 +85,15 @@ class Pokemon extends Component {
     return (
       <Container>
         <Content>
-          <View style={styles.container}>
-            <PokemonSprite sprite={sprite} />
-            <PokemonDetails name={name} types={types} />
-          </View>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={[color.dark, color.light]}
+            style={styles.container}
+          >
+            <PokemonSprite color={color} sprite={sprite} />
+            <PokemonDetails description={description} name={name} types={types} />
+          </LinearGradient>
           {this.getTabContent()}
         </Content>
         <Footer>
