@@ -2,7 +2,7 @@ import React from 'react';
 import { arrayOf, shape, string } from 'prop-types';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-import WeaknessesDamage from '../WeaknessesDamage';
+import DamageDetails from '../DamageDetails';
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
@@ -10,21 +10,22 @@ const styles = StyleSheet.create({
   column: { flex: 1, marginVertical: 10, justifyContent: 'center', alignItems: 'center' },
 });
 
-const Weaknesses = ({ color, damageFrom }) => (
+const Damage = ({ color, damage, title }) => (
   <View style={styles.container}>
-    <Text style={[styles.title, { color: color.primary }]}>Weaknesses</Text>
+    <Text style={[styles.title, { color: color.primary }]}>{title}</Text>
     <FlatList
-      data={damageFrom}
+      data={damage}
       keyExtractor={item => item.name}
       numColumns={3}
       columnWrapperStyle={styles.column}
-      renderItem={({ item }) => <WeaknessesDamage {...item} />}
+      renderItem={({ item }) => <DamageDetails {...item} />}
     />
   </View>
 );
 
-Weaknesses.propTypes = {
-  damageFrom: arrayOf(shape({ damage: string, name: string })).isRequired,
+Damage.propTypes = {
+  damage: arrayOf(shape({ damage: string, name: string })).isRequired,
+  title: string.isRequired,
 };
 
-export default Weaknesses;
+export default Damage;

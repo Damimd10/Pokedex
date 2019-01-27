@@ -7,13 +7,16 @@ const DAMAGE_TABLE = {
   double_damage_from: '2x',
   half_damage_from: '1/2x',
   no_damage_from: '---',
+  double_damage_to: '2x',
+  half_damage_to: '1/2x',
+  no_damage_to: '---',
 };
 
-const mapDamageFrom = damage => {
+const mapDamageFrom = (damage, who) => {
   const keys = Object.keys(damage);
 
   return keys.reduce((accumulator, key) => {
-    if (key.includes('from') && damage[key].length > 0) {
+    if (key.includes(who) && damage[key].length > 0) {
       const mappedDamageFrom = damage[key].map(({ name }) => ({
         name,
         icon: POKEMON_TYPES[name].icon,
@@ -29,7 +32,8 @@ const mapDamageFrom = damage => {
 const normalizeType = ({
   damage_relations: damageRelations,
 }: PokemonTypes): PokemonTypesNormalized => ({
-  damageFrom: mapDamageFrom(damageRelations),
+  damageFrom: mapDamageFrom(damageRelations, 'from'),
+  damageTo: mapDamageFrom(damageRelations, 'to'),
 });
 
 export default normalizeType;

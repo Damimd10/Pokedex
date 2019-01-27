@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import { arrayOf, number, shape, string } from 'prop-types';
 
+import Damage from './components/Damage';
 import PokemonStats from './components/PokemonStats';
-import Weaknesses from './components/Weaknesses';
 
 const StatsTab = ({ color, stats, typesRelation }) => (
   <Fragment>
     <PokemonStats color={color} stats={stats} />
-    <Weaknesses color={color} {...typesRelation} />
+    <Damage color={color} title="Weaknesses" damage={typesRelation.damageFrom} />
+    <Damage color={color} title="Strengths" damage={typesRelation.damageTo} />
   </Fragment>
 );
 

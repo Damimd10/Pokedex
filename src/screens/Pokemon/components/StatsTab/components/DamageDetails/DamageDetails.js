@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const WeaknessesDamage = ({ damage, icon }) => (
+const DamageDetails = ({ damage, icon }) => (
   <View>
     <View style={styles.type}>
       <Image source={icon} style={{ height: 44, width: 44, borderRadius: 22 }} />
@@ -30,8 +30,8 @@ const WeaknessesDamage = ({ damage, icon }) => (
   </View>
 );
 
-WeaknessesDamage.propTypes = {
+DamageDetails.propTypes = {
   damage: string.isRequired,
 };
 
-export default WeaknessesDamage;
+export default DamageDetails;
