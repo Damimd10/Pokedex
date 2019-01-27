@@ -1,8 +1,11 @@
+// @flow
+
+import type { Move, NormalizedMove } from '../models';
 import { POKEMON_TYPES } from '../constants';
 
-const formatName = name => name.replace(/-/g, ' ');
+const formatName = (name: string): string => name.replace(/-/g, ' ');
 
-const normalizeMove = (move, level) => ({
+const normalizeMove = (move: Move, level: string): NormalizedMove => ({
   level,
   name: formatName(move.name),
   accuracy: move.accuracy || 0,

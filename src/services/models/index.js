@@ -1,4 +1,4 @@
 import { PokemonTypes, PokemonTypesNormalized } from './IPokemonTypes';
-import { DamageDetails } from './IDamageDetails';
+import { Move, NormalizedMove } from './IPokemonMoves';
 
-export { DamageDetails, PokemonTypes, PokemonTypesNormalized };
+export { Move, NormalizedMove, PokemonTypes, PokemonTypesNormalized };
