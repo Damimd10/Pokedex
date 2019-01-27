@@ -26,19 +26,10 @@ class Pokemon extends Component {
   isActive = value => value === this.state.activeTab;
 
   getTabContent = () => {
-    const { color, evolutionChain, moves, name, stats, typesRelation } = this.state.pokemon;
+    const { color, evolutionChain, moves, stats, typesRelation } = this.state.pokemon;
 
     if (this.state.activeTab === 'stats') {
-      return (
-        <StatsTab
-          currentPokemon={name}
-          color={color}
-          stats={stats}
-          evolutionChain={evolutionChain}
-          onPokemonEvolutionPress={this.onPokemonEvolutionPress}
-          typesRelation={typesRelation}
-        />
-      );
+      return <StatsTab color={color} stats={stats} typesRelation={typesRelation} />;
     }
 
     if (this.state.activeTab === 'evolutions') {
@@ -62,8 +53,12 @@ class Pokemon extends Component {
   };
 
   render() {
-    const { error, loading } = this.state;
-    const { color, description, name, sprite, types } = this.state.pokemon;
+    const {
+      error,
+      loading,
+      pokemon: { color, description, name, sprite, types },
+    } = this.state;
+
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
     const isActiveEvolutions = this.isActive('evolutions');
