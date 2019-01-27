@@ -1,5 +1,5 @@
 // @flow
-import type { DamageRelations, Details } from './shared';
+import type { DamageDetails, DamageRelations, Details } from './shared';
 
 interface GameIndices {
   game_index: number;
@@ -29,6 +29,6 @@ export interface PokemonTypes {
 }
 
 export interface PokemonTypesNormalized {
-  damageTo: Details[];
-  damageFrom: Details[];
+  damageFrom: DamageDetails[];
+  damageTo: DamageDetails[];
 }

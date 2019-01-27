@@ -1,28 +1,22 @@
 // @flow
 
 import type { PokemonTypes, PokemonTypesNormalized } from '../models';
-import { POKEMON_TYPES } from '../constants';
+import type { DamageDetails } from '../models/shared';
+import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants';
 
-const DAMAGE_TABLE = {
-  double_damage_from: '2x',
-  half_damage_from: '1/2x',
-  no_damage_from: '---',
-  double_damage_to: '2x',
-  half_damage_to: '1/2x',
-  no_damage_to: '---',
-};
+const mappedDamageDetails = (damage, key: string): DamageDetails[] =>
+  damage[key].map(({ name }: { name: string }) => ({
+    name,
+    icon: POKEMON_TYPES[name].icon,
+    damage: DAMAGE_TABLE[key],
+  }));
 
-const mapDamageFrom = (damage, who) => {
+const mapDamage = (damage, who: string) => {
   const keys = Object.keys(damage);
 
-  return keys.reduce((accumulator, key) => {
+  return keys.reduce((accumulator: DamageDetails[], key: number) => {
     if (key.includes(who) && damage[key].length > 0) {
-      const mappedDamageFrom = damage[key].map(({ name }) => ({
-        name,
-        icon: POKEMON_TYPES[name].icon,
-        damage: DAMAGE_TABLE[key],
-      }));
-      accumulator.push(...mappedDamageFrom);
+      accumulator.push(...mappedDamageDetails(damage, key));
     }
 
     return accumulator;
@@ -32,8 +26,8 @@ const mapDamageFrom = (damage, who) => {
 const normalizeType = ({
   damage_relations: damageRelations,
 }: PokemonTypes): PokemonTypesNormalized => ({
-  damageFrom: mapDamageFrom(damageRelations, 'from'),
-  damageTo: mapDamageFrom(damageRelations, 'to'),
+  damageFrom: mapDamage(damageRelations, 'from'),
+  damageTo: mapDamage(damageRelations, 'to'),
 });
 
 export default normalizeType;

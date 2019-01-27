@@ -20,6 +20,15 @@ const MAX_STATS = {
   speed: 180,
 };
 
+const DAMAGE_TABLE = {
+  double_damage_from: '2x',
+  half_damage_from: '1/2x',
+  no_damage_from: '---',
+  double_damage_to: '2x',
+  half_damage_to: '1/2x',
+  no_damage_to: '---',
+};
+
 const PALETTE_COLOR = {
   black: {
     dark: '',
@@ -109,6 +118,7 @@ export {
   BASE_SPRITE_URL,
   BASE_URL,
   BASE_SPRITE_URL_V2,
+  DAMAGE_TABLE,
   MAX_STATS,
   NAME_STATS,
   PALETTE_COLOR,
