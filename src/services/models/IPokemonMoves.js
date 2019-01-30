@@ -1,6 +1,6 @@
 // @flow
 
-import type { APIResource, Details } from './shared';
+import type { APIResource, Details, FlavorText, Name } from './shared';
 
 interface ContestComboDetail {
   use_after: ?(Details[]);
@@ -28,20 +28,9 @@ interface AbilityEffectChange {
   version_group: Details;
 }
 
-interface MoveFlavorText {
-  flavor_text: string;
-  language: Details;
-  version_group: Details;
-}
-
 interface MachineVersionDetail {
   machine: APIResource;
   version_group: Details;
-}
-
-interface Name {
-  name: string;
-  language: Details;
 }
 
 interface PastMoveStatValues {
@@ -88,7 +77,7 @@ export interface Move {
   damage_class: Details;
   effect_entries: VerboseEffect[];
   effect_changes: AbilityEffectChange[];
-  flavor_text_entries: MoveFlavorText[];
+  flavor_text_entries: FlavorText[];
   generation: Details;
   machines: MachineVersionDetail[];
   meta: MoveMetaData;
