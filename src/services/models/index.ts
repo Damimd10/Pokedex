@@ -12,6 +12,7 @@ import { ChainLink, EvolutionChain, NormalizedEvolutions } from './IEvolutionCha
 import {
   MappedStat, NameStats, MaxStats, PokemonStat,
 } from './IStats'
+import PaletteColor from './IPaletteColor'
 
 export {
   ChainLink,
@@ -31,4 +32,5 @@ export {
   PokemonTypesNormalized,
   PokemonStat,
   Types,
+  PaletteColor,
 }

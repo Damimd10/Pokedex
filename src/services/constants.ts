@@ -1,4 +1,6 @@
-import { MappedTypes, MaxStats, NameStats } from './models'
+import {
+  MappedTypes, MaxStats, NameStats, PaletteColor,
+} from './models'
 
 const BASE_URL: string = 'https://pokeapi.co/api/v2/pokemon/'
 const BASE_SPRITE_URL: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
@@ -31,7 +33,7 @@ const DAMAGE_TABLE = {
   no_damage_to: '---',
 }
 
-const PALETTE_COLOR = {
+const PALETTE_COLOR: PaletteColor = {
   black: {
     dark: '',
     light: '#6d6d6d',
