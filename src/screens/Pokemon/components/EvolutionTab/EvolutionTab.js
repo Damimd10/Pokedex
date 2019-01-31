@@ -35,9 +35,9 @@ const EvolutionTab = ({ color, evolutionChain }) => (
         <View key={`${evolution.name}-${index}`} style={styles.evolutionContainer}>
           <PokemonEvolution {...evolution} />
           <View style={styles.segment}>
-            <Text style={[styles.levelText, { color: color.primary }]}>{`Lv.${
-              evolutionChain[index + 1].level
-            }`}</Text>
+            <Text style={[styles.levelText, { color: color.primary }]}>
+              {`Lv.${evolutionChain[index + 1].level}`}
+            </Text>
             <Text style={styles.arrow}>&#10230;</Text>
           </View>
           <PokemonEvolution {...evolutionChain[index + 1]} />

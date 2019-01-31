@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { Button, Container, Content, Footer, FooterTab, Text } from 'native-base'
 import LinearGradient from 'react-native-linear-gradient'
+import Tts from 'react-native-tts'
 
 import { getPokemon } from '../../services'
 
@@ -63,19 +64,21 @@ class Pokemon extends Component {
     const isActiveStats = this.isActive('stats')
     const isActiveEvolutions = this.isActive('evolutions')
 
-    if (loading)
+    if (loading) {
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" />
         </View>
       )
+    }
 
-    if (error)
+    if (error) {
       return (
         <View style={styles.container}>
           <Text>{error}</Text>
         </View>
       )
+    }
 
     return (
       <Container>
