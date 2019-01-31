@@ -1,10 +1,10 @@
-import { PokemonTypes, PokemonTypesNormalized } from '../models'
+import { Types, PokemonTypesNormalized, MappedTypes } from '../models'
 import { DamageDetails, DamageRelations } from '../models/shared'
 import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants'
 
-const mappedDamageDetails = (damage: DamageRelations, key: string): DamageDetails[] => damage[key].map(({ name }: { name: string }) => ({
+const mappedDamageDetails = (damage: DamageRelations, key: string): DamageDetails[] => damage[key as keyof DamageRelations].map(({ name }: { name: string }) => ({
   name,
-  icon: POKEMON_TYPES[name].icon,
+  icon: POKEMON_TYPES[name as keyof MappedTypes].icon,
   damage: DAMAGE_TABLE[key as keyof DamageRelations],
 }))
 
@@ -20,9 +20,7 @@ const mapDamage = (damage: DamageRelations, who: string) => {
   }, [])
 }
 
-const normalizeType = ({
-  damage_relations: damageRelations,
-}: PokemonTypes): PokemonTypesNormalized => ({
+const normalizeType = ({ damage_relations: damageRelations }: Types): PokemonTypesNormalized => ({
   damageFrom: mapDamage(damageRelations, 'from'),
   damageTo: mapDamage(damageRelations, 'to'),
 })

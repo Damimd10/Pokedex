@@ -1,17 +1,34 @@
-import { PokemonTypes, PokemonTypesNormalized } from './IPokemonTypes'
+import {
+  NormalizedTypes,
+  MappedTypes,
+  PokemonType,
+  PokemonTypesNormalized,
+  Types,
+} from './IPokemonTypes'
 import { Move, NormalizedMove } from './IPokemonMoves'
-import { Pokemons } from './IPokemons'
+import { NormalizedPokemon, Pokemons } from './IPokemons'
 import { PokemonSpecies } from './IPokemonSpecies'
 import { ChainLink, EvolutionChain, NormalizedEvolutions } from './IEvolutionChain'
+import {
+  MappedStat, NameStats, MaxStats, PokemonStat,
+} from './IStats'
 
 export {
   ChainLink,
   EvolutionChain,
   Move,
+  MappedStat,
+  NameStats,
+  MaxStats,
   NormalizedEvolutions,
   NormalizedMove,
+  NormalizedTypes,
+  NormalizedPokemon,
   Pokemons,
   PokemonSpecies,
-  PokemonTypes,
+  MappedTypes,
+  PokemonType,
   PokemonTypesNormalized,
+  PokemonStat,
+  Types,
 }

@@ -1,4 +1,14 @@
 import {
+  NameStats,
+  MaxStats,
+  NormalizedTypes,
+  NormalizedPokemon,
+  MappedTypes,
+  PokemonType,
+  PokemonStat,
+  MappedStat,
+} from '../models'
+import {
   BASE_SPRITE_URL_V2,
   PALETTE_COLOR,
   MAX_STATS,
@@ -7,37 +17,38 @@ import {
   POKEMON_TYPES,
 } from '../constants'
 
-const getColor = species => PALETTE_COLOR[species.color.name]
+const getColor = (species: any): any => PALETTE_COLOR[species.color.name]
 
-const getDescription = species =>
-  species.flavor_text_entries.filter(flavor => flavor.language.name === 'en')[0].flavor_text
+const getDescription = (species: any): any => species.flavor_text_entries.filter((flavor: any) => flavor.language.name === 'en')[0].flavor_text
 
-const getEvolutionChain = species => species.evolutions
+const getEvolutionChain = (species: any): any => species.evolutions
 
-const getSprite = name => `${BASE_SPRITE_URL_V2}/${name}.png`
+const getSprite = (name: string): string => `${BASE_SPRITE_URL_V2}/${name}.png`
 
-const mappingStats = stats =>
-  stats.reduce((acc, { base_stat, stat }) => {
-    acc.push({
-      averageStat: Number((base_stat / MAX_STATS[stat.name]).toFixed(1)),
-      baseStat: base_stat,
-      colorStat: STATS_COLOR[stat.name],
-      name: NAME_STATS[stat.name],
-    })
+const mappingStats = (stats: PokemonStat[]): MappedStat[] => stats.reduce(
+  (acc: any, currentStat: any): any => [
+    ...acc,
+    {
+      averageStat: Number(
+        (currentStat.base_stat / MAX_STATS[currentStat.stat.name as keyof MaxStats]).toFixed(1),
+      ),
+      baseStat: currentStat.base_stat,
+      colorStat: STATS_COLOR[currentStat.stat.name],
+      name: NAME_STATS[currentStat.stat.name as keyof NameStats],
+    },
+  ],
+  [],
+)
 
-    return acc
-  }, [])
+const mappingTypes = (types: PokemonType[]): NormalizedTypes[] => types.map(({ type }: { type: any }) => ({
+  name: type.name.toUpperCase(),
+  color: POKEMON_TYPES[type.name as keyof MappedTypes].color,
+  icon: POKEMON_TYPES[type.name as keyof MappedTypes].icon,
+}))
 
-const mappingTypes = types =>
-  types.map(({ type }) => ({
-    name: type.name.toUpperCase(),
-    color: POKEMON_TYPES[type.name].color,
-    icon: POKEMON_TYPES[type.name].icon,
-  }))
+const mappingTypesRelation = (damage: any): any => ({ ...damage[0] })
 
-const mappingTypesRelation = damage => ({ ...damage[0] })
-
-const mappingPokemonData = data => ({
+const mappingPokemonData = (data: any): NormalizedPokemon => ({
   color: getColor(data.species),
   description: getDescription(data.species),
   evolutionChain: getEvolutionChain(data.species),

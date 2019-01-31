@@ -12,15 +12,18 @@ const getDescription = species =>
 const getEvolutionChain = species => species.evolutions
 const getSprite = name => `${BASE_SPRITE_URL_V2}/${name}.png`
 const mappingStats = stats =>
-  stats.reduce((acc, { base_stat, stat }) => {
-    acc.push({
-      averageStat: Number((base_stat / MAX_STATS[stat.name]).toFixed(1)),
-      baseStat: base_stat,
-      colorStat: STATS_COLOR[stat.name],
-      name: NAME_STATS[stat.name],
-    })
-    return acc
-  }, [])
+  stats.reduce(
+    (acc, currentStat) => [
+      ...acc,
+      {
+        averageStat: Number((currentStat.base_stat / MAX_STATS[currentStat.stat.name]).toFixed(1)),
+        baseStat: currentStat.base_stat,
+        colorStat: STATS_COLOR[currentStat.stat.name],
+        name: NAME_STATS[currentStat.stat.name],
+      },
+    ],
+    [],
+  )
 const mappingTypes = types =>
   types.map(({ type }) => ({
     name: type.name.toUpperCase(),

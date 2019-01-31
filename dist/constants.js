@@ -102,9 +102,7 @@ const POKEMON_TYPES = {
   poison: { color: '#a59', icon: require('../assets/type-poison.png') },
   psychic: { color: '#f59', icon: require('../assets/type-psychic.png') },
   rock: { color: '#ba6', icon: require('../assets/type-rock.png') },
-  shadow: { color: '#7f848e' },
   steel: { color: '#aab', icon: require('../assets/type-steel.png') },
-  unknown: { color: '#000f3e' },
   water: { color: '#39f', icon: require('../assets/type-water.png') },
 }
 export {
