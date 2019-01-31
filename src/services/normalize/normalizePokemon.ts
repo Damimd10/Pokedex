@@ -1,3 +1,4 @@
+import { Details, MoveFlavorText } from '../models/shared'
 import {
   NameStats,
   MaxStats,
@@ -8,6 +9,10 @@ import {
   PokemonStat,
   MappedStat,
   PaletteColor,
+  PokemonTypesNormalized,
+  PokemonSpecies,
+  EvolutionChain,
+  PokemonSpeciesWithEvolutions,
 } from '../models'
 import {
   BASE_SPRITE_URL_V2,
@@ -20,14 +25,15 @@ import {
 
 const getColor = (species: any): any => PALETTE_COLOR[species.color.name as keyof PaletteColor]
 
-const getDescription = (species: any): any => species.flavor_text_entries.filter((flavor: any) => flavor.language.name === 'en')[0].flavor_text
+const getDescription = (species: PokemonSpecies): string => species.flavor_text_entries.filter((flavor: MoveFlavorText) => flavor.language.name === 'en')[0]
+  .flavor_text
 
-const getEvolutionChain = (species: any): any => species.evolutions
+const getEvolutionChain = (species: PokemonSpeciesWithEvolutions): EvolutionChain => species.evolutions
 
 const getSprite = (name: string): string => `${BASE_SPRITE_URL_V2}/${name}.png`
 
 const mappingStats = (stats: PokemonStat[]): MappedStat[] => stats.reduce(
-  (acc: any, currentStat: any): any => [
+  (acc: MappedStat[], currentStat: PokemonStat): any => [
     ...acc,
     {
       averageStat: Number(
@@ -41,13 +47,15 @@ const mappingStats = (stats: PokemonStat[]): MappedStat[] => stats.reduce(
   [],
 )
 
-const mappingTypes = (types: PokemonType[]): NormalizedTypes[] => types.map(({ type }: { type: any }) => ({
+const mappingTypes = (types: PokemonType[]): NormalizedTypes[] => types.map(({ type }: { type: Details }) => ({
   name: type.name.toUpperCase(),
   color: POKEMON_TYPES[type.name as keyof MappedTypes].color,
   icon: POKEMON_TYPES[type.name as keyof MappedTypes].icon,
 }))
 
-const mappingTypesRelation = (damage: any): any => ({ ...damage[0] })
+const mappingTypesRelation = (damage: PokemonTypesNormalized[]): PokemonTypesNormalized => ({
+  ...damage[0],
+})
 
 const mappingPokemonData = (data: any): NormalizedPokemon => ({
   color: getColor(data.species),
