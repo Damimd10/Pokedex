@@ -1,6 +1,4 @@
-// @flow
-
-import type { Move, NormalizedMove } from '../models'
+import { Move, NormalizedMove } from '../models'
 import { POKEMON_TYPES } from '../constants'
 
 const formatName = (name: string): string => name.replace(/-/g, ' ')

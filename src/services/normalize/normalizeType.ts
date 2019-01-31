@@ -1,15 +1,14 @@
 // @flow
 
-import type { PokemonTypes, PokemonTypesNormalized } from '../models'
-import type { DamageDetails, DamageRelations } from '../models/shared'
+import { PokemonTypes, PokemonTypesNormalized } from '../models'
+import { DamageDetails, DamageRelations } from '../models/shared'
 import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants'
 
-const mappedDamageDetails = (damage: DamageRelations, key: string): DamageDetails[] =>
-  damage[key].map(({ name }: { name: string }) => ({
-    name,
-    icon: POKEMON_TYPES[name].icon,
-    damage: DAMAGE_TABLE[key],
-  }))
+const mappedDamageDetails = (damage: DamageRelations, key: string): DamageDetails[] => damage[key].map(({ name }: { name: string }) => ({
+  name,
+  icon: POKEMON_TYPES[name].icon,
+  damage: DAMAGE_TABLE[key],
+}))
 
 const mapDamage = (damage: DamageRelations, who: string) => {
   const keys = Object.keys(damage)
