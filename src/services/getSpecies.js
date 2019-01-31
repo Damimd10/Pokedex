@@ -7,7 +7,7 @@ import type { PokemonSpecies } from './models';
 import getEvolutionChain from './getEvolutionChain';
 import { handleErrorsResponse } from './utils';
 
-const fetchEvolutionChain = async (data: PokemonSpecies) => ({
+const fetchEvolutionChain = async (data: PokemonSpecies): PokemonSpecies => ({
   ...data,
   evolutions: await getEvolutionChain(data.evolution_chain.url),
 });

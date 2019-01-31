@@ -2,5 +2,16 @@ import { PokemonTypes, PokemonTypesNormalized } from './IPokemonTypes';
 import { Move, NormalizedMove } from './IPokemonMoves';
 import { Pokemons } from './IPokemons';
 import { PokemonSpecies } from './IPokemonSpecies';
+import { ChainLink, EvolutionChain, NormalizedEvolutions } from './IEvolutionChain';
 
-export { Move, NormalizedMove, Pokemons, PokemonSpecies, PokemonTypes, PokemonTypesNormalized };
+export {
+  ChainLink,
+  EvolutionChain,
+  Move,
+  NormalizedEvolutions,
+  NormalizedMove,
+  Pokemons,
+  PokemonSpecies,
+  PokemonTypes,
+  PokemonTypesNormalized,
+};
