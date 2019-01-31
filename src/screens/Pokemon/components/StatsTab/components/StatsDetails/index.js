@@ -1,3 +1,3 @@
-import StatsDetails from './StatsDetails';
+import StatsDetails from './StatsDetails'
 
-export default StatsDetails;
+export default StatsDetails

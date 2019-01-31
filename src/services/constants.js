@@ -1,6 +1,6 @@
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
-const BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-const BASE_SPRITE_URL_V2 = 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal';
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/'
+const BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+const BASE_SPRITE_URL_V2 = 'https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal'
 
 const NAME_STATS = {
   hp: 'HP',
@@ -9,7 +9,7 @@ const NAME_STATS = {
   defense: 'DEF',
   'special-attack': 'SATK',
   'special-defense': 'SDEF',
-};
+}
 
 const MAX_STATS = {
   hp: 255,
@@ -18,7 +18,7 @@ const MAX_STATS = {
   'special-attack': 194,
   'special-defense': 230,
   speed: 180,
-};
+}
 
 const DAMAGE_TABLE = {
   double_damage_from: '2x',
@@ -27,7 +27,7 @@ const DAMAGE_TABLE = {
   double_damage_to: '2x',
   half_damage_to: '1/2x',
   no_damage_to: '---',
-};
+}
 
 const PALETTE_COLOR = {
   black: {
@@ -80,7 +80,7 @@ const PALETTE_COLOR = {
     light: '#FFECB3',
     primary: '#FFC107',
   },
-};
+}
 
 const STATS_COLOR = {
   hp: '#E64D3D',
@@ -89,7 +89,7 @@ const STATS_COLOR = {
   'special-attack': '#3699DC',
   'special-defense': '#2ECB70',
   speed: '#F39C11',
-};
+}
 
 const POKEMON_TYPES = {
   bug: { color: '#ab2', icon: require('../assets/type-bug.png') },
@@ -112,7 +112,7 @@ const POKEMON_TYPES = {
   steel: { color: '#aab', icon: require('../assets/type-steel.png') },
   unknown: { color: '#000f3e' },
   water: { color: '#39f', icon: require('../assets/type-water.png') },
-};
+}
 
 export {
   BASE_SPRITE_URL,
@@ -124,4 +124,4 @@ export {
   PALETTE_COLOR,
   STATS_COLOR,
   POKEMON_TYPES,
-};
+}

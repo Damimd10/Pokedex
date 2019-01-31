@@ -1,3 +1,3 @@
-const handleErrorsResponse = () => ({ errorMessage: 'The service is down, please try again.' });
+const handleErrorsResponse = () => ({ errorMessage: 'The service is down, please try again.' })
 
-export default handleErrorsResponse;
+export default handleErrorsResponse

@@ -1,10 +1,10 @@
 // @flow
 
-import type { APIResource, Details, FlavorText, Name } from './shared';
+import { APIResource, Details, MoveFlavorText, Name } from './shared';
 
 interface ContestComboDetail {
-  use_after: ?(Details[]);
-  use_before: ?(Details[]);
+  use_after?: Details[];
+  use_before?: Details[];
 }
 
 interface ContestComboSets {
@@ -51,10 +51,10 @@ interface MoveStatChange {
 interface MoveMetaData {
   aliment: Details;
   category: Details;
-  min_hints: ?number;
-  max_hits: ?number;
-  min_turns: ?number;
-  max_turns: ?number;
+  min_hints?: number;
+  max_hits?: number;
+  min_turns?: number;
+  max_turns?: number;
   drain: number;
   healing: number;
   crit_rate: number;
@@ -77,7 +77,7 @@ export interface Move {
   damage_class: Details;
   effect_entries: VerboseEffect[];
   effect_changes: AbilityEffectChange[];
-  flavor_text_entries: FlavorText[];
+  flavor_text_entries: MoveFlavorText[];
   generation: Details;
   machines: MachineVersionDetail[];
   meta: MoveMetaData;

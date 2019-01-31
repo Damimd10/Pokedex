@@ -1,5 +1,5 @@
 // @flow
-import type { Details } from './IDetails';
+import { Details } from './IDetails';
 
 export interface DamageRelations {
   no_damage_to: Details[];

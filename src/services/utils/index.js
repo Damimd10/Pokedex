@@ -1,3 +1,3 @@
-import handleErrorsResponse from './handleErrorsResponse';
+import handleErrorsResponse from './handleErrorsResponse'
 
-export { handleErrorsResponse };
+export { handleErrorsResponse }

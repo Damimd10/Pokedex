@@ -1,5 +1,5 @@
 // @flow
-import type { DamageDetails, DamageRelations, Details } from './shared';
+import { DamageDetails, DamageRelations, Details } from './shared';
 
 interface GameIndices {
   game_index: number;

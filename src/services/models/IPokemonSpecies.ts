@@ -1,6 +1,6 @@
 // @flow
 
-import type { APIResource, Details, FlavorText, Name } from './shared';
+import { APIResource, Details, MoveFlavorText, Name } from './shared';
 
 interface PokemonSpeciesDexEntry {
   entry_number: number;
@@ -50,7 +50,7 @@ export interface PokemonSpecies {
   generation: Details;
   names: Name[];
   pal_park_encounters: PalParkEncounterArea[];
-  flavor_text_entries: FlavorText[];
+  flavor_text_entries: MoveFlavorText[];
   form_descriptions: Description[];
   genera: Genus[];
   varieties: PokemonSpeciesVariety[];

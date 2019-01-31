@@ -1,6 +1,6 @@
 // @flow
 
-import type { Details } from './IDetails';
+import { Details } from './IDetails';
 
 export interface Name {
   name: string;

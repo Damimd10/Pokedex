@@ -1,6 +1,6 @@
 // @flow
 
-import type { Details } from './shared';
+import { Details } from './shared';
 
 interface EvolutionDetail {
   item: Details;

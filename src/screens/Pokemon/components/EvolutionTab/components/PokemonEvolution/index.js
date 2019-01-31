@@ -1,3 +1,3 @@
-import PokemonEvolution from './PokemonEvolution';
+import PokemonEvolution from './PokemonEvolution'
 
-export default PokemonEvolution;
+export default PokemonEvolution

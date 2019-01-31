@@ -1,6 +1,6 @@
 // @flow
 
-import type { Details } from './IDetails';
+import { Details } from './IDetails';
 
 export interface MoveFlavorText {
   flavor_text: string;

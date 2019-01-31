@@ -1,8 +1,8 @@
-import React from 'react';
-import { string } from 'prop-types';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import React from 'react'
+import { string } from 'prop-types'
+import { Dimensions, Image, StyleSheet, View } from 'react-native'
 
-const size = Dimensions.get('window');
+const size = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   pokemonSprite: {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     height: 180,
     width: size.width * 0.5,
   },
-});
+})
 
 const PokemonSprite = ({ name, sprite }) => (
   <View style={styles.pokemonSprite}>
@@ -29,10 +29,10 @@ const PokemonSprite = ({ name, sprite }) => (
       source={{ uri: `https://img.pokemondb.net/artwork/vector/large/${name}.png` }}
     />
   </View>
-);
+)
 
 PokemonSprite.propTypes = {
   sprite: string.isRequired,
-};
+}
 
-export default PokemonSprite;
+export default PokemonSprite

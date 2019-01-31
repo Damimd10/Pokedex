@@ -1,3 +1,3 @@
-import PokemonStats from './PokemonStats';
+import PokemonStats from './PokemonStats'
 
-export default PokemonStats;
+export default PokemonStats

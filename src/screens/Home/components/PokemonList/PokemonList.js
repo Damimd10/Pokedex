@@ -1,6 +1,6 @@
-import React from 'react';
-import { arrayOf, func, number, shape, string } from 'prop-types';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react'
+import { arrayOf, func, number, shape, string } from 'prop-types'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
+})
 
 const PokemonList = ({ onPokemonSelect, pokemons }) => (
   <View style={styles.container}>
@@ -42,7 +42,7 @@ const PokemonList = ({ onPokemonSelect, pokemons }) => (
       )}
     />
   </View>
-);
+)
 
 PokemonList.propTypes = {
   onPokemonSelect: func.isRequired,
@@ -51,8 +51,8 @@ PokemonList.propTypes = {
       id: number,
       name: string,
       sprite: string,
-    })
+    }),
   ).isRequired,
-};
+}
 
-export default PokemonList;
+export default PokemonList

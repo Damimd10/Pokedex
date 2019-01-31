@@ -1,8 +1,8 @@
-import React from 'react';
-import { arrayOf, shape, string } from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { arrayOf, shape, string } from 'prop-types'
+import { StyleSheet, Text, View } from 'react-native'
 
-import PokemonType from '../../../../shared/components/PokemonType/PokemonType';
+import PokemonType from '../../../../shared/components/PokemonType/PokemonType'
 
 const styles = StyleSheet.create({
   detailsContainer: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
   },
-});
+})
 
 const PokemonDetails = ({ description, name, types }) => (
   <View style={styles.detailsContainer}>
@@ -42,7 +42,7 @@ const PokemonDetails = ({ description, name, types }) => (
     </View>
     <Text style={styles.pokemonDescription}>{description}</Text>
   </View>
-);
+)
 
 PokemonDetails.propTypes = {
   description: string.isRequired,
@@ -51,8 +51,8 @@ PokemonDetails.propTypes = {
     shape({
       color: string.isRequired,
       name: string.isRequired,
-    })
+    }),
   ).isRequired,
-};
+}
 
-export default PokemonDetails;
+export default PokemonDetails

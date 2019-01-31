@@ -1,3 +1,3 @@
-import DamageDetails from './DamageDetails';
+import DamageDetails from './DamageDetails'
 
-export default DamageDetails;
+export default DamageDetails

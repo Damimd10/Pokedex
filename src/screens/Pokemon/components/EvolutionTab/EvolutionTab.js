@@ -1,7 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
-import PokemonEvolution from './components/PokemonEvolution';
+import PokemonEvolution from './components/PokemonEvolution'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
     fontSize: 50,
   },
   levelText: { marginBottom: -20 },
-});
+})
 
 const EvolutionTab = ({ color, evolutionChain }) => (
   <View style={styles.container}>
     {evolutionChain.map((evolution, index) => {
-      if (index + 1 >= evolutionChain.length) return;
+      if (index + 1 >= evolutionChain.length) return
 
       return (
         <View key={`${evolution.name}-${index}`} style={styles.evolutionContainer}>
@@ -42,9 +42,9 @@ const EvolutionTab = ({ color, evolutionChain }) => (
           </View>
           <PokemonEvolution {...evolutionChain[index + 1]} />
         </View>
-      );
+      )
     })}
   </View>
-);
+)
 
-export default EvolutionTab;
+export default EvolutionTab

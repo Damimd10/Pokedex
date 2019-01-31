@@ -1,7 +1,7 @@
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation'
 
-import Home from './screens/Home';
-import Pokemon from './screens/Pokemon';
+import Home from './screens/Home'
+import Pokemon from './screens/Pokemon'
 
 const AppNavigator = createStackNavigator(
   {
@@ -10,7 +10,7 @@ const AppNavigator = createStackNavigator(
   },
   {
     headerMode: 'none',
-  }
-);
+  },
+)
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator)

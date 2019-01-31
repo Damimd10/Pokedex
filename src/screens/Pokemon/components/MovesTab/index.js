@@ -1,3 +1,3 @@
-import MovesTab from './MovesTab';
+import MovesTab from './MovesTab'
 
-export default MovesTab;
+export default MovesTab
