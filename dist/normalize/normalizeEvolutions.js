@@ -1,4 +1,3 @@
-// @flow
 import { BASE_SPRITE_URL_V2 } from '../constants'
 const getEvolve = (chain, evolve) => {
   if (!evolve) return chain

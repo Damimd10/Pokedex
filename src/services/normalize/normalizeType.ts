@@ -1,5 +1,3 @@
-// @flow
-
 import { PokemonTypes, PokemonTypesNormalized } from '../models'
 import { DamageDetails, DamageRelations } from '../models/shared'
 import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants'

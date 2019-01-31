@@ -26,7 +26,7 @@ interface EvolutionDetail {
 export interface ChainLink {
   is_baby: boolean;
   species: Details;
-  evolution_details: EvolutionDetail;
+  evolution_details: EvolutionDetail[];
   evolves_to: ChainLink[];
 }
 

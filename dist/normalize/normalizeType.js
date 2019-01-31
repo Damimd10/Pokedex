@@ -1,4 +1,3 @@
-// @flow
 import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants'
 const mappedDamageDetails = (damage, key) =>
   damage[key].map(({ name }) => ({
