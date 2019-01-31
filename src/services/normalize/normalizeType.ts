@@ -5,14 +5,14 @@ import { DAMAGE_TABLE, POKEMON_TYPES } from '../constants'
 const mappedDamageDetails = (damage: DamageRelations, key: string): DamageDetails[] => damage[key].map(({ name }: { name: string }) => ({
   name,
   icon: POKEMON_TYPES[name].icon,
-  damage: DAMAGE_TABLE[key],
+  damage: DAMAGE_TABLE[key as keyof DamageRelations],
 }))
 
 const mapDamage = (damage: DamageRelations, who: string) => {
-  const keys = Object.keys(damage)
+  const keys: string[] = Object.keys(damage)
 
   return keys.reduce((accumulator: DamageDetails[], key: string) => {
-    if (key.includes(who) && damage[key].length > 0) {
+    if (key.includes(who) && damage[key as keyof DamageRelations].length > 0) {
       accumulator.push(...mappedDamageDetails(damage, key))
     }
 

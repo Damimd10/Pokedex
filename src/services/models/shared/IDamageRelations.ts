@@ -1,4 +1,3 @@
-// @flow
 import { Details } from './IDetails';
 
 export interface DamageRelations {
