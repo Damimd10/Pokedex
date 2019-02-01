@@ -1,8 +1,9 @@
-import React from 'react'
-import { arrayOf, shape, string } from 'prop-types'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { Component } from 'react';
+import { arrayOf, shape, string } from 'prop-types';
+import { StyleSheet, Text, View } from 'react-native';
+import Tts from 'react-native-tts';
 
-import PokemonType from '../../../../shared/components/PokemonType/PokemonType'
+import PokemonType from '../../../../shared/components/PokemonType/PokemonType';
 
 const styles = StyleSheet.create({
   detailsContainer: {
@@ -30,19 +31,35 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
   },
-})
+});
 
-const PokemonDetails = ({ description, name, types }) => (
-  <View style={styles.detailsContainer}>
-    <Text style={styles.pokemonName}>{name}</Text>
-    <View style={styles.pokemonTypes}>
-      {types.map(type => (
-        <PokemonType key={type.name} {...type} />
-      ))}
-    </View>
-    <Text style={styles.pokemonDescription}>{description}</Text>
-  </View>
-)
+export default class PokemonDetails extends Component {
+  componentDidMount() {
+    const { description, name } = this.props;
+
+    Tts.getInitStatus().then(() => {
+      Tts.setDefaultRate(0.4);
+      // Tts.speak(name)
+      // Tts.speak(description)
+    });
+  }
+
+  render() {
+    const { description, name, types } = this.props;
+
+    return (
+      <View style={styles.detailsContainer}>
+        <Text style={styles.pokemonName}>{name}</Text>
+        <View style={styles.pokemonTypes}>
+          {types.map(type => (
+            <PokemonType key={type.name} {...type} />
+          ))}
+        </View>
+        <Text style={styles.pokemonDescription}>{description}</Text>
+      </View>
+    );
+  }
+}
 
 PokemonDetails.propTypes = {
   description: string.isRequired,
@@ -53,6 +70,4 @@ PokemonDetails.propTypes = {
       name: string.isRequired,
     }),
   ).isRequired,
-}
-
-export default PokemonDetails
+};
