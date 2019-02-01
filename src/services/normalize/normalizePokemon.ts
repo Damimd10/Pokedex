@@ -13,6 +13,7 @@ import {
   PokemonSpecies,
   EvolutionChain,
   PokemonSpeciesWithEvolutions,
+  ColorRange,
 } from '../models'
 import {
   BASE_SPRITE_URL_V2,
@@ -23,7 +24,7 @@ import {
   POKEMON_TYPES,
 } from '../constants'
 
-const getColor = (species: any): any => PALETTE_COLOR[species.color.name as keyof PaletteColor]
+const getColor = (species: PokemonSpecies): ColorRange => PALETTE_COLOR[species.color.name as keyof PaletteColor]
 
 const getDescription = (species: PokemonSpecies): string => species.flavor_text_entries.filter((flavor: MoveFlavorText) => flavor.language.name === 'en')[0]
   .flavor_text

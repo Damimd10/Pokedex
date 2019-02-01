@@ -17,4 +17,4 @@ interface PaletteColor {
   yellow: ColorRange
 }
 
-export default PaletteColor
+export { ColorRange, PaletteColor }

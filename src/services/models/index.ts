@@ -12,10 +12,11 @@ import { ChainLink, EvolutionChain, NormalizedEvolutions } from './IEvolutionCha
 import {
   MappedStat, NameStats, MaxStats, PokemonStat,
 } from './IStats'
-import PaletteColor from './IPaletteColor'
+import { ColorRange, PaletteColor } from './IPaletteColor'
 import Error from './IError'
 
 export {
+  ColorRange,
   ChainLink,
   Error,
   EvolutionChain,
