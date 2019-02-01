@@ -23,7 +23,8 @@ import EvolutionTab from './components/EvolutionTab';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
-import PokemonHeader from './components/PokemonHeader/PokemonHeader';
+import PokemonHeader from './components/PokemonHeader';
+import PokemonFooter from './components/PokemonFooter';
 
 const styles = StyleSheet.create({
   container: { alignItems: 'center' },
@@ -114,39 +115,13 @@ class Pokemon extends Component {
           </LinearGradient>
           {this.getTabContent()}
         </Content>
-        <Footer>
-          <FooterTab style={{ backgroundColor: '#FAFAFA' }}>
-            <Button
-              active={isActiveStats}
-              onPress={() => this.onTabPress('stats')}
-              style={{ backgroundColor: isActiveStats ? color.primary : 'transparent' }}
-            >
-              <Text style={[styles.tabTitle, { color: isActiveStats ? 'white' : color.primary }]}>
-                Stats
-              </Text>
-            </Button>
-            <Button
-              active={isActiveEvolutions}
-              onPress={() => this.onTabPress('evolutions')}
-              style={{ backgroundColor: isActiveEvolutions ? color.primary : 'transparent' }}
-            >
-              <Text
-                style={[styles.tabTitle, { color: isActiveEvolutions ? 'white' : color.primary }]}
-              >
-                Evolutions
-              </Text>
-            </Button>
-            <Button
-              active={isActiveMoves}
-              onPress={() => this.onTabPress('moves')}
-              style={{ backgroundColor: isActiveMoves ? color.primary : 'transparent' }}
-            >
-              <Text style={[styles.tabTitle, { color: isActiveMoves ? 'white' : color.primary }]}>
-                Moves
-              </Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <PokemonFooter
+          isActiveEvolutions={isActiveEvolutions}
+          isActiveMoves={isActiveMoves}
+          isActiveStats={isActiveStats}
+          color={color}
+          onTabPress={this.onTabPress}
+        />
       </Container>
     );
   }
