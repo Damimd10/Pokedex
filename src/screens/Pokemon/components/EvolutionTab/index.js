@@ -1,3 +1,3 @@
-import EvolutionTab from './EvolutionTab'
+import EvolutionTab from './EvolutionTab';
 
-export default EvolutionTab
+export default EvolutionTab;

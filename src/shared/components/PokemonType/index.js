@@ -1,3 +1,3 @@
-import PokemonType from './PokemonType'
+import PokemonType from './PokemonType';
 
-export default PokemonType
+export default PokemonType;

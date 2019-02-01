@@ -1,7 +1,7 @@
-import React from 'react'
-import { arrayOf, number, shape, string } from 'prop-types'
-import { Image, StyleSheet, View } from 'react-native'
-import { Body, ListItem, Text, Right } from 'native-base'
+import React from 'react';
+import { arrayOf, number, shape, string } from 'prop-types';
+import { Image, StyleSheet, View } from 'react-native';
+import { Body, ListItem, Text, Right } from 'native-base';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textTransform: 'capitalize',
   },
-})
+});
 
 const MovesTab = ({ moves }) => (
   <View style={styles.container}>
@@ -32,7 +32,7 @@ const MovesTab = ({ moves }) => (
       </ListItem>
     ))}
   </View>
-)
+);
 
 MovesTab.propTypes = {
   moves: arrayOf(
@@ -45,6 +45,6 @@ MovesTab.propTypes = {
       type: string,
     }),
   ).isRequired,
-}
+};
 
-export default MovesTab
+export default MovesTab;

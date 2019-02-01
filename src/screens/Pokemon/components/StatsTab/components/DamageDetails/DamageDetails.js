@@ -1,6 +1,6 @@
-import React from 'react'
-import { string } from 'prop-types'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { string } from 'prop-types';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   type: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-})
+});
 
 const DamageDetails = ({ damage, icon }) => (
   <View>
@@ -28,10 +28,10 @@ const DamageDetails = ({ damage, icon }) => (
       </View>
     </View>
   </View>
-)
+);
 
 DamageDetails.propTypes = {
   damage: string.isRequired,
-}
+};
 
-export default DamageDetails
+export default DamageDetails;

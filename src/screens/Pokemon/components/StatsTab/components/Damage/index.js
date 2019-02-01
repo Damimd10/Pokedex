@@ -1,3 +1,3 @@
-import Damage from './Damage'
+import Damage from './Damage';
 
-export default Damage
+export default Damage;

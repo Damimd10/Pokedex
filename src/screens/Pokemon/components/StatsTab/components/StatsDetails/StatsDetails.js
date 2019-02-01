@@ -1,7 +1,7 @@
-import React from 'react'
-import { number, shape, string } from 'prop-types'
-import { StyleSheet, Text, View } from 'react-native'
-import * as Progress from 'react-native-progress'
+import React from 'react';
+import { number, shape, string } from 'prop-types';
+import { StyleSheet, Text, View } from 'react-native';
+import * as Progress from 'react-native-progress';
 
 const styles = StyleSheet.create({
   statDetailsContainer: {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: 'bold',
   },
-})
+});
 
 const StatsDetails = ({ averageStat, baseStat, color, colorStat, name }) => (
   <View key={name} style={styles.stats}>
@@ -39,7 +39,7 @@ const StatsDetails = ({ averageStat, baseStat, color, colorStat, name }) => (
       unfilledColor="#F1F1F1"
     />
   </View>
-)
+);
 
 StatsDetails.propTypes = {
   color: shape({
@@ -51,6 +51,6 @@ StatsDetails.propTypes = {
   baseStat: number.isRequired,
   colorStat: string.isRequired,
   name: string.isRequired,
-}
+};
 
-export default StatsDetails
+export default StatsDetails;

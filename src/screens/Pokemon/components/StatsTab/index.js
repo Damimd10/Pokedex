@@ -1,3 +1,3 @@
-import StatsTab from './StatsTab'
+import StatsTab from './StatsTab';
 
-export default StatsTab
+export default StatsTab;

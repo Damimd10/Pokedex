@@ -1,3 +1,3 @@
-import PokemonDetails from './PokemonDetails'
+import PokemonDetails from './PokemonDetails';
 
-export default PokemonDetails
+export default PokemonDetails;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { arrayOf, number, shape, string } from 'prop-types'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { arrayOf, number, shape, string } from 'prop-types';
 
-import StatsDetails from '../StatsDetails'
+import StatsDetails from '../StatsDetails';
 
 const styles = StyleSheet.create({
   statsContainer: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     height: 150,
     margin: 20,
   },
-})
+});
 
 const PokemonStats = ({ color, stats }) => (
   <View style={styles.statsContainer}>
@@ -18,7 +18,7 @@ const PokemonStats = ({ color, stats }) => (
       <StatsDetails key={stat.name} color={color} {...stat} />
     ))}
   </View>
-)
+);
 
 PokemonStats.propTypes = {
   color: shape({
@@ -34,6 +34,6 @@ PokemonStats.propTypes = {
       name: string,
     }),
   ).isRequired,
-}
+};
 
-export default PokemonStats
+export default PokemonStats;
