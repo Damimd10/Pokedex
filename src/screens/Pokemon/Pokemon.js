@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { Button, Container, Content, Footer, FooterTab, Text } from 'native-base';
+import {
+  Button,
+  Container,
+  Content,
+  Header,
+  Left,
+  Body,
+  Title,
+  Icon,
+  Footer,
+  FooterTab,
+  Right,
+  Text,
+} from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { getPokemon } from '../../services';
@@ -10,6 +23,7 @@ import EvolutionTab from './components/EvolutionTab';
 import MovesTab from './components/MovesTab';
 import StatsTab from './components/StatsTab';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
+import PokemonHeader from './components/PokemonHeader/PokemonHeader';
 
 const styles = StyleSheet.create({
   container: { alignItems: 'center' },
@@ -55,10 +69,15 @@ class Pokemon extends Component {
 
   render() {
     const {
-      error,
-      loading,
-      pokemon: { color, description, name, sprite, types },
-    } = this.state;
+      state: {
+        error,
+        loading,
+        pokemon: { color, description, name, sprite, types },
+      },
+      props: {
+        navigation: { goBack },
+      },
+    } = this;
 
     const isActiveMoves = this.isActive('moves');
     const isActiveStats = this.isActive('stats');
@@ -82,6 +101,7 @@ class Pokemon extends Component {
 
     return (
       <Container>
+        <PokemonHeader color={color} goBack={goBack} name={name} />
         <Content>
           <LinearGradient
             start={{ x: 0, y: 0 }}

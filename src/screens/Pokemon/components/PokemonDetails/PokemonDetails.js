@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 50,
     borderTopEndRadius: 50,
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 5,
     width: '100%',
   },
   pokemonName: {
@@ -49,7 +49,6 @@ export default class PokemonDetails extends Component {
 
     return (
       <View style={styles.detailsContainer}>
-        <Text style={styles.pokemonName}>{name}</Text>
         <View style={styles.pokemonTypes}>
           {types.map(type => (
             <PokemonType key={type.name} {...type} />

@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   },
   pokemonSpriteImage: {
     position: 'relative',
-    top: 30,
     left: 0,
     height: 180,
     width: size.width * 0.5,
