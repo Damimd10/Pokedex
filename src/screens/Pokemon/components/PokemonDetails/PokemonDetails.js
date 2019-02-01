@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   pokemonDescription: {
-    color: '#888888',
+    fontFamily: 'Oxygen-Bold',
+    color: '#868686',
     fontSize: 14,
     fontWeight: 'bold',
     padding: 5,

@@ -9,7 +9,7 @@
     "flow": "flow",
     "flow:stop": "flow stop",
     "lint": "eslint src",
-    "pretty": "prettier --semi true --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\""
+    "pretty": "prettier --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\""
   },
   "lint-staged": {
     "*.js": [

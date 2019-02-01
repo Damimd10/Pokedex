@@ -6,7 +6,13 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
   leftHeader: { paddingHorizontal: 5 },
-  headerTitle: { color: '#F4F9F3', textTransform: 'uppercase' },
+  headerTitle: {
+    color: '#F4F9F3',
+    fontFamily: 'Oxygen-Regular',
+    fontSize: 20,
+    letterSpacing: 1,
+    textTransform: 'capitalize',
+  },
 });
 
 const PokemonHeader = ({ color, goBack, name }) => (

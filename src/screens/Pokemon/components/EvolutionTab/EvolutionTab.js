@@ -23,7 +23,12 @@ const styles = StyleSheet.create({
     color: '#E0E0E0',
     fontSize: 50,
   },
-  levelText: { marginBottom: -20 },
+  levelText: {
+    marginBottom: -20,
+    fontFamily: 'Oxygen-Bold',
+    fontSize: 14,
+    letterSpacing: 1,
+  },
 });
 
 const EvolutionTab = ({ color, evolutionChain }) => (

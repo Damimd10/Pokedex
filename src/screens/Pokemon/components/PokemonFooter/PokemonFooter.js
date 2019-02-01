@@ -3,7 +3,13 @@ import { func, shape, string, bool } from 'prop-types';
 import { StyleSheet } from 'react-native';
 import { Button, Footer, FooterTab, Text } from 'native-base';
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabTitle: {
+    fontFamily: 'Oxygen-Bold',
+    fontSize: 13,
+    textTransform: 'uppercase',
+  },
+});
 
 const PokemonFooter = ({ color, isActiveStats, isActiveEvolutions, isActiveMoves, onTabPress }) => (
   <Footer>

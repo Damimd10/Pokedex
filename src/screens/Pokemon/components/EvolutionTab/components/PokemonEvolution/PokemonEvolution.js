@@ -4,7 +4,12 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  evolutionName: { fontSize: 16, textTransform: 'capitalize', marginTop: -10 },
+  evolutionName: {
+    fontFamily: 'Oxygen-Regular',
+    fontSize: 16,
+    textTransform: 'capitalize',
+    marginTop: -10,
+  },
   evolutionSprite: { height: 100, width: 100 },
 });
 

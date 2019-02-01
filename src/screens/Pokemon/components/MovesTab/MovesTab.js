@@ -8,10 +8,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   levelText: {
+    fontFamily: 'Oxygen-Bold',
     color: '#B8B8B8',
-    fontSize: 14,
+    fontSize: 13,
   },
   moveName: {
+    fontFamily: 'Oxygen-Regular',
     color: '#505050',
     fontSize: 20,
     textTransform: 'capitalize',

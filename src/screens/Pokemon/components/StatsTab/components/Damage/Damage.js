@@ -5,9 +5,25 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import DamageDetails from '../DamageDetails';
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  title: { fontWeight: 'bold', margin: 10, fontSize: 20 },
-  column: { flex: 1, marginVertical: 10, justifyContent: 'center', alignItems: 'center' },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 3,
+  },
+  title: {
+    fontWeight: 'bold',
+    margin: 10,
+    fontSize: 20,
+    fontFamily: 'Oxygen-Regular',
+    textTransform: 'capitalize',
+  },
+  column: {
+    flex: 1,
+    marginVertical: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 const Damage = ({ color, damage, title }) => (
@@ -24,6 +40,7 @@ const Damage = ({ color, damage, title }) => (
 );
 
 Damage.propTypes = {
+  color: shape({ primary: string }).isRequired,
   damage: arrayOf(shape({ damage: string, name: string })).isRequired,
   title: string.isRequired,
 };
