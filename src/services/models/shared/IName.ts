@@ -1,8 +1,6 @@
-// @flow
-
-import { Details } from './IDetails';
+import { Details } from './IDetails'
 
 export interface Name {
-  name: string;
-  language: Details;
+  name: string
+  language: Details
 }

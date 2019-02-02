@@ -1,9 +1,7 @@
-// @flow
-
-import { Details } from './IDetails';
+import { Details } from './IDetails'
 
 export interface MoveFlavorText {
-  flavor_text: string;
-  language: Details;
-  version_group: Details;
+  flavor_text: string
+  language: Details
+  version_group: Details
 }

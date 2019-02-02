@@ -1,5 +1,3 @@
-// @flow
-
 export interface APIResource {
-  url: string;
+  url: string
 }

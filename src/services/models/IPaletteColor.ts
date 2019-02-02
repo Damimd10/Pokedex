@@ -1,10 +1,10 @@
-interface ColorRange {
+export interface ColorRange {
   dark?: string
   light?: string
   primary?: string
 }
 
-interface PaletteColor {
+export interface PaletteColor {
   black: ColorRange
   blue: ColorRange
   brown: ColorRange
@@ -16,5 +16,3 @@ interface PaletteColor {
   white: ColorRange
   yellow: ColorRange
 }
-
-export { ColorRange, PaletteColor }

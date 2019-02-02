@@ -29,7 +29,7 @@ interface PokemonSpeciesVariety {
   pokemon: Details
 }
 
-interface PokemonSpecies {
+export interface PokemonSpecies {
   id: number
   name: number
   order: number
@@ -57,8 +57,6 @@ interface PokemonSpecies {
   varieties: PokemonSpeciesVariety[]
 }
 
-interface PokemonSpeciesWithEvolutions extends PokemonSpecies {
+export interface PokemonSpeciesWithEvolutions extends PokemonSpecies {
   evolutions: EvolutionChain
 }
-
-export { PokemonSpecies, PokemonSpeciesWithEvolutions }

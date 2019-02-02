@@ -3,7 +3,7 @@ import { POKEMON_TYPES } from '../constants'
 
 const formatName = (name: string): string => name.replace(/-/g, ' ')
 
-const normalizeMove = (move: Move, level: string): NormalizedMove => ({
+const normalizeMove = (move: Move, level: number): NormalizedMove => ({
   level,
   name: formatName(move.name),
   accuracy: move.accuracy || 0,

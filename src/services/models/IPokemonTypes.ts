@@ -15,7 +15,7 @@ interface Pokemon {
   pokemon: Details
 }
 
-interface Types {
+export interface Types {
   id: number
   name: string
   damage_relations: DamageRelations
@@ -27,12 +27,12 @@ interface Types {
   moves: Details[]
 }
 
-interface PokemonType {
+export interface PokemonType {
   slot: number
   type: Details
 }
 
-interface PokemonTypesNormalized {
+export interface PokemonTypesNormalized {
   damageFrom: DamageDetails[]
   damageTo: DamageDetails[]
 }
@@ -42,7 +42,7 @@ interface TypeDetails {
   icon: any
 }
 
-interface MappedTypes {
+export interface MappedTypes {
   bug: TypeDetails
   dark: TypeDetails
   dragon: TypeDetails
@@ -63,12 +63,8 @@ interface MappedTypes {
   water: TypeDetails
 }
 
-interface NormalizedTypes {
+export interface NormalizedTypes {
   name: string
   color: string
   icon: any
-}
-
-export {
-  NormalizedTypes, PokemonType, MappedTypes, PokemonTypesNormalized, Types,
 }

@@ -5,8 +5,8 @@ import {
   PokemonTypesNormalized,
   Types,
 } from './IPokemonTypes'
-import { Move, NormalizedMove } from './IPokemonMoves'
-import { NormalizedPokemon, Pokemons } from './IPokemons'
+import { Move, NormalizedMove, PokemonMove } from './IPokemonMoves'
+import { NormalizedPokemon, Pokemon, Pokemons } from './IPokemons'
 import { PokemonSpecies, PokemonSpeciesWithEvolutions } from './IPokemonSpecies'
 import { ChainLink, EvolutionChain, NormalizedEvolutions } from './IEvolutionChain'
 import {
@@ -37,4 +37,6 @@ export {
   Types,
   PaletteColor,
   PokemonSpeciesWithEvolutions,
+  PokemonMove,
+  Pokemon,
 }

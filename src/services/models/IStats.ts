@@ -1,12 +1,12 @@
 import { Details } from './shared'
 
-interface PokemonStat {
+export interface PokemonStat {
   stat: Details
   effort: number
   base_stat: number
 }
 
-interface NameStats {
+export interface NameStats {
   hp: string
   speed: string
   attack: string
@@ -15,7 +15,7 @@ interface NameStats {
   'special-defense': string
 }
 
-interface MaxStats {
+export interface MaxStats {
   hp: number
   speed: number
   attack: number
@@ -24,13 +24,9 @@ interface MaxStats {
   'special-defense': number
 }
 
-interface MappedStat {
+export interface MappedStat {
   averageStat: number
   baseStat: number
   colorStat: any
   name: keyof NameStats
-}
-
-export {
-  MappedStat, MaxStats, NameStats, PokemonStat,
 }

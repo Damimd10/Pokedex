@@ -1,7 +1,5 @@
-// @flow
-
 export interface DamageDetails {
-  name: string;
-  icon: any;
-  damage: string;
+  name: string
+  icon: any
+  damage: string
 }

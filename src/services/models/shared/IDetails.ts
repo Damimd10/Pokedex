@@ -1,6 +1,4 @@
-// @flow
-
 export interface Details {
-  name: string;
-  url: string;
+  name: string
+  url: string
 }

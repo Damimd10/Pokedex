@@ -1,5 +1,3 @@
-interface Error {
+export default interface Error {
   errorMessage: string
 }
-
-export default Error

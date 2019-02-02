@@ -1,5 +1,5 @@
-import { POKEMON_TYPES } from '../constants'
-const formatName = name => name.replace(/-/g, ' ')
+import { POKEMON_TYPES } from '../constants';
+const formatName = name => name.replace(/-/g, ' ');
 const normalizeMove = (move, level) => ({
   level,
   name: formatName(move.name),
@@ -8,6 +8,6 @@ const normalizeMove = (move, level) => ({
   pp: move.pp || 0,
   type: move.type.name,
   typeIcon: POKEMON_TYPES[move.type.name].icon,
-})
-export default normalizeMove
+});
+export default normalizeMove;
 //# sourceMappingURL=normalizeMove.js.map
