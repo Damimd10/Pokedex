@@ -1,6 +1,6 @@
 import React from 'react';
 import { any, string } from 'prop-types';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Button, Text } from 'native-base';
 
 const styles = StyleSheet.create({
