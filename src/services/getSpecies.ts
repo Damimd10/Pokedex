@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from 'axios'
 
-import { Error, PokemonSpecies, PokemonSpeciesWithEvolutions } from './models'
+import { Error, NormalizedEvolutions, PokemonSpecies } from './models'
 import getEvolutionChain from './getEvolutionChain'
 import { handleErrorsResponse } from './utils'
 
-const fetchEvolutionChain = async (data: PokemonSpecies): Promise<PokemonSpecies & any> => ({
+type Evolutions = { evolutions: Error | NormalizedEvolutions[] }
+
+const fetchEvolutionChain = async (data: PokemonSpecies): Promise<PokemonSpecies & Evolutions> => ({
   ...data,
   evolutions: await getEvolutionChain(data.evolution_chain.url),
 })

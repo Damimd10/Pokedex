@@ -7,6 +7,7 @@ import {
   PokemonTypesNormalized,
   Types,
   NormalizedMove,
+  NormalizedPokemon,
 } from './models'
 import { BASE_URL } from './constants'
 import { normalizePokemon } from './normalize'
@@ -44,7 +45,7 @@ const fetchAll = async (data: Pokemon): Promise<any> => {
   }
 }
 
-const getPokemon = (id: number): Promise<any> =>
+const getPokemon = (id: number): Promise<Error | NormalizedPokemon> =>
   axios
     .get(`${BASE_URL}${id}`)
     .then((response: AxiosResponse) => response.data)

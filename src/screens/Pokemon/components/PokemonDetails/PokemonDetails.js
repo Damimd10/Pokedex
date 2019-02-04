@@ -40,8 +40,8 @@ export default class PokemonDetails extends Component {
 
     Tts.getInitStatus().then(() => {
       Tts.setDefaultRate(0.4);
-      // Tts.speak(name)
-      // Tts.speak(description)
+      Tts.speak(name);
+      Tts.speak(description);
     });
   }
 
