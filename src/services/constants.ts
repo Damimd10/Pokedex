@@ -35,9 +35,9 @@ const DAMAGE_TABLE = {
 
 const PALETTE_COLOR: PaletteColor = {
   black: {
-    dark: '',
-    light: '#6d6d6d',
-    primary: '#424242',
+    dark: '#231930',
+    light: '#B0A8B9',
+    primary: '#4B4453',
   },
   blue: {
     dark: '#1976D2',
@@ -75,9 +75,9 @@ const PALETTE_COLOR: PaletteColor = {
     primary: '#F44336',
   },
   white: {
-    dark: '',
-    light: '#F1F0DC',
-    primary: '#B1CFCD',
+    dark: '#BFBFBF',
+    light: '#FCFCFC',
+    primary: '#F5F5F5',
   },
   yellow: {
     dark: '#FFA000',

@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
   tabTitle: { textTransform: 'uppercase' },
 });
 
+const ActiveTab = {
+  stats: { component: StatsTab, props: ['color', 'stats', 'typesRelation'] },
+  evolutions: { component: EvolutionTab, props: ['color', 'evolutionChain'] },
+  moves: { component: MovesTab, props: ['moves'] },
+};
+
 class Pokemon extends Component {
   state = {
     activeTab: 'stats',
@@ -42,17 +48,18 @@ class Pokemon extends Component {
   isActive = value => value === this.state.activeTab;
 
   getTabContent = () => {
-    const { color, evolutionChain, moves, stats, typesRelation } = this.state.pokemon;
+    const { activeTab, pokemon } = this.state;
 
-    if (this.state.activeTab === 'stats') {
-      return <StatsTab color={color} stats={stats} typesRelation={typesRelation} />;
-    }
+    const { component: CustomComponent, props } = ActiveTab[activeTab];
+    const customProps = props.reduce(
+      (accumulator, prop) => ({
+        ...accumulator,
+        [prop]: pokemon[prop],
+      }),
+      {},
+    );
 
-    if (this.state.activeTab === 'evolutions') {
-      return <EvolutionTab color={color} evolutionChain={evolutionChain} />;
-    }
-
-    return <MovesTab moves={moves} />;
+    return <CustomComponent {...customProps} />;
   };
 
   onTabPress = tab => this.setState({ activeTab: tab });
