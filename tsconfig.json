@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es5",
+    "downlevelIteration": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "lib": ["es2015"],
     "jsx": "react",
@@ -9,6 +10,14 @@
     "outDir": "./dist",
     "strict": true,
     "types": ["react", "react-native", "jest"],
-    "allowSyntheticDefaultImports": true
-  }
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "removeComments": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*"]
 }
