@@ -3,6 +3,7 @@ import {
   FlatList, StyleSheet, Text, View,
 } from 'react-native';
 
+import { ColorRange } from '../../../../../../services/models';
 import DamageDetails from '../DamageDetails';
 
 const styles = StyleSheet.create({
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  color: any;
+  color: ColorRange;
   damage: any;
   title: string;
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Dimensions, Image, StyleSheet, View,
+  Dimensions, Image, StyleSheet, View, ScaledSize,
 } from 'react-native';
 
-const size = Dimensions.get('window');
+const size: ScaledSize = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   pokemonSprite: {

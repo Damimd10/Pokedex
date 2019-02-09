@@ -1,10 +1,11 @@
 import React from 'react';
-import { func, shape, string } from 'prop-types';
 import { StyleSheet } from 'react-native';
 import {
   Body, Button, Header, Icon, Left, Right, Title,
 } from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
+
+import { ColorRange } from '../../../../services/models';
 
 const styles = StyleSheet.create({
   leftHeader: { paddingHorizontal: 5 },
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  color: any;
+  color: ColorRange;
   goBack(routeKey?: string | null): boolean;
   name: string;
 };

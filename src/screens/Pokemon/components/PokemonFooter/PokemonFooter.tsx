@@ -4,6 +4,8 @@ import {
   Button, Footer, FooterTab, Text,
 } from 'native-base';
 
+import { ColorRange } from '../../../../services/models';
+
 const styles = StyleSheet.create({
   tabTitle: {
     fontFamily: 'Oxygen-Bold',
@@ -13,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  color: any;
+  color: ColorRange;
   isActiveStats: boolean;
   isActiveEvolutions: boolean;
   isActiveMoves: boolean;

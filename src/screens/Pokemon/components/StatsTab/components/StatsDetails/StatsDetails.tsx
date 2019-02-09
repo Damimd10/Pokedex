@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Progress from 'react-native-progress';
+import { ColorRange, MappedStat } from '../../../../../../services/models';
 
 const styles = StyleSheet.create({
   statDetailsContainer: {
@@ -20,13 +21,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
-  averageStat: any;
-  baseStat: any;
-  color: any;
-  colorStat: any;
-  name: any;
-};
+type Props = MappedStat & { color: ColorRange };
 
 const StatsDetails: React.FunctionComponent<Props> = ({
   averageStat,

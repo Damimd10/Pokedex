@@ -66,7 +66,7 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
     const { component: CustomComponent, props } = ActiveTab[activeTab];
 
     const customProps = props.reduce(
-      (accumulator, prop) => ({
+      (accumulator, prop: string) => ({
         ...accumulator,
         [prop]: pokemon[prop as keyof NormalizedPokemon],
       }),
@@ -76,7 +76,7 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
     return <CustomComponent {...customProps} />;
   };
 
-  onTabPress = (tab: string) => this.setState({ activeTab: tab });
+  onTabPress = (tab: string): void => this.setState({ activeTab: tab });
 
   render() {
     const {
@@ -84,7 +84,7 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
         error,
         loading,
         pokemon: {
-          color, description, name, sprite, types,
+          color, description, name, types,
         },
       },
       props: {
