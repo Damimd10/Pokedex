@@ -152,6 +152,7 @@ var __generator =
 import * as React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import { Body, Button, Container, Content, Header, Icon, Left, Right, Title } from 'native-base';
 import { getAllPokemons, getPokemon } from '../../services';
 import PokemonList from './components/PokemonList';
 var styles = StyleSheet.create({
@@ -161,6 +162,17 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  headerContainer: {
+    backgroundColor: '#C1392B',
+  },
+  leftHeader: { paddingHorizontal: 5 },
+  headerTitle: {
+    color: '#F4F9F3',
+    fontFamily: 'Oxygen-Regular',
+    fontSize: 20,
+    letterSpacing: 1,
+    textTransform: 'capitalize',
   },
 });
 var App = (function(_super) {
@@ -207,14 +219,16 @@ var App = (function(_super) {
             return [4, getAllPokemons()];
           case 1:
             pokemons = _a.sent();
-            if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage });
-            this.setState({ pokemonList: pokemons });
+            if (pokemons.errorMessage)
+              this.setState({ error: pokemons.errorMessage, loading: false });
+            this.setState({ pokemonList: pokemons, loading: false });
             return [2];
         }
       });
     });
   };
   App.prototype.render = function() {
+    var _this = this;
     var _a = this.state,
       error = _a.error,
       filteredPokemons = _a.filteredPokemons,
@@ -236,23 +250,55 @@ var App = (function(_super) {
       );
     }
     return React.createElement(
-      View,
-      { style: styles.container },
-      React.createElement(SearchBar, {
-        containerStyle: {
-          width: '100%',
-          backgroundColor: 'white',
-          borderTopWidth: 0,
-        },
-        lightTheme: true,
-        noIcon: true,
-        onChangeText: this.handleSearchBar,
-        placeholder: 'Pokedex',
-      }),
-      React.createElement(PokemonList, {
-        onPokemonSelect: this.onPokemonSelect,
-        pokemons: pokemons,
-      }),
+      Container,
+      null,
+      React.createElement(
+        Header,
+        { style: styles.headerContainer, noShadow: true, transparent: true },
+        React.createElement(
+          Left,
+          { style: styles.leftHeader },
+          React.createElement(
+            Button,
+            {
+              transparent: true,
+              onPress: function() {
+                return _this.props.navigation.goBack();
+              },
+            },
+            React.createElement(Icon, { name: 'arrow-back', style: { color: '#F4F9F3' } }),
+          ),
+        ),
+        React.createElement(
+          Body,
+          null,
+          React.createElement(Title, { style: styles.headerTitle }, 'Pokedex'),
+        ),
+        React.createElement(Right, null),
+      ),
+      React.createElement(
+        Content,
+        null,
+        React.createElement(
+          View,
+          { style: styles.container },
+          React.createElement(SearchBar, {
+            containerStyle: {
+              width: '100%',
+              backgroundColor: 'white',
+              borderTopWidth: 0,
+            },
+            lightTheme: true,
+            noIcon: true,
+            onChangeText: this.handleSearchBar,
+            placeholder: 'Find a Pokemon...',
+          }),
+          React.createElement(PokemonList, {
+            onPokemonSelect: this.onPokemonSelect,
+            pokemons: pokemons,
+          }),
+        ),
+      ),
     );
   };
   return App;

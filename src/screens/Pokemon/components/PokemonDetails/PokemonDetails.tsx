@@ -48,6 +48,10 @@ export default class PokemonDetails extends React.Component<Props, {}> {
     });
   }
 
+  componentWillUnmount() {
+    Tts.stop();
+  }
+
   render() {
     const { description, types } = this.props;
 

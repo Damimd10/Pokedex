@@ -5,8 +5,11 @@ import {
 import { SearchBar } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 
+import {
+  Body, Button, Container, Content, Header, Icon, Left, Right, Title,
+} from 'native-base';
 import { getAllPokemons, getPokemon } from '../../services';
-import { Error, NormalizedPokemon, Pokemons } from '../../services/models';
+import { Error, NormalizedPokemon } from '../../services/models';
 import { NormalizedPokemons } from '../../services/models/shared';
 import PokemonList from './components/PokemonList';
 
@@ -17,6 +20,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  headerContainer: {
+    backgroundColor: '#C1392B',
+  },
+  leftHeader: { paddingHorizontal: 5 },
+  headerTitle: {
+    color: '#F4F9F3',
+    fontFamily: 'Oxygen-Regular',
+    fontSize: 20,
+    letterSpacing: 1,
+    textTransform: 'capitalize',
   },
 });
 
@@ -42,9 +56,9 @@ export default class App extends React.Component<Props, State> {
   async componentDidMount(): Promise<void> {
     const pokemons: any = await getAllPokemons();
 
-    if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage });
+    if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage, loading: false });
 
-    this.setState({ pokemonList: pokemons });
+    this.setState({ pokemonList: pokemons, loading: false });
   }
 
   handleSearchBar = (currentPokemon: string): void => {
@@ -83,20 +97,35 @@ export default class App extends React.Component<Props, State> {
     }
 
     return (
-      <View style={styles.container}>
-        <SearchBar
-          containerStyle={{
-            width: '100%',
-            backgroundColor: 'white',
-            borderTopWidth: 0,
-          }}
-          lightTheme
-          noIcon
-          onChangeText={this.handleSearchBar}
-          placeholder="Pokedex"
-        />
-        <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemons} />
-      </View>
+      <Container>
+        <Header style={styles.headerContainer} noShadow transparent>
+          <Left style={styles.leftHeader}>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon name="arrow-back" style={{ color: '#F4F9F3' }} />
+            </Button>
+          </Left>
+          <Body>
+            <Title style={styles.headerTitle}>Pokedex</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <View style={styles.container}>
+            <SearchBar
+              containerStyle={{
+                width: '100%',
+                backgroundColor: 'white',
+                borderTopWidth: 0,
+              }}
+              lightTheme
+              noIcon
+              onChangeText={this.handleSearchBar}
+              placeholder="Find a Pokemon..."
+            />
+            <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemons} />
+          </View>
+        </Content>
+      </Container>
     );
   }
 }

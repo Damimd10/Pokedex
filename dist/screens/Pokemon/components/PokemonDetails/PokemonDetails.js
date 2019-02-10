@@ -83,6 +83,9 @@ var PokemonDetails = (function(_super) {
       Tts.speak(description);
     });
   };
+  PokemonDetails.prototype.componentWillUnmount = function() {
+    Tts.stop();
+  };
   PokemonDetails.prototype.render = function() {
     var _a = this.props,
       description = _a.description,
