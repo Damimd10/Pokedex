@@ -95,7 +95,6 @@ var Pokemon = (function(_super) {
       color = _c.color,
       description = _c.description,
       name = _c.name,
-      sprite = _c.sprite,
       types = _c.types,
       goBack = _a.props.navigation.goBack;
     var isActiveMoves = this.isActive('moves');

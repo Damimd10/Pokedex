@@ -21,20 +21,6 @@ var __extends =
       d.prototype = b === null ? Object.create(b) : ((__.prototype = b.prototype), new __());
     };
   })();
-var __assign =
-  (this && this.__assign) ||
-  function() {
-    __assign =
-      Object.assign ||
-      function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-          s = arguments[i];
-          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-      };
-    return __assign.apply(this, arguments);
-  };
 var __awaiter =
   (this && this.__awaiter) ||
   function(thisArg, _arguments, P, generator) {
@@ -163,7 +149,7 @@ var __generator =
       return { value: op[0] ? op[1] : void 0, done: true };
     }
   };
-import React, { Component } from 'react';
+import * as React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { getAllPokemons, getPokemon } from '../../services';
@@ -182,6 +168,7 @@ var App = (function(_super) {
   function App() {
     var _this = (_super !== null && _super.apply(this, arguments)) || this;
     _this.state = {
+      error: null,
       loading: true,
       filteredPokemons: [],
       pokemonList: [],
@@ -220,15 +207,8 @@ var App = (function(_super) {
             return [4, getAllPokemons()];
           case 1:
             pokemons = _a.sent();
-            this.setState(
-              __assign(
-                {},
-                pokemons.errorMessage
-                  ? { error: pokemons.errorMessage }
-                  : { pokemonList: pokemons },
-                { loading: false },
-              ),
-            );
+            if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage });
+            this.setState({ pokemonList: pokemons });
             return [2];
         }
       });
@@ -241,18 +221,20 @@ var App = (function(_super) {
       loading = _a.loading,
       pokemonList = _a.pokemonList;
     var pokemons = filteredPokemons.length ? filteredPokemons : pokemonList;
-    if (loading)
+    if (loading) {
       return React.createElement(
         View,
         { style: styles.container },
         React.createElement(ActivityIndicator, { size: 'large' }),
       );
-    if (error)
+    }
+    if (error) {
       return React.createElement(
         View,
         { style: styles.container },
         React.createElement(Text, null, error),
       );
+    }
     return React.createElement(
       View,
       { style: styles.container },
@@ -273,14 +255,7 @@ var App = (function(_super) {
       }),
     );
   };
-  App.navigationOptions = function() {
-    return {
-      headerStyle: { backgroundColor: '#C1392B' },
-      headerTitleStyle: { color: 'white', textTransform: 'uppercase' },
-      title: 'Pokedex',
-    };
-  };
   return App;
-})(Component);
+})(React.Component);
 export default App;
 //# sourceMappingURL=Home.js.map

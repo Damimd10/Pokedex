@@ -1,5 +1,4 @@
-import React from 'react';
-import { arrayOf, func, number, shape, string } from 'prop-types';
+import * as React from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 var styles = StyleSheet.create({
   container: {
@@ -59,16 +58,6 @@ var PokemonList = function(_a) {
       },
     }),
   );
-};
-PokemonList.propTypes = {
-  onPokemonSelect: func.isRequired,
-  pokemons: arrayOf(
-    shape({
-      id: number,
-      name: string,
-      sprite: string,
-    }),
-  ).isRequired,
 };
 export default PokemonList;
 //# sourceMappingURL=PokemonList.js.map

@@ -1,8 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import {
+  ActivityIndicator, StyleSheet, Text, View,
+} from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import { NavigationScreenProp } from 'react-navigation';
 
 import { getAllPokemons, getPokemon } from '../../services';
+import { Error, NormalizedPokemon, Pokemons } from '../../services/models';
+import { NormalizedPokemons } from '../../services/models/shared';
 import PokemonList from './components/PokemonList';
 
 const styles = StyleSheet.create({
@@ -15,59 +20,67 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class App extends Component {
-  static navigationOptions = () => ({
-    headerStyle: { backgroundColor: '#C1392B' },
-    headerTitleStyle: { color: 'white', textTransform: 'uppercase' },
-    title: 'Pokedex',
-  });
+type Props = {
+  navigation: NavigationScreenProp<{ pokemon: NormalizedPokemons[] }>;
+};
 
-  state = {
+type State = {
+  error?: any;
+  loading: boolean;
+  filteredPokemons: NormalizedPokemons[];
+  pokemonList: NormalizedPokemons[];
+};
+
+export default class App extends React.Component<Props, State> {
+  readonly state: State = {
+    error: null,
     loading: true,
     filteredPokemons: [],
     pokemonList: [],
   };
 
-  async componentDidMount() {
-    const pokemons = await getAllPokemons();
-    this.setState({
-      ...(pokemons.errorMessage ? { error: pokemons.errorMessage } : { pokemonList: pokemons }),
-      loading: false,
-    });
+  async componentDidMount(): Promise<void> {
+    const pokemons: any = await getAllPokemons();
+
+    if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage });
+
+    this.setState({ pokemonList: pokemons });
   }
 
-  handleSearchBar = currentPokemon => {
-    const filteredPokemons = this.state.pokemonList.filter(pokemon =>
-      pokemon.name.includes(currentPokemon.toUpperCase()),
-    );
+  handleSearchBar = (currentPokemon: string): void => {
+    const filteredPokemons = this.state.pokemonList.filter(pokemon => pokemon.name.includes(currentPokemon.toUpperCase()));
 
     this.setState({ filteredPokemons });
   };
 
-  onPokemonSelect = async id => {
+  onPokemonSelect = async (id: number): Promise<void> => {
     this.setState({ loading: true });
-    const pokemon = await getPokemon(id);
+    const pokemon: NormalizedPokemon | Error = await getPokemon(id);
     this.setState({ loading: false });
     this.props.navigation.navigate('Pokemon', { pokemon });
   };
 
   render() {
-    const { error, filteredPokemons, loading, pokemonList } = this.state;
+    const {
+      error, filteredPokemons, loading, pokemonList,
+    } = this.state;
     const pokemons = filteredPokemons.length ? filteredPokemons : pokemonList;
 
-    if (loading)
+    if (loading) {
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" />
         </View>
       );
+    }
 
-    if (error)
+    if (error) {
       return (
         <View style={styles.container}>
           <Text>{error}</Text>
         </View>
       );
+    }
 
     return (
       <View style={styles.container}>
