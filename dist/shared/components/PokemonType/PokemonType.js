@@ -1,5 +1,4 @@
-import React from 'react';
-import { string } from 'prop-types';
+import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Text } from 'native-base';
 var styles = StyleSheet.create({
@@ -21,10 +20,6 @@ var PokemonType = function(_a) {
     { key: name, style: [styles.typeContainer, { backgroundColor: color }] },
     React.createElement(Text, { style: styles.typeName }, name),
   );
-};
-PokemonType.propTypes = {
-  color: string.isRequired,
-  name: string.isRequired,
 };
 export default PokemonType;
 //# sourceMappingURL=PokemonType.js.map

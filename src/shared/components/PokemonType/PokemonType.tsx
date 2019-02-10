@@ -1,6 +1,5 @@
-import React from 'react';
-import { any, string } from 'prop-types';
-import { Image, StyleSheet } from 'react-native';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import { Button, Text } from 'native-base';
 
 const styles = StyleSheet.create({
@@ -15,15 +14,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const PokemonType = ({ color, name }) => (
+type Props = {
+  color: string;
+  name: string;
+};
+
+const PokemonType: React.FunctionComponent<Props> = ({ color, name }) => (
   <Button key={name} style={[styles.typeContainer, { backgroundColor: color }]}>
     <Text style={styles.typeName}>{name}</Text>
   </Button>
 );
-
-PokemonType.propTypes = {
-  color: string.isRequired,
-  name: string.isRequired,
-};
 
 export default PokemonType;
