@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {
-  FlatList, Image, StyleSheet, Text, TouchableOpacity, View,
-} from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+
 import { NormalizedPokemons } from '../../../../services/models/shared';
+import PokemonCard from '../PokemonCard';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,19 +11,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-  },
-  pokemonName: {
-    fontWeight: 'bold',
-  },
-  pokemonSprite: {
-    height: 110,
-    width: 110,
-  },
-  pokemonGrid: {
-    marginVertical: 3,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
@@ -39,14 +26,7 @@ const PokemonList: React.FunctionComponent<PokemonListProps> = ({ onPokemonSelec
       keyExtractor={item => item.name}
       numColumns={3}
       columnWrapperStyle={{ flex: 1, justifyContent: 'space-between' }}
-      renderItem={({ item }) => (
-        <View>
-          <TouchableOpacity style={styles.pokemonGrid} onPress={() => onPokemonSelect(item.id)}>
-            <Text style={styles.pokemonName}>{item.name}</Text>
-            <Image style={styles.pokemonSprite} source={{ uri: item.sprite }} />
-          </TouchableOpacity>
-        </View>
-      )}
+      renderItem={({ item }) => <PokemonCard onPokemonSelect={onPokemonSelect} {...item} />}
     />
   </View>
 );
