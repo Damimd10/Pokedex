@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
+export type PokemonListProps = {
   onPokemonSelect: (id: number) => void;
   pokemons: NormalizedPokemons[];
 };
 
-const PokemonList: React.FunctionComponent<Props> = ({ onPokemonSelect, pokemons }) => (
+const PokemonList: React.FunctionComponent<PokemonListProps> = ({ onPokemonSelect, pokemons }) => (
   <View style={styles.container}>
     <FlatList
       data={pokemons}
