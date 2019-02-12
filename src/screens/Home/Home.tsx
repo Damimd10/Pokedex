@@ -4,13 +4,13 @@ import {
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
+import { Container, Content } from 'native-base';
 
-import {
-  Body, Button, Container, Content, Header, Icon, Left, Right, Title,
-} from 'native-base';
 import { getAllPokemons, getPokemon } from '../../services';
 import { Error, NormalizedPokemon } from '../../services/models';
 import { NormalizedPokemons } from '../../services/models/shared';
+
+import Header from './components/Header';
 import PokemonList from './components/PokemonList';
 
 const styles = StyleSheet.create({
@@ -21,20 +21,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  headerContainer: {
-    backgroundColor: '#C1392B',
-  },
-  leftHeader: { paddingHorizontal: 5 },
-  headerTitle: {
-    color: '#F4F9F3',
-    fontFamily: 'Oxygen-Regular',
-    fontSize: 20,
-    letterSpacing: 1,
-    textTransform: 'capitalize',
+  searchBar: {
+    width: '100%',
+    backgroundColor: 'white',
+    borderTopWidth: 0,
   },
 });
 
-type Props = {
+export type HomeProps = {
   navigation: NavigationScreenProp<{ pokemon: NormalizedPokemons[] }>;
 };
 
@@ -45,7 +39,7 @@ type State = {
   pokemonList: NormalizedPokemons[];
 };
 
-export default class App extends React.Component<Props, State> {
+export default class App extends React.Component<HomeProps, State> {
   readonly state: State = {
     error: null,
     loading: true,
@@ -98,25 +92,11 @@ export default class App extends React.Component<Props, State> {
 
     return (
       <Container>
-        <Header style={styles.headerContainer} noShadow transparent>
-          <Left style={styles.leftHeader}>
-            <Button transparent onPress={() => this.props.navigation.goBack()}>
-              <Icon name="arrow-back" style={{ color: '#F4F9F3' }} />
-            </Button>
-          </Left>
-          <Body>
-            <Title style={styles.headerTitle}>Pokedex</Title>
-          </Body>
-          <Right />
-        </Header>
+        <Header goBack={this.props.navigation.goBack} />
         <Content>
           <View style={styles.container}>
             <SearchBar
-              containerStyle={{
-                width: '100%',
-                backgroundColor: 'white',
-                borderTopWidth: 0,
-              }}
+              containerStyle={styles.searchBar}
               lightTheme
               noIcon
               onChangeText={this.handleSearchBar}
