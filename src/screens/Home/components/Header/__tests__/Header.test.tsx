@@ -20,8 +20,6 @@ describe('<Header /> Component', () => {
 
       it('should render one Styled(Header) component', () => expect(header).toHaveLength(1));
 
-      it('should have a noLeft prop as true', () => expect(header.prop('noLeft')).toBe(true));
-
       it('should have a noShadow prop as true', () => expect(header.prop('noShadow')).toBe(true));
 
       it('should have a transparent prop as true', () => expect(header.prop('transparent')).toBe(true));
