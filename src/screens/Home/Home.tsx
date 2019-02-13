@@ -92,7 +92,7 @@ export default class App extends React.Component<HomeProps, State> {
 
     return (
       <Container>
-        <Header goBack={this.props.navigation.goBack} />
+        <Header />
         <Content>
           <View style={styles.container}>
             <SearchBar

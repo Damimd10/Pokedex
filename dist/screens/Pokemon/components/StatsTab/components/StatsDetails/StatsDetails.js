@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as Progress from 'react-native-progress';
 var styles = StyleSheet.create({
   statDetailsContainer: {
-    width: 40,
+    width: 50,
   },
   stats: {
     height: 50,
@@ -14,7 +14,6 @@ var styles = StyleSheet.create({
   statInfo: {
     fontSize: 12,
     padding: 5,
-    textTransform: 'uppercase',
     fontWeight: 'bold',
   },
 });

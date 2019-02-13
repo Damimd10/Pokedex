@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Oxygen-Regular',
     fontSize: 20,
     letterSpacing: 1,
-    textTransform: 'capitalize',
   },
 });
 
@@ -33,7 +32,7 @@ const PokemonHeader: React.FunctionComponent<Props> = ({ color, goBack, name }) 
         </Button>
       </Left>
       <Body>
-        <Title style={styles.headerTitle}>{name}</Title>
+        <Title style={styles.headerTitle}>{name.toUpperCase()}</Title>
       </Body>
       <Right />
     </Header>

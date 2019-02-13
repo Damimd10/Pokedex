@@ -4,6 +4,7 @@ import {
   Body, ListItem, Text, Right,
 } from 'native-base';
 
+import { toCapitalizeText } from '../../../../shared/utils';
 import { NormalizedPokemon } from '../../../../services/models';
 
 const styles = StyleSheet.create({
@@ -19,7 +20,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Oxygen-Regular',
     color: '#505050',
     fontSize: 20,
-    textTransform: 'capitalize',
   },
 });
 
@@ -30,7 +30,7 @@ const MovesTab: React.FunctionComponent<Props> = ({ moves }) => (
     {moves.map(({ level, name, typeIcon }) => (
       <ListItem icon key={name} style={{ margin: 5 }}>
         <Body>
-          <Text style={styles.moveName}>{name}</Text>
+          <Text style={styles.moveName}>{toCapitalizeText(name)}</Text>
           <Text style={styles.levelText}>{`Level ${level}`}</Text>
         </Body>
         <Right>

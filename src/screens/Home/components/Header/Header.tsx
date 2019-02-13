@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Body, Button, Header, Icon, Left, Right, Title,
+  Body, Header, Right, Title,
 } from 'native-base';
 import { StyleSheet } from 'react-native';
 
@@ -14,21 +14,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Oxygen-Regular',
     fontSize: 20,
     letterSpacing: 1,
-    textTransform: 'capitalize',
+    textAlign: 'center',
   },
 });
 
-export type HeaderProps = {
-  goBack(): void;
-};
-
-const HomeHeader: React.FunctionComponent<HeaderProps> = ({ goBack }) => (
-  <Header style={styles.headerContainer} noShadow transparent>
-    <Left style={styles.leftHeader}>
-      <Button transparent onPress={() => goBack()}>
-        <Icon name="arrow-back" style={{ color: '#F4F9F3' }} />
-      </Button>
-    </Left>
+const HomeHeader: React.FunctionComponent<{}> = () => (
+  <Header style={styles.headerContainer} noLeft noShadow transparent>
     <Body>
       <Title style={styles.headerTitle}>Pokedex</Title>
     </Body>

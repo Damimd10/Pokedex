@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { Body, ListItem, Text, Right } from 'native-base';
+import { toCapitalizeText } from '../../../../shared/utils';
 var styles = StyleSheet.create({
   container: {
     marginVertical: 10,
@@ -14,7 +15,6 @@ var styles = StyleSheet.create({
     fontFamily: 'Oxygen-Regular',
     color: '#505050',
     fontSize: 20,
-    textTransform: 'capitalize',
   },
 });
 var MovesTab = function(_a) {
@@ -32,7 +32,7 @@ var MovesTab = function(_a) {
         React.createElement(
           Body,
           null,
-          React.createElement(Text, { style: styles.moveName }, name),
+          React.createElement(Text, { style: styles.moveName }, toCapitalizeText(name)),
           React.createElement(Text, { style: styles.levelText }, 'Level ' + level),
         ),
         React.createElement(

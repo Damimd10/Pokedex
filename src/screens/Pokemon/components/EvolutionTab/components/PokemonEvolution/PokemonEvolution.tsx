@@ -3,12 +3,13 @@ import {
   Image, StyleSheet, Text, View,
 } from 'react-native';
 
+import { toCapitalizeText } from '../../../../../../shared/utils';
+
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   evolutionName: {
     fontFamily: 'Oxygen-Regular',
     fontSize: 16,
-    textTransform: 'capitalize',
     marginTop: -10,
   },
   evolutionSprite: { height: 100, width: 100 },
@@ -22,7 +23,7 @@ type Props = {
 const PokemonEvolution: React.FunctionComponent<Props> = ({ name, sprite }) => (
   <View style={styles.container}>
     <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
-    <Text style={styles.evolutionName}>{name}</Text>
+    <Text style={styles.evolutionName}>{toCapitalizeText(name)}</Text>
   </View>
 );
 

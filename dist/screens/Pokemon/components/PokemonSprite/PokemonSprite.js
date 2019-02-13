@@ -12,7 +12,7 @@ var styles = StyleSheet.create({
   pokemonSpriteImage: {
     position: 'relative',
     left: 0,
-    height: 180,
+    height: 190,
     width: size.width * 0.5,
   },
 });
@@ -23,7 +23,6 @@ var PokemonSprite = function(_a) {
     { style: styles.pokemonSprite },
     React.createElement(Image, {
       style: styles.pokemonSpriteImage,
-      resizeMode: 'contain',
       source: { uri: 'https://img.pokemondb.net/artwork/vector/large/' + name + '.png' },
     }),
   );

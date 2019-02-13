@@ -246,7 +246,7 @@ var App = (function(_super) {
     return React.createElement(
       Container,
       null,
-      React.createElement(Header, { goBack: this.props.navigation.goBack }),
+      React.createElement(Header, null),
       React.createElement(
         Content,
         null,

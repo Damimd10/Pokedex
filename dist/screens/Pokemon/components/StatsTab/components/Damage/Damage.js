@@ -27,7 +27,6 @@ var styles = StyleSheet.create({
     margin: 10,
     fontSize: 20,
     fontFamily: 'Oxygen-Regular',
-    textTransform: 'capitalize',
   },
   column: {
     flex: 1,

@@ -9,7 +9,6 @@ var styles = StyleSheet.create({
     fontFamily: 'Oxygen-Regular',
     fontSize: 20,
     letterSpacing: 1,
-    textTransform: 'capitalize',
   },
 });
 var PokemonHeader = function(_a) {
@@ -39,7 +38,7 @@ var PokemonHeader = function(_a) {
       React.createElement(
         Body,
         null,
-        React.createElement(Title, { style: styles.headerTitle }, name),
+        React.createElement(Title, { style: styles.headerTitle }, name.toUpperCase()),
       ),
       React.createElement(Right, null),
     ),

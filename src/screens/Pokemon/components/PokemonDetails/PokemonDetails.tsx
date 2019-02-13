@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   pokemonName: {
     margin: 10,
     fontSize: 30,
-    textTransform: 'capitalize',
   },
   pokemonTypes: {
     flexDirection: 'row',

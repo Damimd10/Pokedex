@@ -5,7 +5,7 @@ import { ColorRange, MappedStat } from '../../../../../../services/models';
 
 const styles = StyleSheet.create({
   statDetailsContainer: {
-    width: 40,
+    width: 50,
   },
   stats: {
     height: 50,
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   statInfo: {
     fontSize: 12,
     padding: 5,
-    textTransform: 'uppercase',
     fontWeight: 'bold',
   },
 });
