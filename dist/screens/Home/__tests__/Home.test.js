@@ -143,23 +143,26 @@ var __generator =
 var _this = this;
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getAllPokemons } from '../../../services';
+import { getAllPokemons, getPokemon } from '../../../services';
 import Home from '../Home';
 var goBackMock = jest.fn();
+var navigateMock = jest.fn();
 var pokemonList = [{ name: 'BULBASUR' }, { name: 'PIKACHU' }];
 jest.mock('../../../services', function() {
   return {
     getAllPokemons: jest.fn(),
+    getPokemon: jest.fn(),
   };
 });
 describe('<Home /> Component', function() {
   var wrapper;
-  var props = { navigation: { goBack: goBackMock } };
+  var props = { navigation: { goBack: goBackMock, navigate: navigateMock } };
   beforeEach(function() {
     wrapper = shallow(React.createElement(Home, __assign({}, props)));
   });
   afterEach(function() {
     getAllPokemons.mockClear();
+    getPokemon.mockClear();
   });
   describe('rendering', function() {
     describe('when is loading', function() {
@@ -297,6 +300,39 @@ describe('<Home /> Component', function() {
       it('should have an array with Bulbasur as the only Pokemon that match with the array of pokemons', function() {
         wrapper.instance().handleSearchBar('bu');
         expect(wrapper.state('filteredPokemons')).toEqual([{ name: 'BULBASUR' }]);
+      });
+    });
+    describe('onPokemonSelect instance', function() {
+      var id = 4;
+      var pokemonDetails = { name: 'Charmander' };
+      beforeEach(function() {
+        return __awaiter(_this, void 0, void 0, function() {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
+              case 0:
+                getPokemon.mockReturnValue(pokemonDetails);
+                return [4, wrapper.instance().onPokemonSelect(id)];
+              case 1:
+                _a.sent();
+                return [2];
+            }
+          });
+        });
+      });
+      afterEach(function() {
+        navigateMock.mockClear();
+      });
+      it('should call getPokemon service once', function() {
+        return expect(getPokemon).toHaveBeenCalledTimes(1);
+      });
+      it('should call getPokemon service with id parameter', function() {
+        return expect(getPokemon).toHaveBeenCalledWith(id);
+      });
+      it('should call navigate method of navigation once', function() {
+        return expect(navigateMock).toHaveBeenCalledTimes(1);
+      });
+      it('should call navigate method with "Pokemon" and pokemon details', function() {
+        return expect(navigateMock).toHaveBeenCalledWith('Pokemon', { pokemon: pokemonDetails });
       });
     });
   });

@@ -1,20 +1,22 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 
-import { getAllPokemons } from '../../../services';
+import { getAllPokemons, getPokemon } from '../../../services';
 import Home from '../Home';
 
 const goBackMock: jest.Mock = jest.fn();
+const navigateMock: jest.Mock = jest.fn();
 const pokemonList: { name: string }[] = [{ name: 'BULBASUR' }, { name: 'PIKACHU' }];
 
 jest.mock('../../../services', () => ({
   getAllPokemons: jest.fn(),
+  getPokemon: jest.fn(),
 }));
 
 describe('<Home /> Component', () => {
   let wrapper: ShallowWrapper<any, any, any>;
 
-  const props: any = { navigation: { goBack: goBackMock } };
+  const props: any = { navigation: { goBack: goBackMock, navigate: navigateMock } };
 
   beforeEach(() => {
     wrapper = shallow(<Home {...props} />);
@@ -22,6 +24,7 @@ describe('<Home /> Component', () => {
 
   afterEach(() => {
     (getAllPokemons as jest.Mock).mockClear();
+    (getPokemon as jest.Mock).mockClear();
   });
 
   describe('rendering', () => {
@@ -127,6 +130,29 @@ describe('<Home /> Component', () => {
         wrapper.instance().handleSearchBar('bu');
         expect(wrapper.state('filteredPokemons')).toEqual([{ name: 'BULBASUR' }]);
       });
+    });
+
+    describe('onPokemonSelect instance', () => {
+      const id = 4;
+      const pokemonDetails = { name: 'Charmander' };
+
+      beforeEach(async () => {
+        (getPokemon as jest.Mock).mockReturnValue(pokemonDetails);
+
+        await wrapper.instance().onPokemonSelect(id);
+      });
+
+      afterEach(() => {
+        navigateMock.mockClear();
+      });
+
+      it('should call getPokemon service once', () => expect(getPokemon).toHaveBeenCalledTimes(1));
+
+      it('should call getPokemon service with id parameter', () => expect(getPokemon).toHaveBeenCalledWith(id));
+
+      it('should call navigate method of navigation once', () => expect(navigateMock).toHaveBeenCalledTimes(1));
+
+      it('should call navigate method with "Pokemon" and pokemon details', () => expect(navigateMock).toHaveBeenCalledWith('Pokemon', { pokemon: pokemonDetails }));
     });
   });
 });
