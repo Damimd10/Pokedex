@@ -21,11 +21,11 @@ npm install
 
 ## Screenshoots
 
-![Home](media/home.png =250,580)
-![Details](media/pokemon-details.png =250,580)
-![Damage](media/pokemon-damage.png =250,580)
-![Evolutions](media/pokemon-evolutions.png =250,580)
-![Moves](media/pokemon-moves.png =250,580)
+![Home](media/home.png)
+![Details](media/pokemon-details.png)
+![Damage](media/pokemon-damage.png)
+![Evolutions](media/pokemon-evolutions.png)
+![Moves](media/pokemon-moves.png)
 
 ## Developer Tools 🧰
 
