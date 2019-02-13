@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Body, Header, Right, Title,
+  Body, Header, Left, Right, Title,
 } from 'native-base';
 import { StyleSheet } from 'react-native';
 
@@ -12,14 +12,15 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: '#F4F9F3',
     fontFamily: 'Oxygen-Regular',
-    fontSize: 20,
+    fontSize: 16,
     letterSpacing: 1,
     textAlign: 'center',
   },
 });
 
 const HomeHeader: React.FunctionComponent<{}> = () => (
-  <Header style={styles.headerContainer} noLeft noShadow transparent>
+  <Header style={styles.headerContainer} noShadow transparent>
+    <Left />
     <Body>
       <Title style={styles.headerTitle}>Pokedex</Title>
     </Body>
