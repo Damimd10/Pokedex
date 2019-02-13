@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
+export type HeaderProps = {
   goBack(): void;
 };
 
-const HomeHeader: React.FunctionComponent<Props> = ({ goBack }) => (
+const HomeHeader: React.FunctionComponent<HeaderProps> = ({ goBack }) => (
   <Header style={styles.headerContainer} noShadow transparent>
     <Left style={styles.leftHeader}>
       <Button transparent onPress={() => goBack()}>
