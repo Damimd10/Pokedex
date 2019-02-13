@@ -26,10 +26,6 @@ jobs:
             - node_modules
 
       - run:
-          name: Run Lint
-          command: yarn run lint
-
-      - run:
           name: Run Unit Tests
           command: |
             mkdir -p test-results/jest
