@@ -8,7 +8,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint src",
-    "pretty": "prettier --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\""
+    "pretty": "prettier --print-width 80 --single-quote --trailing-comma es5"
   },
   "lint-staged": {
     "*.js": [
