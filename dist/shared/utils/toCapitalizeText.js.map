@@ -1,1 +1,0 @@
-{"version":3,"file":"toCapitalizeText.js","sourceRoot":"","sources":["../../../src/shared/utils/toCapitalizeText.ts"],"names":[],"mappings":"AAAA,IAAM,gBAAgB,GAAG,UAAC,IAAY;IACpC,IAAI,OAAO,IAAI,KAAK,QAAQ;QAAE,OAAO,EAAE,CAAC;IACxC,OAAO,IAAI,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC,WAAW,EAAE,GAAG,IAAI,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC;AACtD,CAAC,CAAC;AAEF,eAAe,gBAAgB,CAAC"}

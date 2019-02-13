@@ -1,1 +1,0 @@
-//# sourceMappingURL=IPaletteColor.js.map
