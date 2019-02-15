@@ -32,15 +32,24 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = Pick<NormalizedPokemon, 'color' | 'evolutionChain'>;
+export type EvolutionTabProps = Pick<
+  NormalizedPokemon,
+  'color' | 'evolutionChain'
+>;
 
-const EvolutionTab: React.FunctionComponent<Props> = ({ color, evolutionChain }) => (
+const EvolutionTab: React.FunctionComponent<EvolutionTabProps> = ({
+  color,
+  evolutionChain,
+}) => (
   <View style={styles.container}>
     {evolutionChain.map((evolution, index) => {
       if (index + 1 >= evolutionChain.length) return;
 
       return (
-        <View key={`${evolution.name}-${index}`} style={styles.evolutionContainer}>
+        <View
+          key={`${evolution.name}-${index}`}
+          style={styles.evolutionContainer}
+        >
           <PokemonEvolution {...evolution} />
           <View style={styles.segment}>
             <Text style={[styles.levelText, { color: color.primary }]}>

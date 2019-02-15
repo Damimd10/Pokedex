@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  name: string;
-  sprite: string;
+  name: string,
+  sprite: string,
 };
 
 const PokemonEvolution: React.FunctionComponent<Props> = ({ name, sprite }) => (
