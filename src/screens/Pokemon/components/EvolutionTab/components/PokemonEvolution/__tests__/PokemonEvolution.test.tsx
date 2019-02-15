@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 
-import PokemonEvolution from '../PokemonEvolution';
+import PokemonEvolution, { PokemonEvolutionProps} from '../PokemonEvolution';
 import { toCapitalizeText } from '../../../../../../../shared/utils';
 
 jest.mock('../../../../../../../shared/utils', () => ({ toCapitalizeText: jest.fn() }));
 
 describe('<PokemonEvolution /> Component', () => {
-  let wrapper: ShallowWrapper;
+  let wrapper: ShallowWrapper<PokemonEvolutionProps>;
 
-  const props: {name: string, sprite: string} = {
+  const props: PokemonEvolutionProps = {
     name: 'charmander',
     sprite: 'charmander-sprite',
   };

@@ -15,12 +15,15 @@ const styles = StyleSheet.create({
   evolutionSprite: { height: 100, width: 100 },
 });
 
-type Props = {
+export type PokemonEvolutionProps = {
   name: string,
   sprite: string,
 };
 
-const PokemonEvolution: React.FunctionComponent<Props> = ({ name, sprite }) => (
+const PokemonEvolution: React.FunctionComponent<PokemonEvolutionProps> = ({
+  name,
+  sprite,
+}) => (
   <View style={styles.container}>
     <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
     <Text style={styles.evolutionName}>{toCapitalizeText(name)}</Text>
