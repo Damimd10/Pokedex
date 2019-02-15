@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = Pick<NormalizedPokemon, 'moves'>;
+export type MovesTabProps = Pick<NormalizedPokemon, 'moves'>;
 
-const MovesTab: React.FunctionComponent<Props> = ({ moves }) => (
+const MovesTab: React.FunctionComponent<MovesTabProps> = ({ moves }) => (
   <View style={styles.container}>
     {moves.map(({ level, name, typeIcon }) => (
       <ListItem icon key={name} style={{ margin: 5 }}>
@@ -34,7 +34,10 @@ const MovesTab: React.FunctionComponent<Props> = ({ moves }) => (
           <Text style={styles.levelText}>{`Level ${level}`}</Text>
         </Body>
         <Right>
-          <Image source={typeIcon} style={{ height: 40, width: 40, borderRadius: 20 }} />
+          <Image
+            source={typeIcon}
+            style={{ height: 40, width: 40, borderRadius: 20 }}
+          />
         </Right>
       </ListItem>
     ))}
