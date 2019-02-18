@@ -1,28 +1,18 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import {
-  Button, Footer, FooterTab, Text,
-} from 'native-base';
+import { Footer, FooterTab } from 'native-base';
 
 import { ColorRange } from '../../../../services/models';
+import Tab from '../Tab';
 
-const styles = StyleSheet.create({
-  tabTitle: {
-    fontFamily: 'Oxygen-Bold',
-    fontSize: 13,
-    textTransform: 'uppercase',
-  },
-});
-
-type Props = {
-  color: ColorRange;
-  isActiveStats: boolean;
-  isActiveEvolutions: boolean;
-  isActiveMoves: boolean;
-  onTabPress(tab: string): void;
+export type PokemonFooterProps = {
+  color: ColorRange,
+  isActiveStats: boolean,
+  isActiveEvolutions: boolean,
+  isActiveMoves: boolean,
+  onTabPress(tab: string): void,
 };
 
-const PokemonFooter: React.FunctionComponent<Props> = ({
+const PokemonFooter: React.FunctionComponent<PokemonFooterProps> = ({
   color,
   isActiveStats,
   isActiveEvolutions,
@@ -31,33 +21,24 @@ const PokemonFooter: React.FunctionComponent<Props> = ({
 }) => (
   <Footer>
     <FooterTab style={{ backgroundColor: '#FAFAFA' }}>
-      <Button
-        active={isActiveStats}
-        onPress={() => onTabPress('stats')}
-        style={{ backgroundColor: isActiveStats ? color.primary : 'transparent' }}
-      >
-        <Text style={[styles.tabTitle, { color: isActiveStats ? 'white' : color.primary }]}>
-          Stats
-        </Text>
-      </Button>
-      <Button
-        active={isActiveEvolutions}
-        onPress={() => onTabPress('evolutions')}
-        style={{ backgroundColor: isActiveEvolutions ? color.primary : 'transparent' }}
-      >
-        <Text style={[styles.tabTitle, { color: isActiveEvolutions ? 'white' : color.primary }]}>
-          Evolutions
-        </Text>
-      </Button>
-      <Button
-        active={isActiveMoves}
-        onPress={() => onTabPress('moves')}
-        style={{ backgroundColor: isActiveMoves ? color.primary : 'transparent' }}
-      >
-        <Text style={[styles.tabTitle, { color: isActiveMoves ? 'white' : color.primary }]}>
-          Moves
-        </Text>
-      </Button>
+      <Tab
+        color={color.primary}
+        isActive={isActiveStats}
+        onTabPress={onTabPress}
+        tabName="stats"
+      />
+      <Tab
+        color={color.primary}
+        isActive={isActiveEvolutions}
+        onTabPress={onTabPress}
+        tabName="evolutions"
+      />
+      <Tab
+        color={color.primary}
+        isActive={isActiveMoves}
+        onTabPress={onTabPress}
+        tabName="moves"
+      />
     </FooterTab>
   </Footer>
 );
