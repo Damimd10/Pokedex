@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type TabProps = {
+export type TabProps = {
   tabName: string,
   isActive: boolean,
   onTabPress(tab: string): void,
@@ -31,7 +31,7 @@ const Tab: React.FunctionComponent<TabProps> = ({
     }}
   >
     <Text style={[styles.tabTitle, { color: isActive ? 'white' : color }]}>
-      Stats
+      {tabName.toUpperCase()}
     </Text>
   </Button>
 );
