@@ -5,6 +5,7 @@ import {
 import { SearchBar } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { Container, Content } from 'native-base';
+import SplashScreen from 'react-native-splash-screen';
 
 import { getAllPokemons, getPokemon } from '../../services';
 import { Error, NormalizedPokemon } from '../../services/models';
@@ -51,6 +52,8 @@ export default class App extends React.Component<HomeProps, State> {
     const pokemons: any = await getAllPokemons();
 
     if (pokemons.errorMessage) this.setState({ error: pokemons.errorMessage, loading: false });
+
+    SplashScreen.hide();
 
     this.setState({ pokemonList: pokemons, loading: false });
   }
