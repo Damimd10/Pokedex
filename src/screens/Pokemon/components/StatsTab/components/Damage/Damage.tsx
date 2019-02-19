@@ -27,13 +27,17 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
-  color: ColorRange;
-  damage: any;
-  title: string;
+export type DamageProps = {
+  color: ColorRange,
+  damage: any,
+  title: string,
 };
 
-const Damage: React.FunctionComponent<Props> = ({ color, damage, title }) => (
+const Damage: React.FunctionComponent<DamageProps> = ({
+  color,
+  damage,
+  title,
+}) => (
   <View style={styles.container}>
     <Text style={[styles.title, { color: color.primary }]}>{title}</Text>
     <FlatList

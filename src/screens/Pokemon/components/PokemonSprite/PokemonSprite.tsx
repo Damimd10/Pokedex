@@ -21,15 +21,17 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
-  name: string;
+export type PokemonSpirteProps = {
+  name: string,
 };
 
-const PokemonSprite: React.FunctionComponent<Props> = ({ name }) => (
+const PokemonSprite: React.FunctionComponent<PokemonSpirteProps> = ({ name }) => (
   <View style={styles.pokemonSprite}>
     <Image
       style={styles.pokemonSpriteImage}
-      source={{ uri: `https://img.pokemondb.net/artwork/vector/large/${name}.png` }}
+      source={{
+        uri: `https://img.pokemondb.net/artwork/vector/large/${name}.png`,
+      }}
     />
   </View>
 );
