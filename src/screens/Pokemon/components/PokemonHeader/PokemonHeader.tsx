@@ -17,14 +17,22 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
-  color: ColorRange;
-  goBack(routeKey?: string | null): boolean;
-  name: string;
+export type PokemonHeaderProps = {
+  color: ColorRange,
+  goBack(routeKey?: string | null): boolean,
+  name: string,
 };
 
-const PokemonHeader: React.FunctionComponent<Props> = ({ color, goBack, name }) => (
-  <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[color.dark, color.light]}>
+const PokemonHeader: React.FunctionComponent<PokemonHeaderProps> = ({
+  color,
+  goBack,
+  name,
+}) => (
+  <LinearGradient
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 0 }}
+    colors={[color.dark, color.light]}
+  >
     <Header noShadow transparent>
       <Left style={styles.leftHeader}>
         <Button transparent onPress={() => goBack()}>
