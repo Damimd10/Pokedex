@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ActivityIndicator, StyleSheet, Text, View,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
 import { NavigationScreenProp } from 'react-navigation';
 import { Container, Content } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
@@ -21,12 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  searchBar: {
-    width: '100%',
-    backgroundColor: 'white',
-    borderTopWidth: 0,
-  },
+  }
 });
 
 export type HomeProps = {
@@ -95,16 +89,9 @@ export default class App extends React.Component<HomeProps, State> {
 
     return (
       <Container>
-        <Header />
+        <Header handleSearchBar={this.handleSearchBar} />
         <Content>
           <View style={styles.container}>
-            <SearchBar
-              containerStyle={styles.searchBar}
-              lightTheme
-              noIcon
-              onChangeText={this.handleSearchBar}
-              placeholder="Find a Pokemon..."
-            />
             <PokemonList onPokemonSelect={this.onPokemonSelect} pokemons={pokemons} />
           </View>
         </Content>

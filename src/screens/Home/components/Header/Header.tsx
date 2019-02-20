@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Body, Header, Left, Right, Title,
+  Header, Icon, Input, Item,
 } from 'native-base';
 import { StyleSheet } from 'react-native';
 
@@ -18,13 +18,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeHeader: React.FunctionComponent<{}> = () => (
-  <Header style={styles.headerContainer} noShadow transparent>
-    <Left />
-    <Body>
-      <Title style={styles.headerTitle}>Pokedex</Title>
-    </Body>
-    <Right />
+export type HomeHeaderProps = {
+  handleSearchBar: (text: string) => void,
+};
+
+const HomeHeader: React.FunctionComponent<HomeHeaderProps> = ({
+  handleSearchBar,
+}) => (
+  <Header style={styles.headerContainer} noShadow transparent searchBar rounded>
+    <Item>
+      <Icon name="ios-search" />
+      <Input placeholder="Search" onChangeText={handleSearchBar} />
+      <Icon name="ios-bug" />
+    </Item>
   </Header>
 );
 

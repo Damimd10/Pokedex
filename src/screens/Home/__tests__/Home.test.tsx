@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import SplashScreen from 'react-native-splash-screen';
 
 import { getAllPokemons, getPokemon } from '../../../services';
 import Home from '../Home';
@@ -7,6 +8,10 @@ import Home from '../Home';
 const goBackMock: jest.Mock = jest.fn();
 const navigateMock: jest.Mock = jest.fn();
 const pokemonList: { name: string }[] = [{ name: 'BULBASUR' }, { name: 'PIKACHU' }];
+
+jest.mock('react-native-splash-screen', () => ({
+  hide: jest.fn()
+}));
 
 jest.mock('../../../services', () => ({
   getAllPokemons: jest.fn(),
@@ -23,8 +28,7 @@ describe('<Home /> Component', () => {
   });
 
   afterEach(() => {
-    (getAllPokemons as jest.Mock).mockClear();
-    (getPokemon as jest.Mock).mockClear();
+    jest.clearAllMocks();
   });
 
   describe('rendering', () => {
@@ -70,24 +74,6 @@ describe('<Home /> Component', () => {
 
       it('should render one View component inside Content', () => expect(wrapper.find('Styled(Content)').find('View')).toHaveLength(1));
 
-      describe('<SearchBar /> Component', () => {
-        let searchBar: ShallowWrapper;
-
-        beforeEach(() => {
-          searchBar = wrapper.find('View').find('Search');
-        });
-
-        it('should render one Search component inside View', () => expect(searchBar).toHaveLength(1));
-
-        it('should have a lightTheme prop as true', () => expect(searchBar.prop('lightTheme')).toBe(true));
-
-        it('should have a noIcon prop as true', () => expect(searchBar.prop('noIcon')).toBe(true));
-
-        it('should have a onChangeText prop as an instance of the Home component', () => expect(searchBar.prop('onChangeText')).toEqual(wrapper.instance().handleSearchBar));
-
-        it('should have a placeHolder prop as "Find a Pokemon..."', () => expect(searchBar.prop('placeholder')).toBe('Find a Pokemon...'));
-      });
-
       it('should render one PokemonList component inside View', () => expect(wrapper.find('View').find('PokemonList')).toHaveLength(1));
     });
   });
@@ -113,6 +99,16 @@ describe('<Home /> Component', () => {
         (getAllPokemons as jest.Mock).mockReturnValue({ errorMessage: 'Error' });
         await wrapper.instance().componentDidMount();
         expect(wrapper.state('error')).toEqual('Error');
+      });
+
+      it('should call SplashScreen.hide twice', async () => {
+        await wrapper.instance().componentDidMount();
+        expect(SplashScreen.hide).toHaveBeenCalledTimes(2);
+      });
+
+      it('should call SplashScreen.hide with empty params', async () => {
+        await wrapper.instance().componentDidMount();
+        expect(SplashScreen.hide).toHaveBeenCalledWith();
       });
     });
 
