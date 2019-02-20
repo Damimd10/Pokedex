@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = MappedStat & { color: ColorRange };
+export type StatsDetailsProps = MappedStat & {color: ColorRange};
 
-const StatsDetails: React.FunctionComponent<Props> = ({
+const StatsDetails: React.FunctionComponent<StatsDetailsProps> = ({
   averageStat,
   baseStat,
   color,

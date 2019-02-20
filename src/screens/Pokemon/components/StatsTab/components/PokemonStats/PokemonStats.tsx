@@ -12,9 +12,12 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = Pick<NormalizedPokemon, 'color' | 'stats'>;
+export type PokemonStatsProps = Pick<NormalizedPokemon, 'color' | 'stats'>;
 
-const PokemonStats: React.FunctionComponent<Props> = ({ color, stats }) => (
+const PokemonStats: React.FunctionComponent<PokemonStatsProps> = ({
+  color,
+  stats,
+}) => (
   <View style={styles.statsContainer}>
     {stats.map(stat => (
       <StatsDetails key={stat.name} color={color} {...stat} />
