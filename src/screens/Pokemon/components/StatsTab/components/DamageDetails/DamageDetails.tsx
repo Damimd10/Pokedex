@@ -13,12 +13,15 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {
-  damage: string;
-  icon: ImageSourcePropType;
+export type DamageDetailsProps = {
+  damage: string,
+  icon: ImageSourcePropType,
 };
 
-const DamageDetails: React.FunctionComponent<Props> = ({ damage, icon }) => (
+const DamageDetails: React.FunctionComponent<DamageDetailsProps> = ({
+  damage,
+  icon,
+}) => (
   <View>
     <View style={styles.type}>
       <Image source={icon} style={{ height: 44, width: 44, borderRadius: 22 }} />
