@@ -15,18 +15,27 @@ const styles = StyleSheet.create({
 });
 
 export type PokemonListProps = {
-  onPokemonSelect: (id: number) => void;
-  pokemons: NormalizedPokemons[];
+  onPokemonSelect: (id: number) => void,
+  pokemons: NormalizedPokemons[],
 };
 
-const PokemonList: React.FunctionComponent<PokemonListProps> = ({ onPokemonSelect, pokemons }) => (
+const PokemonList: React.FunctionComponent<PokemonListProps> = ({
+  onPokemonSelect,
+  pokemons,
+}) => (
   <View style={styles.container}>
     <FlatList
       data={pokemons}
       keyExtractor={item => item.name}
       numColumns={3}
-      columnWrapperStyle={{ flex: 1, justifyContent: 'space-between' }}
-      renderItem={({ item }) => <PokemonCard onPokemonSelect={onPokemonSelect} {...item} />}
+      columnWrapperStyle={{
+        flex: 1,
+        justifyContent: 'center',
+        paddingHorizontal: 15,
+      }}
+      renderItem={({ item }) => (
+        <PokemonCard onPokemonSelect={onPokemonSelect} {...item} />
+      )}
     />
   </View>
 );

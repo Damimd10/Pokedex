@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: { marginHorizontal: 5 },
   pokemonName: {
     fontWeight: 'bold',
   },
@@ -20,10 +21,10 @@ const styles = StyleSheet.create({
 });
 
 export type PokemonCardProps = {
-  id: number;
-  name: string;
-  sprite: string;
-  onPokemonSelect: (id: number) => void;
+  id: number,
+  name: string,
+  sprite: string,
+  onPokemonSelect: (id: number) => void,
 };
 
 const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
@@ -32,8 +33,11 @@ const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
   onPokemonSelect,
   sprite,
 }) => (
-  <View>
-    <TouchableOpacity style={styles.pokemonGrid} onPress={() => onPokemonSelect(id)}>
+  <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.pokemonGrid}
+      onPress={() => onPokemonSelect(id)}
+    >
       <Text style={styles.pokemonName}>{name}</Text>
       <Image style={styles.pokemonSprite} source={{ uri: sprite }} />
     </TouchableOpacity>
