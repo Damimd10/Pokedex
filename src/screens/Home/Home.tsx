@@ -61,7 +61,7 @@ export default class App extends React.Component<HomeProps, State> {
   onPokemonSelect = async (id: number): Promise<void> => {
     this.setState({ loading: true });
     const pokemon: NormalizedPokemon | Error = await getPokemon(id);
-    this.setState({ loading: false });
+    this.setState({ loading: false, filteredPokemons: [] });
     this.props.navigation.navigate('Pokemon', { pokemon });
   };
 

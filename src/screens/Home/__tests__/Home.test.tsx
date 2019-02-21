@@ -146,6 +146,10 @@ describe('<Home /> Component', () => {
 
       it('should call getPokemon service with id parameter', () => expect(getPokemon).toHaveBeenCalledWith(id));
 
+      it('should set state for loading in false', () => expect(wrapper.state('loading')).toBe(false));
+
+      it('should set state for filteredPokemons in an empty array', () => expect(wrapper.state('filteredPokemons')).toEqual([]));
+
       it('should call navigate method of navigation once', () => expect(navigateMock).toHaveBeenCalledTimes(1));
 
       it('should call navigate method with "Pokemon" and pokemon details', () => expect(navigateMock).toHaveBeenCalledWith('Pokemon', { pokemon: pokemonDetails }));
