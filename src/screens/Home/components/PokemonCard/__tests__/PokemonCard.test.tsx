@@ -50,6 +50,16 @@ describe('<PokemonCard /> Component', () => {
         .props().children,
     ).toBe('pikachu'));
 
+    it('should render the name of the pokemon with "..." when the pokemon has more than 15 letters', () => {
+      wrapper.setProps({ name: 'Mega Charizard XXX' });
+      expect(
+        wrapper
+          .find('Text')
+          .first()
+          .prop('children'),
+      ).toBe('Mega Chariza...');
+    });
+
     it('should have a source property that contains "pikachu-sprite"', () => expect(
       wrapper
         .find('TouchableOpacity')

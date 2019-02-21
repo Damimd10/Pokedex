@@ -41,6 +41,7 @@ export default class PokemonDetails extends React.Component<Props, {}> {
     const { description, name } = this.props;
 
     Tts.getInitStatus().then(() => {
+      Tts.setDefaultLanguage('es-ES');
       Tts.setDefaultRate(0.4);
       Tts.speak(name);
       Tts.speak(description);

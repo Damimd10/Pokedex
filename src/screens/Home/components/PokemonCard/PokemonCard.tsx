@@ -38,7 +38,9 @@ const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
       style={styles.pokemonGrid}
       onPress={() => onPokemonSelect(id)}
     >
-      <Text style={styles.pokemonName}>{name}</Text>
+      <Text style={styles.pokemonName}>
+        {name.length > 15 ? `${name.substring(0, 15 - 3)}...` : name}
+      </Text>
       <Image style={styles.pokemonSprite} source={{ uri: sprite }} />
     </TouchableOpacity>
   </View>

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: -10,
   },
-  evolutionSprite: { height: 100, width: 100 },
+  evolutionSprite: { height: 120, width: 120 },
 });
 
 export type PokemonEvolutionProps = {
