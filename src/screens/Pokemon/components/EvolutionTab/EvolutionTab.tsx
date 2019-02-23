@@ -35,11 +35,12 @@ const styles = StyleSheet.create({
 export type EvolutionTabProps = Pick<
   NormalizedPokemon,
   'color' | 'evolutionChain'
->;
+> & {onPokemonEvolutionSelect: (id: string) => Promise<void>};
 
 const EvolutionTab: React.FunctionComponent<EvolutionTabProps> = ({
   color,
   evolutionChain,
+  onPokemonEvolutionSelect,
 }) => (
   <View style={styles.container}>
     {evolutionChain.map((evolution, index) => {
@@ -50,14 +51,20 @@ const EvolutionTab: React.FunctionComponent<EvolutionTabProps> = ({
           key={`${evolution.name}-${index}`}
           style={styles.evolutionContainer}
         >
-          <PokemonEvolution {...evolution} />
+          <PokemonEvolution
+            {...evolution}
+            onPokemonEvolutionSelect={onPokemonEvolutionSelect}
+          />
           <View style={styles.segment}>
             <Text style={[styles.levelText, { color: color.primary }]}>
               {`Lv.${evolutionChain[index + 1].level}`}
             </Text>
             <Text style={styles.arrow}>&#10230;</Text>
           </View>
-          <PokemonEvolution {...evolutionChain[index + 1]} />
+          <PokemonEvolution
+            {...evolutionChain[index + 1]}
+            onPokemonEvolutionSelect={onPokemonEvolutionSelect}
+          />
         </View>
       );
     })}

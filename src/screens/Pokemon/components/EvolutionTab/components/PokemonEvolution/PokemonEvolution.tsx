@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Image, StyleSheet, Text, View,
+  Image, StyleSheet, Text, View, TouchableOpacity,
 } from 'react-native';
 
 import { toCapitalizeText } from '../../../../../../shared/utils';
@@ -17,15 +17,19 @@ const styles = StyleSheet.create({
 
 export type PokemonEvolutionProps = {
   name: string,
+  onPokemonEvolutionSelect: (event: any) => void
   sprite: string,
 };
 
 const PokemonEvolution: React.FunctionComponent<PokemonEvolutionProps> = ({
   name,
+  onPokemonEvolutionSelect,
   sprite,
 }) => (
   <View style={styles.container}>
-    <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
+    <TouchableOpacity onPress={() => onPokemonEvolutionSelect(name)}>
+      <Image style={styles.evolutionSprite} source={{ uri: sprite }} />
+    </TouchableOpacity>
     <Text style={styles.evolutionName}>{toCapitalizeText(name)}</Text>
   </View>
 );

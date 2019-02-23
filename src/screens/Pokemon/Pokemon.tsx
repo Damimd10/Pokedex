@@ -4,6 +4,7 @@ import { NavigationScreenProp } from 'react-navigation';
 import { Container, Content, Text } from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { getPokemon } from '../../services';
 import { Error, NormalizedPokemon } from '../../services/models';
 
 import PokemonSprite from './components/PokemonSprite';
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 
 const ActiveTab: ComponentCollection = {
   stats: { component: StatsTab, props: ['color', 'stats', 'typesRelation'] },
-  evolutions: { component: EvolutionTab, props: ['color', 'evolutionChain'] },
+  evolutions: { component: EvolutionTab, props: ['color', 'evolutionChain', 'onPokemonEvolutionSelect'] },
   moves: { component: MovesTab, props: ['moves'] },
 };
 
@@ -58,6 +59,14 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
     loading: false,
     pokemon: this.props.navigation.getParam('pokemon'),
   };
+
+  componentDidUpdate(prevProps: PokemonScreenProps): void {
+    const currentPokemon = this.props.navigation.getParam('pokemon');
+
+    if (prevProps.navigation.getParam('pokemon') !== currentPokemon) {
+      this.setState({ pokemon: currentPokemon })
+    }
+  }
 
   isActive = (value: string): boolean => value === this.state.activeTab;
 
@@ -73,8 +82,18 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
       {},
     );
 
-    return <CustomComponent {...customProps} />;
+    const customFunctions = { ...(activeTab === 'evolutions' ? { onPokemonEvolutionSelect: this.onPokemonEvolutionSelect } : {}) };
+
+    return <CustomComponent {...customProps} {...customFunctions} />;
   };
+
+  onPokemonEvolutionSelect = async(id: number): Promise<void> => {
+    this.setState({ loading: true });
+    const pokemon: NormalizedPokemon | Error = await getPokemon(id);
+    console.log('HERE', pokemon);
+    this.props.navigation.setParams({ pokemon });
+    this.setState({ loading: false });
+  }
 
   onTabPress = (tab: string): void => this.setState({ activeTab: tab });
 

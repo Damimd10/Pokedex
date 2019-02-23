@@ -3,6 +3,8 @@ import { shallow, ShallowWrapper } from 'enzyme';
 
 import EvolutionTab, { EvolutionTabProps } from '../EvolutionTab';
 
+const onPokemonEvolutionSelect = jest.fn();
+
 describe('<EvolutionTab /> Component', () => {
   let wrapper: ShallowWrapper<EvolutionTabProps>;
 
@@ -12,6 +14,7 @@ describe('<EvolutionTab /> Component', () => {
       { name: 'pikachu', level: 0, sprite: 'pikachu-ev' },
       { name: 'raichu', level: 16, sprite: 'raichu-ev' },
     ],
+    onPokemonEvolutionSelect
   };
 
   beforeEach(() => {
