@@ -57,10 +57,12 @@ export interface NormalizedPokemon {
   color: ColorRange;
   description: any;
   evolutionChain: NormalizedEvolutions[];
+  height: string;
   moves: any[];
   name: any;
   sprite: any;
   stats: MappedStat[];
   types: any[];
   typesRelation: any;
+  weight: string;
 }

@@ -90,7 +90,6 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
   onPokemonEvolutionSelect = async(id: number): Promise<void> => {
     this.setState({ loading: true });
     const pokemon: NormalizedPokemon | Error = await getPokemon(id);
-    console.log('HERE', pokemon);
     this.props.navigation.setParams({ pokemon });
     this.setState({ loading: false });
   }
@@ -103,7 +102,7 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
         error,
         loading,
         pokemon: {
-          color, description, name, types,
+          color, description, height, name, types, weight,
         },
       },
       props: {
@@ -142,7 +141,7 @@ class Pokemon extends React.Component<PokemonScreenProps, State> {
             style={styles.container}
           >
             <PokemonSprite name={name} />
-            <PokemonDetails description={description} name={name} types={types} />
+            <PokemonDetails description={description} height={height} name={name} types={types} weight={weight} />
           </LinearGradient>
           {this.getTabContent()}
         </Content>
