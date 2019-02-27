@@ -19,14 +19,6 @@ npm install
 - List of movements.
 - Strengths and weaknesses.
 
-## Screenshoots
-
-![Home](media/home.png)
-![Details](media/pokemon-details.png)
-![Damage](media/pokemon-damage.png)
-![Evolutions](media/pokemon-evolutions.png)
-![Moves](media/pokemon-moves.png)
-
 ## Developer Tools 🧰
 
 🔥TypeScript
