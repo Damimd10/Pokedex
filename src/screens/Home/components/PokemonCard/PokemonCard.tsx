@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Image, StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
+import PokemonImages from '../../../../assets/img';
 
 const styles = StyleSheet.create({
   container: { marginHorizontal: 5 },
@@ -41,7 +42,7 @@ const PokemonCard: React.FunctionComponent<PokemonCardProps> = ({
       <Text style={styles.pokemonName}>
         {name.length > 15 ? `${name.substring(0, 15 - 3)}...` : name}
       </Text>
-      <Image style={styles.pokemonSprite} source={{ uri: sprite }} />
+      <Image style={styles.pokemonSprite} source={PokemonImages[sprite]} />
     </TouchableOpacity>
   </View>
 );
